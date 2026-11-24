@@ -12,7 +12,7 @@ the program file is still named `thoraxrex`.
     cargo build --release
 
 The engine is `target/release/thoraxrex`. Put a net next to it as `thoraxrex-net.txt` and, for the opening book,
-`thoraxrex-book.txt` (`h2h/v212/` has the net for 1.0; `tools/thoraxrex-book-v5.txt` is the book). Then add the program to
+`thoraxrex-book.txt` (`h2h/v213/` is version 1.0 as built for Apple Silicon, with its net; `tools/thoraxrex-book-v5.txt` is the book). Then add the program to
 the viewer on its Engine tab. It is listed as "FoulBrood Book" when it finds a book and "FoulBrood" without one.
 
 ## What it is
@@ -31,7 +31,7 @@ the viewer on its Engine tab. It is listed as "FoulBrood Book" when it finds a b
 | Folder | Contents |
 |---|---|
 | `src/`, `Cargo.toml` | the engine |
-| `h2h/` | every tested version as built for Apple Silicon, each with its net (`v212` = 1.0's net) |
+| `h2h/` | every tested version as built for Apple Silicon, each with its net (`v213` = version 1.0) |
 | `tools/` | match runner, training script (`train_qn.py`), nets (`net_*.txt`), weight sets, test and book tools |
 | `queue/` | the job files that produced each result, in order: they are the record of how every net was made |
 | `results/datagen/` | the self-play games each net was trained on (`sp2` to `sp11`) |
