@@ -12,7 +12,7 @@ the program file is still named `thoraxrex`.
     cargo build --release
 
 The engine is `target/release/thoraxrex`. Put a net next to it as `thoraxrex-net.txt` and, for the opening book,
-`thoraxrex-book.txt` (`h2h/v212/` has the net for 1.0; `thoraxrex-book.txt` is the book). Then add the program to
+`thoraxrex-book.txt` (`h2h/v212/` has the net for 1.0; `tools/thoraxrex-book-v5.txt` is the book). Then add the program to
 the viewer on its Engine tab. It is listed as "FoulBrood Book" when it finds a book and "FoulBrood" without one.
 
 ## What it is
@@ -44,12 +44,20 @@ To retrain a net from the games here: build the engine, turn each `results/datag
 features with `thoraxrex dumpfeat <games> <out.csv> extra`, then run `tools/train_qn.py` as the newest
 `queue/*loop*.job` shows.
 
+## Game records and opening sources
+
+- `tools/bots_arch*.jsonl`, `tools/arch_mv.jsonl`, `tools/top_mv.jsonl`, `tools/hg_*.jsonl` and
+  `game-records/hivegame-top1900-7289.jsonl.gz`: public game records from hivegame.com, which the opening book and
+  some training starts were built from.
+- `hivegame-bot/games.jsonl`: HotFrass's own games played through the viewer, with the engine's score at each move.
+- `cloud-tools/fbook/formi-opening-reference.json` and `formi-check.in`: opening lines taken from the published
+  opening book of the bot Formi (hive-bugs.fly.dev/book), used as a reference for the next book. They are Formi's
+  author's work, included here only so the book can be rebuilt.
+
 ## What is not here
 
-- The feature tables in `data/` (about 2 GB). They are regenerated from the self-play games as above.
-- Game records of other hivegame.com players, which the opening book and some training starts were built from
-  (`tools/bots_arch*.jsonl`, `tools/arch_mv.jsonl`, `tools/top_mv.jsonl`, `tools/hg_*.jsonl`). The finished
-  book is included; rebuilding it from scratch needs those records downloaded again.
+- The feature tables in `data/` (about 2 GB, with single files too large for GitHub). They are regenerated from the
+  self-play games as above.
 - Nokamute, used as a test opponent (`ref/`), which has its own home.
 - Match logs move by move (`results/par-*`, `results/games-*`); the summaries are kept.
 
