@@ -1,0 +1,16 @@
+# v2.9 = v2.8 search + queen-neighbourhood net q4 (self-play only sp2..sp8, 288 extra inputs).
+# vs v2.8: 70% over 300 games at 1 s, 75% over 120 games at 2 s; vs Foulbrood 4.1: 42/48 (v2.8 net: 41.5/48).
+# Rebuild with the version string, reinstall in the viewer, verify it runs there, keep an h2h baseline.
+export PATH="$HOME/.cargo/bin:$PATH"
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.9.0"/' Cargo.toml
+cargo build --release > results/build-v29.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+  rm -f "$E/$d/thoraxrex-net.txt"; cp tools/net_q4.txt "$E/$d/thoraxrex-net.txt"
+done
+printf 'newgame Base+MLP\nbestmove time 00:00:01\nexit\n' | "$E/ThoraxRex-NoBook/thoraxrex" > results/viewer29-install.txt 2>&1
+mkdir -p h2h/v29
+rm -f h2h/v29/thoraxrex; cp target/release/thoraxrex h2h/v29/thoraxrex
+cp tools/net_q4.txt h2h/v29/thoraxrex-net.txt
+exit 0

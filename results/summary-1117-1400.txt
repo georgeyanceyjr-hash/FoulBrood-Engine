@@ -1,0 +1,4 @@
+climb-Foulbrood-4.1: 33.5/36 (+33 =1 -2)  wins as White 17, as Black 16
+gbpb120-Foulbrood-4.1: 26.0/36 (+26 =0 -10)  wins as White 15, as Black 11
+gbpb200-Foulbrood-4.1: 33.0/36 (+33 =0 -3)  wins as White 18, as Black 15
+pb120-Foulbrood-4.1: 33.0/36 (+33 =0 -3)  wins as White 16, as Black 17

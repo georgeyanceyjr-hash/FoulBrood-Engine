@@ -1,0 +1,25 @@
+# Loop 11 with the pillbug-power inputs. (1) sp11: 5000 self-play games with q12, depth 5.
+# (2) q13 = sp2..sp11, weight decay .02, 294 extra inputs. (3) q13 vs v2.11 (q8) and vs q12, 200 games each at 1 s.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+[ -x h2h/v211/thoraxrex ] && [ -x h2h/pp/thoraxrex ] || exit 1
+D=data/pp; G=results/datagen
+T=$(date +%m%d-%H%M)
+DP=()
+for i in 1 2 3 4 5; do
+  TR_BOOK=none TR_POLICY=none TR_NET=tools/net_q12.txt TR_STARTS=tools/hg_starts.jsonl ./h2h/pp/thoraxrex datagen 500 5 $((i*150011+${T//-/})) $G/sp11-$T-$i.jsonl &
+  DP+=($!)
+done
+for i in 6 7 8 9 10; do
+  TR_BOOK=none TR_POLICY=none TR_NET=tools/net_q12.txt ./h2h/pp/thoraxrex datagen 500 5 $((i*150011+${T//-/})) $G/sp11-$T-$i.jsonl &
+  DP+=($!)
+done
+wait "${DP[@]}"
+cat $G/sp11-$T-{1,2,3,4,5,6,7,8,9,10}.jsonl > $G/sp11_train.jsonl
+./h2h/pp/thoraxrex dumpfeat $G/sp11_train.jsonl $D/sp11_train.csv extra > /dev/null 2>&1
+A=$D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv,$D/sp11_train.csv
+EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn.py 58 $A,val:$D/sp5_val.csv tools/net_q13.txt 64 32 0.5 8 > results/tq13.log 2>&1
+export TR_POLICY=none TR_BOOK=none
+cp h2h/pp/thoraxrex target/release/thoraxrex
+VARIANTS="q13" OPPS="../../ThoraxRex/h2h/v211/thoraxrex ../../ThoraxRex/h2h/pp/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=139000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

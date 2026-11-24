@@ -1,0 +1,10 @@
+mm-base-1117-1047: 2621 games, 1500 positions, depth 6: 474/1500 = 31.6%
+mm-caut-1117-1047: 2621 games, 1500 positions, depth 6: 478/1500 = 31.9%
+mm-cautB-1117-1047: 2621 games, 1500 positions, depth 6: 485/1500 = 32.3%
+mm-e150-1117-1047: 2621 games, 1500 positions, depth 6: 483/1500 = 32.2%
+mm-e250-1117-1047: 2621 games, 1500 positions, depth 6: 462/1500 = 30.8%
+mm-gb100-1117-1047: 2621 games, 1500 positions, depth 6: 474/1500 = 31.6%
+mm-gb150-1117-1047: 2621 games, 1500 positions, depth 6: 473/1500 = 31.5%
+mm-gb150e150-1117-1047: 2621 games, 1500 positions, depth 6: 457/1500 = 30.5%
+mm-gb250-1117-1047: 2621 games, 1500 positions, depth 6: 446/1500 = 29.7%
+mm-qd30-1117-1047: 2621 games, 1500 positions, depth 6: 458/1500 = 30.5%

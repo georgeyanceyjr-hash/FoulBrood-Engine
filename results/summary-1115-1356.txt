@@ -1,0 +1,3 @@
+v17-Foulbrood-4.1: 27.5/40 (+27 =1 -12)  wins as White 13, as Black 14
+v17-Foulbrood-5.3: 33.5/40 (+33 =1 -6)  wins as White 17, as Black 16
+v17-Nokamute: 28.5/40 (+28 =1 -11)  wins as White 15, as Black 13

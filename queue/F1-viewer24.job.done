@@ -1,0 +1,19 @@
+# Install ThoraxRex 2.4 (net14 + hand terms + queen-contact search) in the viewer, with and without book.
+export PATH="$HOME/.cargo/bin:$PATH"
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.4.0"/' Cargo.toml
+grep -q TR_HX src/eval.rs || { echo "hand terms missing"; exit 1; }
+grep -q TR_QTAC src/search.rs || { echo "qtac missing"; exit 1; }
+cargo build --release > results/build-viewer24.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  mkdir -p "$E/$d"
+  rm -f "$E/$d/thoraxrex" "$E/$d/thoraxrex-net.txt"
+  cp target/release/thoraxrex "$E/$d/thoraxrex"
+  cp tools/net14.txt "$E/$d/thoraxrex-net.txt"
+done
+rm -f "$E/ThoraxRex/thoraxrex-book.txt"; cp thoraxrex-book.txt "$E/ThoraxRex/thoraxrex-book.txt"
+echo "exit" | "$E/ThoraxRex/thoraxrex" | head -1 > results/viewer24-install.txt
+echo "exit" | "$E/ThoraxRex-NoBook/thoraxrex" | head -1 >> results/viewer24-install.txt
+printf 'newgame Base+MLP\nbestmove depth 3\nexit\n' | "$E/ThoraxRex-NoBook/thoraxrex" 2>&1 | tail -3 >> results/viewer24-install.txt
+cat results/viewer24-install.txt
+exit 0

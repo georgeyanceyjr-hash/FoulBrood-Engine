@@ -1,0 +1,3 @@
+gb250f0-..: 61.0/120 (+58 =6 -56)  wins as White 33, as Black 25
+gb350-..: 64.5/120 (+62 =5 -53)  wins as White 37, as Black 25
+gb500-..: 52.5/120 (+45 =15 -60)  wins as White 22, as Black 23

@@ -1,0 +1,6 @@
+n1-Foulbrood-4.1: 23.0/28 (+23 =0 -5)  wins as White 13, as Black 10
+n1-Foulbrood-5.3: 22.0/28 (+21 =2 -5)  wins as White 12, as Black 9
+n1-Nokamute: 22.0/27 (+21 =2 -4)  wins as White 13, as Black 8
+n2-Foulbrood-4.1: 13.0/28 (+11 =4 -13)  wins as White 6, as Black 5
+n2-Foulbrood-5.3: 14.5/28 (+11 =7 -10)  wins as White 5, as Black 6
+n2-Nokamute: 20.5/28 (+19 =3 -6)  wins as White 9, as Black 10

@@ -1,0 +1,15 @@
+# v2.8 = v2.7 + mutual-surround draws scored with contempt (TR_DRAWC on). 68/120 vs v2.7, 33.5/36 vs Foulbrood 4.1. Install in the viewer.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_v28.rs').read()); open('src/search.rs','w').write(open('search_v28.rs').read())"
+grep -q 'TR_DRAWC").map(|v| v != "0").unwrap_or(true)' src/search.rs || { echo "search.rs not updated"; exit 1; }
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.8.0"/' Cargo.toml
+cargo build --release > results/build-v28.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+done
+echo "exit" | "$E/ThoraxRex/thoraxrex" | head -1 > results/viewer28-install.txt
+mkdir -p h2h/v28
+rm -f h2h/v28/thoraxrex; cp target/release/thoraxrex h2h/v28/thoraxrex
+cp tools/net14.txt h2h/v28/thoraxrex-net.txt
+exit 0

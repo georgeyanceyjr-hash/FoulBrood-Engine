@@ -1,0 +1,6 @@
+# q8 scored 118/200 vs v2.9 (q7: 94.5/200). Confirm q8 with a new seed, and at 2 s/move.
+export PATH="$HOME/.cargo/bin:$PATH"
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q8" OPPS="../../ThoraxRex/h2h/v29/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=121000 MATCH_RANDPLIES=2 ./tools/par.command
+VARIANTS="q8" OPPS="../../ThoraxRex/h2h/v29/thoraxrex" SHARDS=4 GAMES=30 SECS=2 SO=123000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

@@ -1,0 +1,4 @@
+VARIANTS="t4v1f t4v1d"
+OPPS="../../ThoraxRex/target/release/thoraxrex"
+SHARDS=2
+GAMES=20

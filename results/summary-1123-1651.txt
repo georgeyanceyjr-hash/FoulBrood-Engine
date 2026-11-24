@@ -1,0 +1,4 @@
+c3-..: 110.0/180 (+103 =14 -63)  wins as White 63, as Black 40
+n14-..: 91.0/180 (+84 =14 -82)  wins as White 47, as Black 37
+q4-..: 117.5/180 (+114 =7 -59)  wins as White 62, as Black 52
+q5-..: 122.0/180 (+117 =10 -53)  wins as White 61, as Black 56

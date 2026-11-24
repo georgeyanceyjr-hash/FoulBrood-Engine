@@ -1,0 +1,12 @@
+# Policy integration v2 (mode 1 = ordering bonus + policy-scaled LMR + keep moves with p>=TR_POLKEEP), at 2 s/move.
+# nopol = same binary with the policy off (control). All vs v2.8.
+export PATH="$HOME/.cargo/bin:$PATH"
+[ -s tools/policy_v1.txt ] || exit 0
+python3 -c "
+for n,f in [('policy','src_policy.rs'),('main','src_main.rs'),('datagen','src_datagen.rs'),('search','src_search_pol.rs'),('eval','src_eval_pol.rs'),('uhp','src_uhp.rs')]: open(f'src/{n}.rs','w').write(open(f).read())"
+cargo build --release > results/build-w1.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="m1d4 m1d4k40 m0d4k5 nopol" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=24 SECS=2 SO=73000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

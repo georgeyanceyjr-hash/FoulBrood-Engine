@@ -1,0 +1,10 @@
+rows 2068907 inputs 402 val loss init 0.11128251254558563
+epoch 0 train 0.04975 val 0.05083
+epoch 1 train 0.04826 val 0.05034
+epoch 2 train 0.04797 val 0.05066
+epoch 3 train 0.04737 val 0.05071
+epoch 4 train 0.04687 val 0.05072
+epoch 5 train 0.04676 val 0.05132
+epoch 6 train 0.04636 val 0.05068
+epoch 7 train 0.04623 val 0.05089
+wrote tools/net_q7.txt

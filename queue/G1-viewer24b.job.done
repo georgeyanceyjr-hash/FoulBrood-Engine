@@ -1,0 +1,12 @@
+# Adopt hx3 hand-term weights (8,60,25,25,20) as defaults and reinstall ThoraxRex 2.4 in the viewer.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_hand3.rs').read())"
+grep -q "8, 60, 25, 25, 20" src/eval.rs || { echo "eval.rs not updated"; exit 1; }
+cargo build --release > results/build-viewer24b.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+done
+printf 'newgame Base+MLP\nbestmove depth 3\nexit\n' | "$E/ThoraxRex-NoBook/thoraxrex" 2>&1 | tail -2 > results/viewer24b-install.txt
+cat results/viewer24b-install.txt
+exit 0

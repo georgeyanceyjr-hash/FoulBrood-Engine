@@ -1,0 +1,11 @@
+# Head-to-head: net15 (A) vs net14 (B, separate folder). Self-play, fresh openings.
+export PATH="$HOME/.cargo/bin:$PATH"
+cargo build --release > results/build-h2h15.log 2>&1 || { echo BUILD FAILED; exit 1; }
+mkdir -p h2h/n14
+cp target/release/thoraxrex h2h/n14/thoraxrex
+cp tools/net14.txt h2h/n14/thoraxrex-net.txt
+cp tools/net15.txt target/release/thoraxrex-net.txt
+export VARIANTS="h15" OPPS="../../ThoraxRex/h2h/n14/thoraxrex" SHARDS=10 GAMES=12 SO=15000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

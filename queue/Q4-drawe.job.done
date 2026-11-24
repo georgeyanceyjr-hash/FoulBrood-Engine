@@ -1,0 +1,12 @@
+# Mutual-surround draws scored with a small slice of the position eval (TR_DRAWE=4), so "everything is a draw" positions still prefer the better move. vs v2.7 and 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_q4.rs').read()); open('src/search.rs','w').write(open('search_q4.rs').read())"
+grep -q TR_DRAWE src/search.rs || { echo "search.rs not updated"; exit 1; }
+cargo build --release > results/build-q4.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="drawe4 drawe4c" OPPS="../../ThoraxRex/h2h/v27/thoraxrex" SHARDS=4 GAMES=30 SO=52000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="drawe4 drawe4c" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SO=53000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

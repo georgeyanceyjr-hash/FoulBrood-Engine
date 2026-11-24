@@ -1,0 +1,3 @@
+pol4-..: 56.0/120 (+55 =2 -63)  wins as White 36, as Black 19
+pol4k5-..: 64.0/120 (+62 =4 -54)  wins as White 37, as Black 25
+pol6-..: 45.0/120 (+43 =4 -73)  wins as White 30, as Black 13

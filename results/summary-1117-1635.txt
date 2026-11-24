@@ -1,0 +1,4 @@
+m0d4k5-..: 35.0/72 (+34 =2 -36)  wins as White 20, as Black 14
+m1d4-..: 28.0/72 (+26 =4 -42)  wins as White 13, as Black 13
+m1d4k40-..: 32.0/72 (+31 =2 -39)  wins as White 19, as Black 12
+nopol-..: 30.5/72 (+28 =5 -39)  wins as White 18, as Black 10

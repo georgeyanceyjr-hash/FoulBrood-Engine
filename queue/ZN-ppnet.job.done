@@ -1,0 +1,18 @@
+# q12 = q11 recipe (sp2..sp10, weight decay .02) + 6 "pillbug power" inputs (enemy pillbug-power pieces next to
+# our queen / pillbug, enemy mosquito touching our pillbug). Then q12 vs v2.11 (q8), 200 games at 1 s.
+# Reference: q11 (same data, without the new inputs) scored 106.5/200 vs q8.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+[ -x h2h/v211/thoraxrex ] || exit 1
+D=data/pp; mkdir -p $D; G=results/datagen
+DP=()
+for s in sp2_train sp3_train sp4_train sp5_train sp5_val sp6_train sp7_train sp8_train sp9_train sp10_train; do
+  ./target/release/thoraxrex dumpfeat $G/$s.jsonl $D/$s.csv extra > /dev/null 2>&1 &
+  DP+=($!)
+done
+wait "${DP[@]}"
+A=$D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv
+EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn.py 58 $A,val:$D/sp5_val.csv tools/net_q12.txt 64 32 0.5 8 > results/tq12.log 2>&1
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q12" OPPS="../../ThoraxRex/h2h/v211/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=133000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

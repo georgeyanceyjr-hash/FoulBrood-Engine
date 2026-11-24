@@ -1,0 +1,13 @@
+# Fortress bonus (pillbug guard next to own queen + every enemy climber grounded or far), on top of gb + root-LMR cap.
+# f80 / f150 vs v2.5 (h2h/v25), and vs Foulbrood 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_fort.rs').read())"
+grep -q "fn fortress" src/eval.rs || { echo "eval.rs not updated"; exit 1; }
+cargo build --release > results/build-fort.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="f80 f150" OPPS="../../ThoraxRex/h2h/v25/thoraxrex" SHARDS=5 GAMES=24 SO=37000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="f80 f150" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=2 GAMES=12 SO=38000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

@@ -1,0 +1,3 @@
+dcx4-..: 43.0/120 (+39 =8 -73)  wins as White 22, as Black 17
+drawc-..: 68.0/120 (+68 =0 -52)  wins as White 41, as Black 27
+ext4-..: 50.0/120 (+46 =8 -66)  wins as White 29, as Black 17

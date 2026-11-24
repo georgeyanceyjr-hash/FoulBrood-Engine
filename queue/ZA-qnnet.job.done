@@ -1,0 +1,30 @@
+# Queen-neighbourhood net (v3 inputs): 288 sparse inputs = for each queen, ring 0/1/2, owner, bug kind, state
+# (free/pinned/covered) piece counts, on top of the 114 summary features. Same data recipe as net14.
+# q0 = retrain without extras (control), q1 = +extras 64x32, q2 = +extras 96x32, q3 = q2 + sp6..sp8 data.
+# Then h2h vs the v2.8 binary (fixed match.py: opponent never inherits TR_*), n14 = same build + net14.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+grep -q "MATCH_OPPENV" tools/match.py || { echo "match.py not fixed"; exit 1; }
+python3 -c "
+for n,f in [('policy','src_policy.rs'),('main','src_main.rs'),('datagen','src_datagen.rs'),('search','src_search_v28p.rs'),('eval','src_eval_qn.rs'),('uhp','src_uhp.rs')]: open(f'src/{n}.rs','w').write(open(f).read())"
+cargo build --release > results/build-za.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt; rm -f target/release/thoraxrex-policy.txt
+D=data/qn; mkdir -p $D
+G=results/datagen
+for s in sp4_train sp5_train sp5_val sp6_train sp7_train sp8_train; do ./target/release/thoraxrex dumpfeat $G/$s.jsonl $D/$s.csv extra & done
+./target/release/thoraxrex dumpfeat tools/hg_all.jsonl $D/hg_all.csv extra &
+wait
+head -253000 $D/hg_all.csv > $D/hg_tr.csv
+wc -l $D/*.csv > results/qn-rows.txt
+B=$D/sp4_train.csv,$D/sp5_train.csv,$D/hg_tr.csv
+V=val:$D/sp5_val.csv
+EXTRA=0   $PY -u tools/train_qn.py 58 $B,$V tools/net_q0.txt 64 32 0.5 12 > results/tq0.log 2>&1 &
+EXTRA=288 $PY -u tools/train_qn.py 58 $B,$V tools/net_q1.txt 64 32 0.5 12 > results/tq1.log 2>&1 &
+EXTRA=288 $PY -u tools/train_qn.py 58 $B,$V tools/net_q2.txt 96 32 0.5 12 > results/tq2.log 2>&1 &
+EXTRA=288 $PY -u tools/train_qn.py 58 $B,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$V tools/net_q3.txt 96 32 0.5 12 > results/tq3.log 2>&1 &
+wait
+for q in q0 q1 q2 q3; do [ -s tools/net_$q.txt ] || { echo "net_$q missing"; exit 1; }; done
+export TR_POLICY=none TR_BOOK=none
+export VARIANTS="n14 q0 q1 q2 q3" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=40 SECS=1 SO=101000 MATCH_RANDPLIES=2
+./tools/par.command
+exit 0

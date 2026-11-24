@@ -1,0 +1,14 @@
+# Formi opening reference check: for every candidate book line taken from Formi's published opening book,
+# the engine's own 5 s score of the position vs its score after the book move (v2.12 net, climb on).
+# Lines the engine rates clearly worse than its own choice will be left out of book v6.
+export PATH="$HOME/.cargo/bin:$PATH"
+cargo build --release > results/build-formicheck.log 2>&1 || { echo BUILD FAILED; exit 1; }
+rm -f results/formicheck-{0,1,2,3,4,5,6,7}.out
+BP=()
+for s in 0 1 2 3 4 5 6 7; do
+  TR_CLIMB=1 TR_BOOK=none TR_POLICY=none TR_NET=$PWD/tools/net_q12.txt ./target/release/thoraxrex bookcheck tools/formi-check.in results/formicheck-$s.out 5000 1 $s 8 &
+  BP+=($!)
+done
+wait "${BP[@]}"
+cat results/formicheck-{0,1,2,3,4,5,6,7}.out > results/formicheck.out
+exit 0

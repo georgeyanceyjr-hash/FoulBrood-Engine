@@ -1,0 +1,3 @@
+s1f-Foulbrood-4.1: 30.0/40 (+30 =0 -10)  wins as White 15, as Black 15
+s1f-Foulbrood-5.3: 33.5/40 (+31 =5 -4)  wins as White 17, as Black 14
+s1f-Nokamute: 24.0/33 (+24 =0 -9)  wins as White 13, as Black 11

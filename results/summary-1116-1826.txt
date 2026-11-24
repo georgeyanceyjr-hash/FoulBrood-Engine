@@ -1,0 +1,5 @@
+ca150-Foulbrood-4.1: 21.0/24 (+21 =0 -3)  wins as White 10, as Black 11
+ca50-Foulbrood-4.1: 21.0/24 (+21 =0 -3)  wins as White 11, as Black 10
+cb150-Foulbrood-4.1: 22.0/24 (+22 =0 -2)  wins as White 11, as Black 11
+cb300-Foulbrood-4.1: 20.0/24 (+20 =0 -4)  wins as White 10, as Black 10
+pb-Foulbrood-4.1: 22.0/24 (+22 =0 -2)  wins as White 11, as Black 11

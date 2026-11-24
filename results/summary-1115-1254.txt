@@ -1,0 +1,4 @@
+fbstyle-Foulbrood-4.1: 15.0/24 (+14 =2 -8)  wins as White 6, as Black 8
+fbstyle-Foulbrood-5.3: 17.5/24 (+17 =1 -6)  wins as White 8, as Black 9
+v17-Foulbrood-4.1: 15.0/24 (+14 =2 -8)  wins as White 7, as Black 7
+v17-Foulbrood-5.3: 16.0/24 (+16 =0 -8)  wins as White 10, as Black 6

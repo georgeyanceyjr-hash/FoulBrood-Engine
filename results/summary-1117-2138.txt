@@ -1,0 +1,4 @@
+n14-..: 58.0/120 (+53 =10 -57)  wins as White 28, as Black 25
+n20-..: 46.0/120 (+43 =6 -71)  wins as White 22, as Black 21
+n21-..: 46.0/120 (+43 =6 -71)  wins as White 23, as Black 20
+n22-..: 59.0/120 (+55 =8 -57)  wins as White 34, as Black 21

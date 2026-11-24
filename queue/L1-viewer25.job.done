@@ -1,0 +1,13 @@
+# Adopt queen-danger qd20 as default; install as ThoraxRex 2.5 in the viewer (with and without book).
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_qd20.rs').read())"
+grep -q 'unwrap_or(20)' src/eval.rs || { echo "eval.rs not updated"; exit 1; }
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.5.0"/' Cargo.toml
+cargo build --release > results/build-viewer25.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+done
+echo "exit" | "$E/ThoraxRex/thoraxrex" | head -1 > results/viewer25-install.txt
+printf 'newgame Base+MLP\nbestmove depth 3\nexit\n' | "$E/ThoraxRex-NoBook/thoraxrex" 2>&1 | tail -2 >> results/viewer25-install.txt
+exit 0

@@ -1,0 +1,13 @@
+# Move-policy v3: same recipe as v1 (Formi/Antsy/SixfoldOptera moves only) on the doubled archive (fresh hivegame download).
+# v3 = v1 size (d64 L3 H4 FF128), v3b = d96 L4 H4 FF192. Both checked against the Rust forward pass.
+export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+[ -x "$PY" ] || exit 0
+mkdir -p data
+./tools/thoraxrex-rl policydump tools/bots_arch2.jsonl data/pol_dump3.txt 120 Formi,Antsy,SixfoldOptera > results/policy-v3.log 2>&1
+wc -l data/pol_dump3.txt >> results/policy-v3.log
+$PY -u tools/policy_train.py data/pol_dump3.txt tools/policy_v3.txt 12 64 3 4 128 >> results/policy-v3.log 2>&1
+./tools/thoraxrex-rl policycheck tools/policy_v3.txt data/pol_dump3.txt 1 >> results/policy-v3.log 2>&1
+$PY -u tools/policy_train.py data/pol_dump3.txt tools/policy_v3b.txt 14 96 4 4 192 >> results/policy-v3b.log 2>&1
+./tools/thoraxrex-rl policycheck tools/policy_v3b.txt data/pol_dump3.txt 1 >> results/policy-v3b.log 2>&1
+exit 0

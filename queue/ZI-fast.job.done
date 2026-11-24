@@ -1,0 +1,22 @@
+# (1) Faster network evaluation (column-major, vectorised; same weights, same answers) -> speed test:
+#     q8 on the fast binary vs v2.10 (same net, old binary), 200 games at 1 s.
+# (2) q11 = q8 recipe (weight decay .02) on sp2..sp10. Then q11 (fast binary) vs v2.10.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+[ -x h2h/v210/thoraxrex ] || exit 1
+cp src/eval.rs src_eval_v210.rs
+cp src_eval_fast.rs src/eval.rs
+cargo build --release > results/build-fast.log 2>&1 || { cp src_eval_v210.rs src/eval.rs; echo BUILD FAILED; exit 1; }
+mkdir -p h2h/fast
+rm -f h2h/fast/thoraxrex; cp target/release/thoraxrex h2h/fast/thoraxrex
+cp tools/net_q8.txt h2h/fast/thoraxrex-net.txt
+for b in h2h/v210/thoraxrex h2h/fast/thoraxrex; do
+  printf 'newgame Base+MLP\nbestmove depth 7\nexit\n' | ( time TR_BOOK=none TR_POLICY=none $b ) >> results/fast-speed.txt 2>&1
+done
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q8" OPPS="../../ThoraxRex/h2h/v210/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=125000 MATCH_RANDPLIES=2 ./tools/par.command
+D=data/qn
+A=$D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv
+EXTRA=288 WD=0.02 $PY -u tools/train_qn.py 58 $A,val:$D/sp5_val.csv tools/net_q11.txt 64 32 0.5 8 > results/tq11.log 2>&1
+VARIANTS="q11" OPPS="../../ThoraxRex/h2h/v210/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=127000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

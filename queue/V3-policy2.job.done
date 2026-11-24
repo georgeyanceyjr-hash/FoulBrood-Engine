@@ -1,0 +1,7 @@
+# Policy v2: all archive moves (bots + strong humans), bigger transformer (d96, 4 layers). Training only.
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+./target/release/thoraxrex policydump tools/bots_arch.jsonl data/pol_all.txt 120 > results/policy-v2.log 2>&1
+wc -l data/pol_all.txt >> results/policy-v2.log
+$PY -u tools/policy_train.py data/pol_all.txt tools/policy_v2.txt 14 96 4 4 192 >> results/policy-v2.log 2>&1
+./target/release/thoraxrex policycheck tools/policy_v2.txt data/pol_all.txt 1 >> results/policy-v2.log 2>&1
+exit 0

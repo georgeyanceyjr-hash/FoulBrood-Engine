@@ -1,0 +1,10 @@
+rows 1721897 inputs 402 val loss init 0.11144977807998657
+epoch 0 train 0.04979 val 0.05153
+epoch 1 train 0.04815 val 0.05052
+epoch 2 train 0.04765 val 0.05077
+epoch 3 train 0.04703 val 0.05088
+epoch 4 train 0.0469 val 0.05127
+epoch 5 train 0.04677 val 0.05129
+epoch 6 train 0.04586 val 0.05133
+epoch 7 train 0.04585 val 0.0511
+wrote tools/net_q5.txt

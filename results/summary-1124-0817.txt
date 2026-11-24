@@ -1,0 +1,6 @@
+t6-Foulbrood-4.1: 16.0/20 (+16 =0 -4)  wins as White 8, as Black 8
+t6-Foulbrood-5.3: 18.5/20 (+18 =1 -1)  wins as White 9, as Black 9
+t6-Nokamute: 18.0/20 (+18 =0 -2)  wins as White 9, as Black 9
+t7-Foulbrood-4.1: 16.0/20 (+16 =0 -4)  wins as White 8, as Black 8
+t7-Foulbrood-5.3: 18.0/20 (+18 =0 -2)  wins as White 9, as Black 9
+t7-Nokamute: 17.0/20 (+17 =0 -3)  wins as White 9, as Black 8

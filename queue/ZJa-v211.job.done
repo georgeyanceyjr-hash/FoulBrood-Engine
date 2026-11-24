@@ -1,0 +1,19 @@
+# v2.11 = v2.10 + faster network evaluation (same net q8, same moves, ~1.5x nodes). 121/200 vs v2.10 at 1 s.
+# Version string, viewer reinstall, h2h baseline. Then q11 vs q8, both on the fast binary.
+export PATH="$HOME/.cargo/bin:$PATH"
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.11.0"/' Cargo.toml
+cmp -s src_eval_fast.rs src/eval.rs || cp src_eval_fast.rs src/eval.rs
+cargo build --release > results/build-v211.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+  rm -f "$E/$d/thoraxrex-net.txt"; cp tools/net_q8.txt "$E/$d/thoraxrex-net.txt"
+done
+printf 'info\nnewgame Base+MLP\nbestmove time 00:00:01\nexit\n' | "$E/ThoraxRex-NoBook/thoraxrex" > results/viewer211-install.txt 2>&1
+mkdir -p h2h/v211
+rm -f h2h/v211/thoraxrex; cp target/release/thoraxrex h2h/v211/thoraxrex
+cp tools/net_q8.txt h2h/v211/thoraxrex-net.txt
+rm -f h2h/fast/thoraxrex; cp target/release/thoraxrex h2h/fast/thoraxrex
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q11" OPPS="../../ThoraxRex/h2h/v211/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=131000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

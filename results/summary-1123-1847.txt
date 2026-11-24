@@ -1,0 +1,2 @@
+n14-Foulbrood-4.1: 41.5/48 (+41 =1 -6)  wins as White 19, as Black 22
+q4-Foulbrood-4.1: 42.0/48 (+42 =0 -6)  wins as White 23, as Black 19

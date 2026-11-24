@@ -1,0 +1,7 @@
+# Milder queen-cover weights vs v2.6: qc52 (5,2), qc60 (6,0), qc43 (4,3). Current build already has TR_QCOV.
+export PATH="$HOME/.cargo/bin:$PATH"
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="qc52 qc60 qc43" OPPS="../../ThoraxRex/h2h/v26/thoraxrex" SHARDS=4 GAMES=30 SO=43000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

@@ -1,0 +1,13 @@
+# Search: TR_DRAWC (both-queens-surrounded draw scored with contempt instead of 0) and TR_EXT4 (extend moves
+# that bring the enemy queen to 4 neighbours). vs v2.7 and Foulbrood 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_q3.rs').read()); open('src/search.rs','w').write(open('search_q3.rs').read())"
+grep -q TR_EXT4 src/search.rs || { echo "search.rs not updated"; exit 1; }
+cargo build --release > results/build-q3.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="drawc ext4 dcx4" OPPS="../../ThoraxRex/h2h/v27/thoraxrex" SHARDS=4 GAMES=30 SO=50000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="drawc ext4 dcx4" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SO=51000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

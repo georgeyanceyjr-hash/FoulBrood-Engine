@@ -1,0 +1,7 @@
+# q13 (loop 11 net) against q12 (= v2.12, the installed engine): 200 games at 1 s, one opponent only.
+# (Loop 11's own match wrote both opponents' games to the same log files, so its score mixes the two.)
+export PATH="$HOME/.cargo/bin:$PATH"
+[ -x h2h/v212/thoraxrex ] && [ -f tools/net_q13.txt ] || exit 1
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q13" OPPS="../../ThoraxRex/h2h/v212/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=151000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

@@ -1,0 +1,5 @@
+e250-..: 49.0/120 (+47 =4 -69)  wins as White 26, as Black 21
+gb250-..: 39.0/120 (+37 =4 -79)  wins as White 19, as Black 18
+pbq120-..: 51.5/120 (+50 =3 -67)  wins as White 31, as Black 19
+qona50-..: 63.0/120 (+59 =8 -53)  wins as White 38, as Black 21
+qsg2-..: 61.0/120 (+59 =4 -57)  wins as White 32, as Black 27

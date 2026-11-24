@@ -1,0 +1,15 @@
+# Book check: for every line of book v4, the engine's own deep score of the position vs the score after the
+# book move (5 s, climb on). Lines the engine rates clearly worse than its own choice get dropped (book v5).
+# Build includes the new "pillbug power" eval inputs (old nets still load and play identically).
+export PATH="$HOME/.cargo/bin:$PATH"
+cp src_eval_pp.rs src/eval.rs; cp src_datagen_bc.rs src/datagen.rs; cp src_main_bc.rs src/main.rs
+cargo build --release > results/build-pp.log 2>&1 || { cp src_eval_fast.rs src/eval.rs; echo BUILD FAILED; exit 1; }
+rm -f results/bookcheck-{0,1,2,3,4,5,6,7}.out
+BP=()
+for s in 0 1 2 3 4 5 6 7; do
+  TR_CLIMB=1 TR_BOOK=none TR_POLICY=none TR_NET=$PWD/tools/net_q8.txt ./target/release/thoraxrex bookcheck tools/bookcheck.txt results/bookcheck-$s.out 5000 1 $s 8 &
+  BP+=($!)
+done
+wait "${BP[@]}"
+cat results/bookcheck-{0,1,2,3,4,5,6,7}.out > results/bookcheck.out
+exit 0

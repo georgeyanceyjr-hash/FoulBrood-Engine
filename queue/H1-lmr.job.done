@@ -1,0 +1,13 @@
+# LMR strength test: A = current build + TR_LMRB env support (lm3: 3.0, lm5: 5.0); B = current build (LMR_B 1.8).
+export PATH="$HOME/.cargo/bin:$PATH"
+mkdir -p h2h/b24
+rm -f h2h/b24/thoraxrex; cp target/release/thoraxrex h2h/b24/thoraxrex
+cp tools/net14.txt h2h/b24/thoraxrex-net.txt
+python3 -c "open('src/search.rs','w').write(open('search_lmrb.rs').read())"
+grep -q TR_LMRB src/search.rs || { echo "search.rs not updated"; exit 1; }
+cargo build --release > results/build-lmr.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="lm3 lm5" OPPS="../../ThoraxRex/h2h/b24/thoraxrex" SHARDS=5 GAMES=24 SO=26000 MATCH_RANDPLIES=2 SECS=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

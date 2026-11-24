@@ -1,0 +1,9 @@
+# Confirm q4 (queen-neighbourhood inputs, self-play only sp2..sp8): 78% vs v2.8 in ZB. New seeds, more games,
+# plus 2 s/move and vs Foulbrood 4.1. Same binary as ZB (target/release from ZA build).
+export PATH="$HOME/.cargo/bin:$PATH"
+grep -q "MATCH_OPPENV" tools/match.py || exit 1
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="n14 c3 q4 q5" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=60 SECS=1 SO=107000 MATCH_RANDPLIES=2 ./tools/par.command
+VARIANTS="n14 q4" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=4 GAMES=30 SECS=2 SO=109000 MATCH_RANDPLIES=2 ./tools/par.command
+VARIANTS="n14 q4" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=4 GAMES=12 SECS=1 SO=111000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

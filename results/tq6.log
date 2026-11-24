@@ -1,0 +1,10 @@
+rows 1721897 inputs 402 val loss init 0.12163471430540085
+epoch 0 train 0.049 val 0.05181
+epoch 1 train 0.04723 val 0.05086
+epoch 2 train 0.0468 val 0.05135
+epoch 3 train 0.04634 val 0.05138
+epoch 4 train 0.04564 val 0.05145
+epoch 5 train 0.04556 val 0.05161
+epoch 6 train 0.04427 val 0.05175
+epoch 7 train 0.04436 val 0.05179
+wrote tools/net_q6.txt

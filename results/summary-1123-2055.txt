@@ -1,0 +1,3 @@
+q4-..: 124.0/180 (+121 =6 -53)  wins as White 63, as Black 58
+q7-..: 132.5/180 (+128 =9 -43)  wins as White 69, as Black 59
+q8-..: 128.0/180 (+126 =4 -50)  wins as White 68, as Black 58

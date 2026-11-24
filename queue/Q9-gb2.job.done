@@ -1,0 +1,12 @@
+# Beetle-pinning bonus, stronger settings (gb250 got 67/120 vs v2.8; trend rising with strength). vs v2.8 and 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_q5.rs').read()); open('src/search.rs','w').write(open('search_q5.rs').read())"
+grep -q TR_EARLY src/eval.rs || { echo "eval.rs not updated"; exit 1; }
+cargo build --release > results/build-q9.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="gb350 gb500 gb250f0" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=4 GAMES=30 SO=60000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="gb350 gb500 gb250f0" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SO=61000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

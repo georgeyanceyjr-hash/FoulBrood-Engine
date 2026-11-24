@@ -1,0 +1,16 @@
+# Engine build with: set-up positions (FoulBroodSetup, positions with no move history), the opening book looked up
+# in all 12 orientations, and the plain "ThoraxRex" / "ThoraxRex Book" name. Same net as v2.12 (q12).
+# Saved as h2h/v213 and installed into the viewer's two ThoraxRex folders (the old binary is kept as h2h/v212).
+export PATH="$HOME/.cargo/bin:$PATH"
+cargo build --release > results/build-setup.log 2>&1 || { echo BUILD FAILED; exit 1; }
+printf 'info\nnewgame Base+MLP~0~2~wS1:0:0:0,bG1:-1:0:0~\nvalidmoves\nexit\n' | TR_BOOK=none ./target/release/thoraxrex > results/setup-selftest.txt 2>&1
+grep -q FoulBroodSetup results/setup-selftest.txt && grep -q 'Base+MLP~0~2~' results/setup-selftest.txt || { echo SELFTEST FAILED; exit 1; }
+mkdir -p h2h/v213
+cp target/release/thoraxrex h2h/v213/thoraxrex
+cp h2h/v212/thoraxrex-net.txt h2h/v213/thoraxrex-net.txt
+for d in ThoraxRex ThoraxRex-NoBook; do
+  E="$HOME/Documents/Codex/FoulBroodData/Engines/$d"
+  cp h2h/v213/thoraxrex "$E/thoraxrex.new" && chmod 755 "$E/thoraxrex.new" && mv -f "$E/thoraxrex.new" "$E/thoraxrex"
+done
+echo installed > results/setup-installed.txt
+exit 0

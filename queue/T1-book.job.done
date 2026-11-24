@@ -1,0 +1,15 @@
+# New opening book from the hivegame archive (4,463 strong/bot games incl. 3,300 Formi/Antsy, plies 1-20, moves with >=2 games
+# and a score near the best). Old book kept as thoraxrex-book-fb.txt. Install next to the viewer's "Book" engine; test vs 4.1.
+cp -n thoraxrex-book.txt thoraxrex-book-fb.txt
+python3 -c "open('thoraxrex-book.txt','w').write(open('thoraxrex-book-hg.txt').read())"
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+python3 -c "open('$E/ThoraxRex/thoraxrex-book.txt','w').write(open('thoraxrex-book-hg.txt').read())"
+wc -l "$E/ThoraxRex/thoraxrex-book.txt" > results/book-install.txt
+printf 'WB=s1\nexport TR_BOOK=%s/thoraxrex-book-hg.txt\n' "$PWD" > tools/v_book.env
+printf 'WB=s1\n' > tools/v_nobook.env
+cp tools/net14.txt target/release/thoraxrex-net.txt
+python3 -c "open('src/eval.rs','w').write(open('eval_v28.rs').read()); open('src/search.rs','w').write(open('search_v28.rs').read())"
+export VARIANTS="book nobook" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SO=62000 MATCH_RANDPLIES=0
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

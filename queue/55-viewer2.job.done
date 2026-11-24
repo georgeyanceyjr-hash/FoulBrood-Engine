@@ -1,0 +1,14 @@
+# Install ThoraxRex 2.0 (neural evaluation net4) in the viewer, with and without the opening book.
+export PATH="$HOME/.cargo/bin:$PATH"
+cargo build --release > results/build-viewer2.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  mkdir -p "$E/$d"
+  cp target/release/thoraxrex "$E/$d/thoraxrex"
+  cp tools/net_v20.txt "$E/$d/thoraxrex-net.txt"
+done
+cp thoraxrex-book.txt "$E/ThoraxRex/thoraxrex-book.txt"
+echo "exit" | "$E/ThoraxRex/thoraxrex" | head -1 > results/viewer2-install.txt
+echo "exit" | "$E/ThoraxRex-NoBook/thoraxrex" | head -1 >> results/viewer2-install.txt
+cat results/viewer2-install.txt
+exit 0

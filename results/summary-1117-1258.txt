@@ -1,0 +1,3 @@
+gb250f0-Foulbrood-4.1: 25.5/36 (+25 =1 -10)  wins as White 14, as Black 11
+gb350-Foulbrood-4.1: 27.5/36 (+27 =1 -8)  wins as White 14, as Black 13
+gb500-Foulbrood-4.1: 24.0/36 (+24 =0 -12)  wins as White 14, as Black 10

@@ -1,0 +1,12 @@
+# Flat (not squared) penalties: pbc240 = covered pillbug guard 240 (was 120); qon150 = enemy on our queen 150; pq = both. vs v2.6, and vs Foulbrood 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_qon.rs').read())"
+grep -q TR_QON src/eval.rs || { echo "eval.rs not updated"; exit 1; }
+cargo build --release > results/build-qon.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="pbc240 qon150 pq" OPPS="../../ThoraxRex/h2h/v26/thoraxrex" SHARDS=4 GAMES=30 SO=44000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="pbc240 qon150 pq" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SO=45000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

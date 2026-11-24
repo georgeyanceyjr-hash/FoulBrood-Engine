@@ -1,0 +1,7 @@
+# q12 (pillbug-power inputs) scored 119.5/200 vs v2.11. Confirm with a new seed at 1 s, and 120 games at 2 s.
+export PATH="$HOME/.cargo/bin:$PATH"
+[ -x h2h/v211/thoraxrex ] || exit 1
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q12" OPPS="../../ThoraxRex/h2h/v211/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=135000 MATCH_RANDPLIES=2 ./tools/par.command
+VARIANTS="q12" OPPS="../../ThoraxRex/h2h/v211/thoraxrex" SHARDS=4 GAMES=30 SECS=2 SO=137000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

@@ -1,0 +1,15 @@
+# v2.10 = v2.9 binary + net q8 (sp2..sp9 self-play, queen-neighbourhood inputs, weight decay .02).
+# vs v2.9: 237.5/400 at 1 s on two seeds. Version string, viewer reinstall, h2h baseline.
+export PATH="$HOME/.cargo/bin:$PATH"
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.10.0"/' Cargo.toml
+cargo build --release > results/build-v210.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+  rm -f "$E/$d/thoraxrex-net.txt"; cp tools/net_q8.txt "$E/$d/thoraxrex-net.txt"
+done
+printf 'newgame Base+MLP\nbestmove time 00:00:01\nexit\n' | "$E/ThoraxRex-NoBook/thoraxrex" > results/viewer210-install.txt 2>&1
+mkdir -p h2h/v210
+rm -f h2h/v210/thoraxrex; cp target/release/thoraxrex h2h/v210/thoraxrex
+cp tools/net_q8.txt h2h/v210/thoraxrex-net.txt
+exit 0

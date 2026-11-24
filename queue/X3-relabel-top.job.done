@@ -1,0 +1,21 @@
+# Deep relabel: 1900+ rated human MLP games (7185), every 2nd position plies 6..80, 300 ms single-thread search,
+# then dumpfeat -> results/rl/top_rl.csv for value-net training (search score + real game result).
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "
+for n,f in [('policy','src_policy.rs'),('main','src_main.rs'),('datagen','src_datagen.rs'),('search','src_search_v28p.rs'),('eval','src_eval_v28.rs'),('uhp','src_uhp.rs')]: open(f'src/{n}.rs','w').write(open(f).read())"
+cargo build --release > results/build-x1.log 2>&1 || { echo BUILD FAILED; exit 1; }
+rm -f tools/thoraxrex-rl; cp target/release/thoraxrex tools/thoraxrex-rl
+cp tools/net14.txt tools/thoraxrex-net.txt
+mkdir -p results/rl; rm -f results/rl/top-*.jsonl
+NS=$(sysctl -n hw.ncpu); NS=$((NS>2?NS-1:1))
+echo "relabel on $NS shards $(date)"
+P=()
+for i in $(seq 0 $((NS-1))); do
+  TR_BOOK=none TR_POLICY=none TR_NET=tools/net14.txt ./tools/thoraxrex-rl relabel tools/top_mv.jsonl results/rl/top-$i.jsonl 300 $i $NS 2 &
+  P+=($!)
+done
+wait "${P[@]}"
+cat results/rl/top-*.jsonl > results/rl/top_rl.jsonl
+./tools/thoraxrex-rl dumpfeat results/rl/top_rl.jsonl results/rl/top_rl.csv
+echo "relabel done $(date): $(wc -l < results/rl/top_rl.jsonl) games, $(wc -l < results/rl/top_rl.csv) rows"
+exit 0

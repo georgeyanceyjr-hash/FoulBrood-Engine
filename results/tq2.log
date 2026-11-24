@@ -1,0 +1,14 @@
+rows 802266 inputs 402 val loss init 0.12192059308290482
+epoch 0 train 0.05006 val 0.05833
+epoch 1 train 0.04784 val 0.05909
+epoch 2 train 0.04721 val 0.06086
+epoch 3 train 0.04684 val 0.06131
+epoch 4 train 0.0455 val 0.06136
+epoch 5 train 0.04504 val 0.06187
+epoch 6 train 0.04462 val 0.06201
+epoch 7 train 0.04392 val 0.06176
+epoch 8 train 0.04343 val 0.06165
+epoch 9 train 0.04271 val 0.06258
+epoch 10 train 0.04262 val 0.06255
+epoch 11 train 0.04237 val 0.0627
+wrote tools/net_q2.txt

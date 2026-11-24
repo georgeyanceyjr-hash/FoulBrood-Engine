@@ -1,0 +1,4 @@
+gb-Foulbrood-4.1: 18.5/24 (+18 =1 -5)  wins as White 10, as Black 8
+gbrl-Foulbrood-4.1: 18.0/24 (+18 =0 -6)  wins as White 9, as Black 9
+pb-Foulbrood-4.1: 21.0/24 (+21 =0 -3)  wins as White 11, as Black 10
+rl1-Foulbrood-4.1: 23.0/24 (+23 =0 -1)  wins as White 12, as Black 11

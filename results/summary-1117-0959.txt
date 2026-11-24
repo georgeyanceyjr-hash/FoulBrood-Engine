@@ -1,0 +1,2 @@
+drawe4-Foulbrood-4.1: 34.0/36 (+34 =0 -2)  wins as White 17, as Black 17
+drawe4c-Foulbrood-4.1: 34.0/36 (+34 =0 -2)  wins as White 17, as Black 17

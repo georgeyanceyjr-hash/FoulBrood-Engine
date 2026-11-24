@@ -1,0 +1,28 @@
+# Loop 10. (1) Direct test q7/q8 vs v2.9 (q4 net). (2) sp10: 5000 self-play games with q7, depth 5.
+# (3) q9 = sp2..sp10, q10 = sp5..sp10 only (newer, stronger-net data), both with extras. (4) q7, q9, q10 vs v2.9.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+[ -x h2h/v29/thoraxrex ] || exit 1
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q7 q8" OPPS="../../ThoraxRex/h2h/v29/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=117000 MATCH_RANDPLIES=2 ./tools/par.command
+D=data/qn; G=results/datagen
+T=$(date +%m%d-%H%M)
+DP=()
+for i in 1 2 3 4 5; do
+  TR_NET=tools/net_q7.txt TR_STARTS=tools/hg_starts.jsonl ./target/release/thoraxrex datagen 500 5 $((i*140009+${T//-/})) $G/sp10-$T-$i.jsonl &
+  DP+=($!)
+done
+for i in 6 7 8 9 10; do
+  TR_NET=tools/net_q7.txt ./target/release/thoraxrex datagen 500 5 $((i*140009+${T//-/})) $G/sp10-$T-$i.jsonl &
+  DP+=($!)
+done
+wait "${DP[@]}"
+cat $G/sp10-$T-*.jsonl > $G/sp10_train.jsonl
+./target/release/thoraxrex dumpfeat $G/sp10_train.jsonl $D/sp10_train.csv extra
+N=$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv
+V=val:$D/sp5_val.csv
+EXTRA=288 $PY -u tools/train_qn.py 58 $D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$N,$V tools/net_q9.txt 64 32 0.5 8 > results/tq9.log 2>&1 &
+EXTRA=288 $PY -u tools/train_qn.py 58 $N,$V tools/net_q10.txt 64 32 0.5 8 > results/tq10.log 2>&1 &
+wait
+VARIANTS="q7 q9 q10" OPPS="../../ThoraxRex/h2h/v29/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=119000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

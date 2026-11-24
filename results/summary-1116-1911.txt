@@ -1,0 +1,4 @@
+gb-..: 60.5/120 (+58 =5 -57)  wins as White 33, as Black 25
+gbrl-..: 57.5/120 (+54 =7 -59)  wins as White 33, as Black 21
+qf1-..: 54.0/120 (+49 =10 -61)  wins as White 26, as Black 23
+rl1-..: 63.0/120 (+58 =10 -52)  wins as White 36, as Black 22

@@ -1,0 +1,17 @@
+# Self-play training data: 10 processes x 400 games, depth-5 search, varied random openings.
+export PATH="$HOME/.cargo/bin:$PATH"
+mkdir -p results/datagen
+cargo build --release > results/datagen/build.log 2>&1 || { echo BUILD FAILED; exit 1; }
+T=$(date +%m%d-%H%M)
+echo "datagen $T: 10 x 400 self-play games (net) at depth 5 -> results/datagen/"
+DP=()
+for i in 1 2 3 4 5 6 7 8 9 10; do
+  TR_BOOK=none TR_NET=tools/net_dg6.txt ./target/release/thoraxrex datagen 400 5 $((i*7919+${T//-/})) results/datagen/sp6-$T-$i.jsonl &
+  DP+=($!)
+done
+( while sleep 300; do echo "$(date +%H:%M) $(cat results/datagen/sp6-$T-*.jsonl 2>/dev/null | wc -l) games"; done ) &
+M=$!
+wait $DP
+kill $M
+echo "datagen done: $(cat results/datagen/sp6-$T-*.jsonl | wc -l) games"
+exit 0

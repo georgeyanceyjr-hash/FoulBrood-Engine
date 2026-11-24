@@ -1,0 +1,3 @@
+bk3-..: 13.5/90 (+13 =1 -76)  wins as White 13, as Black 0
+bkhg-..: 26.0/90 (+26 =0 -64)  wins as White 26, as Black 0
+nob-..: 2.0/90 (+1 =2 -87)  wins as White 1, as Black 0

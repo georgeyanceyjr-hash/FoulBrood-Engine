@@ -1,0 +1,7 @@
+# Caution variants vs Foulbrood 4.1 (the defensive, tougher Foulbrood). Uses current build (has caution + black-only + qd code, all env-controlled).
+export PATH="$HOME/.cargo/bin:$PATH"
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="pb ca50 ca150 cb150 cb300" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=2 GAMES=12 SO=34000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

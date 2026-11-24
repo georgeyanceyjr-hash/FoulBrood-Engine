@@ -1,0 +1,17 @@
+[package]
+name = "thoraxrex"
+version = "1.0.0"
+edition = "2021"
+description = "ThoraxRex: alpha-beta Hive engine (UHP)"
+license = "MIT"
+
+[[bin]]
+name = "thoraxrex"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+debug = 1

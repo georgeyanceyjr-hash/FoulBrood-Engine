@@ -1,0 +1,2 @@
+f150-Foulbrood-4.1: 22.0/24 (+22 =0 -2)  wins as White 11, as Black 11
+f80-Foulbrood-4.1: 20.0/24 (+20 =0 -4)  wins as White 11, as Black 9

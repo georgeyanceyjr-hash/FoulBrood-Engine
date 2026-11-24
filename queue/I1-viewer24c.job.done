@@ -1,0 +1,10 @@
+# Install v2.4 with pillbug-guard terms in the viewer.
+export PATH="$HOME/.cargo/bin:$PATH"
+grep -q pbcovered src/eval.rs || { echo "pb terms missing"; exit 1; }
+cargo build --release > results/build-viewer24c.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+done
+printf 'newgame Base+MLP\nbestmove depth 3\nexit\n' | "$E/ThoraxRex-NoBook/thoraxrex" 2>&1 | tail -2 > results/viewer24c-install.txt
+exit 0

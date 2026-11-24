@@ -1,0 +1,5 @@
+VARIANTS="bp1 bp2 bp3"
+OPPS="Foulbrood-4.1/wrapper.py Foulbrood-5.3/wrapper.py Nokamute/nokamute"
+SHARDS=2
+GAMES=14
+export SO=1000

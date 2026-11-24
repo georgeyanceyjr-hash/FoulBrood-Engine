@@ -1,0 +1,6 @@
+g1-Foulbrood-4.1: 29.5/40 (+29 =1 -10)  wins as White 17, as Black 12
+g1-Foulbrood-5.3: 29.5/40 (+29 =1 -10)  wins as White 17, as Black 12
+g1-Nokamute: 30.5/40 (+30 =1 -9)  wins as White 15, as Black 15
+g2-Foulbrood-4.1: 28.5/40 (+26 =5 -9)  wins as White 14, as Black 12
+g2-Foulbrood-5.3: 26.5/40 (+26 =1 -13)  wins as White 16, as Black 10
+g2-Nokamute: 29.0/40 (+28 =2 -10)  wins as White 12, as Black 16

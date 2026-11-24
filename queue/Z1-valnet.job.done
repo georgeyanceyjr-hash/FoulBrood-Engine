@@ -1,0 +1,20 @@
+# Value nets with deep-relabelled bot games (results/rl/bots_rl.csv) + top-human games (top_rl.csv) added to the net14 recipe
+# (sp4+sp5+hg_tr, 64x32). n20: +bots lam .5; n21: +bots x2 lam .75; n22: +bots+top lam .5. Then h2h vs v2.8 at 1 s.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+D=data/vn; mkdir -p $D
+for f in sp4_train sp5_train hg_tr; do [ -s $D/$f.csv ] || gunzip -c tools/$f.csv.gz > $D/$f.csv; done; [ -s $D/sp5_val.csv ] || mv tools/sp5_val.csv $D/
+cp results/rl/bots_rl.csv $D/; [ -s results/rl/top_rl.csv ] && cp results/rl/top_rl.csv $D/
+B=$D/sp4_train.csv,$D/sp5_train.csv,$D/hg_tr.csv
+$PY -u tools/train.py 58 $B,$D/bots_rl.csv,val:$D/sp5_val.csv tools/net20.txt 64 32 0.5 12 > results/t20.log 2>&1 &
+$PY -u tools/train.py 58 $B,$D/bots_rl.csv,$D/bots_rl.csv,val:$D/sp5_val.csv tools/net21.txt 64 32 0.75 12 > results/t21.log 2>&1 &
+if [ -s $D/top_rl.csv ]; then $PY -u tools/train.py 58 $B,$D/bots_rl.csv,$D/top_rl.csv,val:$D/sp5_val.csv tools/net22.txt 64 32 0.5 12 > results/t22.log 2>&1 & fi
+wait
+# h2h vs v2.8 binary at 1 s/move; n14 = control (same build + net14, should be ~50%)
+python3 -c "
+for n,f in [('policy','src_policy.rs'),('main','src_main.rs'),('datagen','src_datagen.rs'),('search','src_search_v28p.rs'),('eval','src_eval_v28.rs'),('uhp','src_uhp.rs')]: open(f'src/{n}.rs','w').write(open(f).read())"
+cargo build --release > results/build-y1.log 2>&1 || { echo BUILD FAILED; exit 1; }
+V="n14"; for n in 20 21 22; do [ -s tools/net$n.txt ] && V="$V n$n"; done
+export VARIANTS="$V" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=40 SECS=1 SO=91000 MATCH_RANDPLIES=2
+./tools/par.command
+exit 0

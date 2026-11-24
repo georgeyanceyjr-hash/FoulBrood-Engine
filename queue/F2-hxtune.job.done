@@ -1,0 +1,7 @@
+# Tune hand-term weights: hx1 (current), hx2 (stronger), hx3 (weaker) vs previous build without hand terms (h2h/qt).
+export PATH="$HOME/.cargo/bin:$PATH"
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="hx1 hx2 hx3" OPPS="../../ThoraxRex/h2h/qt/thoraxrex" SHARDS=4 GAMES=30 SO=25000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

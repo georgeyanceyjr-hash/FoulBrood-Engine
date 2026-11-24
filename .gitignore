@@ -1,0 +1,11 @@
+target/
+data/
+ref/
+live/
+.venv-training/
+results/err/
+results/par-*
+results/games-*
+results/build-*
+__pycache__/
+.DS_Store

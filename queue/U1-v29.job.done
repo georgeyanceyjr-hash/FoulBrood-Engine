@@ -1,0 +1,25 @@
+# v2.9 candidate = v2.8 + beetle grounding 250,60 + pillbug-guard-coverable 200 (gbpb200: 69/120 vs v2.8, 33/36 vs 4.1).
+# Confirm with 120 fresh games vs v2.8; install in the viewer only if >= 60/120.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "
+for n,f in [('policy','src_policy.rs'),('main','src_main.rs'),('datagen','src_datagen.rs'),('search','search_v29.rs'),('eval','eval_v29.rs')]: open(f'src/{n}.rs','w').write(open(f).read())"
+grep -q '250,60' src/eval.rs || { echo "eval not updated"; exit 1; }
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.9.0"/' Cargo.toml
+cargo build --release > results/build-v29.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="v29" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=4 GAMES=30 SO=71000 MATCH_RANDPLIES=2
+./tools/par.command
+S=$(ls -t results/summary-*.txt | head -1); grep v29 $S > results/v29-confirm.txt
+SC=$(grep -o 'v29-[^:]*: [0-9.]*' $S | awk '{print $2}')
+echo "score $SC" >> results/v29-confirm.txt
+if python3 -c "import sys; sys.exit(0 if float('$SC')>=60 else 1)"; then
+  E=$HOME/Documents/Codex/FoulBroodData/Engines
+  for d in ThoraxRex ThoraxRex-NoBook; do rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"; done
+  echo "exit" | "$E/ThoraxRex/thoraxrex" | head -1 >> results/v29-confirm.txt
+  mkdir -p h2h/v29; rm -f h2h/v29/thoraxrex; cp target/release/thoraxrex h2h/v29/thoraxrex; cp tools/net14.txt h2h/v29/thoraxrex-net.txt
+  echo INSTALLED >> results/v29-confirm.txt
+else
+  echo "NOT installed" >> results/v29-confirm.txt
+fi
+rm -f target/release/thoraxrex-net.txt
+exit 0

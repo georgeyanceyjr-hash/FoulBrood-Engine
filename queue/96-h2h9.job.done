@@ -1,0 +1,11 @@
+# Head-to-head: net9 (A) vs net8 (B, separate folder). Self-play, fresh openings.
+export PATH="$HOME/.cargo/bin:$PATH"
+cargo build --release > results/build-h2h.log 2>&1 || { echo BUILD FAILED; exit 1; }
+mkdir -p h2h/n8
+cp target/release/thoraxrex h2h/n8/thoraxrex
+cp tools/net8.txt h2h/n8/thoraxrex-net.txt
+cp tools/net9.txt target/release/thoraxrex-net.txt
+export VARIANTS="h9" OPPS="../../ThoraxRex/h2h/n8/thoraxrex" SHARDS=10 GAMES=12 SO=11000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

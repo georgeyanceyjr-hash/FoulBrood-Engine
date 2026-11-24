@@ -1,0 +1,2 @@
+cb150-Foulbrood-5.3: 20.0/24 (+19 =2 -3)  wins as White 10, as Black 9
+cb300-Foulbrood-5.3: 20.0/24 (+19 =2 -3)  wins as White 10, as Black 9

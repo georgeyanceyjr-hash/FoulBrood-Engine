@@ -1,0 +1,7 @@
+# Search tactics seen in the Formi loss: climb-next-to-queen moves kept at full depth (TR_CLIMB),
+# and an extension when a queen reaches 4 neighbours (TR_EXT4). Each vs v2.10, 200 games at 1 s.
+export PATH="$HOME/.cargo/bin:$PATH"
+[ -x h2h/v210/thoraxrex ] || exit 1
+export TR_POLICY=none TR_BOOK=none
+VARIANTS="q8climb q8ext4" OPPS="../../ThoraxRex/h2h/v210/thoraxrex" SHARDS=4 GAMES=50 SECS=1 SO=129000 MATCH_RANDPLIES=2 ./tools/par.command
+exit 0

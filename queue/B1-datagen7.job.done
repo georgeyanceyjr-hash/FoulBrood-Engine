@@ -1,0 +1,16 @@
+# Self-play from real top-player positions: 10 x 400 games, depth 5, starting from random prefixes of hivegame games.
+export PATH="$HOME/.cargo/bin:$PATH"
+tar --overwrite -xzf dg7.tgz
+mkdir -p results/datagen
+cargo build --release > results/datagen/build7.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net_dg6.txt tools/net_dg7.txt
+T=$(date +%m%d-%H%M)
+echo "datagen7 $T: 10 x 400 games from hivegame starting positions"
+DP=()
+for i in 1 2 3 4 5 6 7 8 9 10; do
+  TR_BOOK=none TR_NET=tools/net_dg7.txt TR_STARTS=tools/hg_starts.jsonl ./target/release/thoraxrex datagen 400 5 $((i*7919+${T//-/})) results/datagen/sp7-$T-$i.jsonl &
+  DP+=($!)
+done
+wait "${DP[@]}"
+echo "datagen7 done: $(cat results/datagen/sp7-$T-*.jsonl | wc -l) games"
+exit 0

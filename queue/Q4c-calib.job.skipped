@@ -1,0 +1,13 @@
+# Calibration: which local engine punishes ThoraxRex like Formi/Antsy do? v2.8 vs HotFrass NNUE, Mzinga, MzingaCpp (2 s/move).
+export PATH="$HOME/.cargo/bin:$PATH"
+mkdir -p h2h/hotfrass h2h/mzinga
+printf '#!/bin/zsh\ncd "$HOME/Desktop/HotFrass NNUE Experimental" && exec ./hotfrass "$@"\n' > h2h/hotfrass/run; chmod +x h2h/hotfrass/run
+printf '#!/bin/zsh\ncd "$HOME/Downloads/mzinga-ref/Mzinga.MacOSArm64" && exec ./MzingaEngine "$@"\n' > h2h/mzinga/run; chmod +x h2h/mzinga/run
+cp tools/net14.txt target/release/thoraxrex-net.txt
+for O in ../../ThoraxRex/h2h/hotfrass/run ../../ThoraxRex/h2h/mzinga/run MzingaCpp/mzingacpp; do
+  export VARIANTS="v28" OPPS="$O" SHARDS=2 GAMES=6 SECS=2 SO=58000 MATCH_RANDPLIES=2
+  ./tools/par.command
+  sleep 2
+done
+rm -f target/release/thoraxrex-net.txt
+exit 0

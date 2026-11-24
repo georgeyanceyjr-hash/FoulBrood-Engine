@@ -1,0 +1,21 @@
+# v2.6 = v2.5 + root-move LMR cap 1 (default). Install in viewer. Then test fortress WITHOUT the grounded-beetle bonus (fo80) vs v2.6 and vs Foulbrood 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_v26.rs').read()); open('src/search.rs','w').write(open('search_v26.rs').read())"
+grep -q 'unwrap_or(1))' src/search.rs || { echo "search.rs not updated"; exit 1; }
+sed -i '' 's/^version = "2\.[0-9]*\.[0-9]*"/version = "2.6.0"/' Cargo.toml
+cargo build --release > results/build-v26.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+for d in ThoraxRex ThoraxRex-NoBook; do
+  rm -f "$E/$d/thoraxrex"; cp target/release/thoraxrex "$E/$d/thoraxrex"
+done
+echo "exit" | "$E/ThoraxRex/thoraxrex" | head -1 > results/viewer26-install.txt
+mkdir -p h2h/v26
+rm -f h2h/v26/thoraxrex; cp target/release/thoraxrex h2h/v26/thoraxrex
+cp tools/net14.txt h2h/v26/thoraxrex-net.txt
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="fo80" OPPS="../../ThoraxRex/h2h/v26/thoraxrex" SHARDS=10 GAMES=12 SO=39000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="pb fo80" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SO=40000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

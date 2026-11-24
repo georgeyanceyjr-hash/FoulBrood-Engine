@@ -1,0 +1,6 @@
+fbstyle-Foulbrood-4.1: 17.5/24 (+17 =1 -6)  wins as White 8, as Black 9
+fbstyle-Nokamute: 7.5/11 (+7 =1 -3)  wins as White 5, as Black 2
+mid-Foulbrood-4.1: 12.5/24 (+12 =1 -11)  wins as White 6, as Black 6
+mid-Nokamute: 18.5/24 (+18 =1 -5)  wins as White 8, as Black 10
+v17-Foulbrood-4.1: 17.0/24 (+17 =0 -7)  wins as White 7, as Black 10
+v17-Nokamute: 14.0/23 (+14 =0 -9)  wins as White 7, as Black 7

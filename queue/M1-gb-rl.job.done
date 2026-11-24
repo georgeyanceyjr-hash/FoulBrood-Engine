@@ -1,0 +1,15 @@
+# vs v2.5 (h2h/v25): rl1 = no deep reduction of root moves; gb = reward grounded (pinned) enemy beetles; gbrl = both; qf1 = queen danger counts beetles 3 away.
+export PATH="$HOME/.cargo/bin:$PATH"
+mkdir -p h2h/v25
+rm -f h2h/v25/thoraxrex; cp target/release/thoraxrex h2h/v25/thoraxrex
+cp tools/net14.txt h2h/v25/thoraxrex-net.txt
+python3 -c "open('src/eval.rs','w').write(open('eval_gb.rs').read()); open('src/search.rs','w').write(open('search_rl.rs').read())"
+grep -q grounded_beetles src/eval.rs && grep -q TR_ROOTLMR src/search.rs || { echo "sources not updated"; exit 1; }
+cargo build --release > results/build-gbrl.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="rl1 gb gbrl qf1" OPPS="../../ThoraxRex/h2h/v25/thoraxrex" SHARDS=3 GAMES=40 SO=35000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="pb rl1 gb gbrl" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=2 GAMES=12 SO=36000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

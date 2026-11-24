@@ -1,0 +1,3 @@
+# Live move server for hivegame games (bash script; see tools/liveserver2.sh). Book v5, climb on.
+bash tools/liveserver2.sh
+exit 0

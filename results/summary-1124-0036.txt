@@ -1,0 +1,3 @@
+q10-..: 115.5/200 (+111 =9 -80)  wins as White 62, as Black 49
+q7-..: 117.5/200 (+113 =9 -78)  wins as White 67, as Black 46
+q9-..: 112.5/200 (+107 =11 -82)  wins as White 60, as Black 47

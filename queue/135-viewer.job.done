@@ -1,0 +1,12 @@
+# Build ThoraxRex 1.1.0 (s1 weights) and install two viewer copies: with and without the opening book.
+export PATH="$HOME/.cargo/bin:$PATH"
+cargo build --release > results/build-viewer.log 2>&1 || { echo BUILD FAILED; exit 1; }
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+mkdir -p "$E/ThoraxRex" "$E/ThoraxRex-NoBook"
+cp target/release/thoraxrex "$E/ThoraxRex/thoraxrex"
+cp thoraxrex-book.txt "$E/ThoraxRex/thoraxrex-book.txt"
+cp target/release/thoraxrex "$E/ThoraxRex-NoBook/thoraxrex"
+echo "exit" | "$E/ThoraxRex/thoraxrex" | head -1 > results/viewer-install.txt
+echo "exit" | "$E/ThoraxRex-NoBook/thoraxrex" | head -1 >> results/viewer-install.txt
+cat results/viewer-install.txt
+exit 0

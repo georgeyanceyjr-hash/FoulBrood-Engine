@@ -1,0 +1,17 @@
+# RERUN after fixing the env leak in match.py (the v2.8 opponent used to inherit the variant's TR_* settings,
+# so net/book/eval-term h2h tests compared a setting against itself). v2.8 build; n14 = control.
+export PATH="$HOME/.cargo/bin:$PATH"
+grep -q "MATCH_OPPENV" tools/match.py || { echo "match.py not fixed"; exit 1; }
+python3 -c "
+for n,f in [('policy','src_policy.rs'),('main','src_main.rs'),('datagen','src_datagen.rs'),('search','src_search_v28p.rs'),('eval','src_eval_v28.rs'),('uhp','src_uhp.rs')]: open(f'src/{n}.rs','w').write(open(f).read())"
+cargo build --release > results/build-z3.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt; rm -f target/release/thoraxrex-policy.txt; export TR_POLICY=none TR_BOOK=none
+# 1) value nets
+export VARIANTS="n14 n20 n21 n22" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=40 SECS=1 SO=95000 MATCH_RANDPLIES=2
+./tools/par.command
+# 2) books, from the empty board
+MATCH_NOOPEN=1 VARIANTS="bk3 bkhg nob" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=30 SECS=1 SO=96000 MATCH_RANDPLIES=0 ./tools/par.command
+# 3) earlier eval terms that had looked neutral
+export VARIANTS="gb250 e250 pbq120 qona50 qsg2" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=40 SECS=1 SO=97000 MATCH_RANDPLIES=2
+./tools/par.command
+exit 0

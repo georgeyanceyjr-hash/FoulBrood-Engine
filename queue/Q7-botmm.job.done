@@ -1,0 +1,21 @@
+# Agreement with winning Formi/Antsy moves (archive, 2857 bot wins). Same 1500 positions per config, depth 6, plies 4..40.
+# Which defensive ideas make ThoraxRex play more like the bots that beat it?
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_q5.rs').read()); open('src/search.rs','w').write(open('search_q5.rs').read())"
+cargo build --release > results/build-q7.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp target/release/thoraxrex tools/thoraxrex-mm
+T=$(date +%m%d-%H%M)
+run() { name=$1; shift; ( env "$@" TR_EXE=tools/thoraxrex-mm python3 tools/botmm.py tools/bots_arch.jsonl 1500 6 7 40 > results/mm-$name-$T.txt 2>&1 ) & }
+run base X=1
+run gb100 TR_GB=100,20
+run gb150 TR_GB=150,40
+run gb250 TR_GB=250,60
+run e150 TR_EARLY=150,8
+run e250 TR_EARLY=250,8
+run cautB TR_CAUTION=50 TR_CAUTION_BLACK=1
+run caut TR_CAUTION=50
+run gb150e150 TR_GB=150,40 TR_EARLY=150,8
+run qd30 TR_QD=30
+wait
+for f in results/mm-*-$T.txt; do echo "$(basename $f .txt): $(tail -1 $f)"; done > results/summary-mm-$T.txt
+exit 0

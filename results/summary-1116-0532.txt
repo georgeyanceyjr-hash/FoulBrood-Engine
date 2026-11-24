@@ -1,0 +1,3 @@
+n8t4-Foulbrood-4.1: 8.5/12 (+8 =1 -3)  wins as White 4, as Black 4
+n8t4-Foulbrood-5.3: 10.0/12 (+10 =0 -2)  wins as White 5, as Black 5
+n8t4-Nokamute: 12.0/12 (+12 =0 -0)  wins as White 6, as Black 6

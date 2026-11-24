@@ -1,0 +1,24 @@
+# Queen-neighbourhood net, round 2. Round 1: extras overfit on 0.8M rows (train .046 / val .061) and the
+# no-extras retrain (q0) did not reproduce net14, so compare within the same data instead:
+# net14 was trained on SELF-PLAY ONLY (sp3+sp4+sp5, 8 epochs); hivegame rows hurt. So: self-play only sp2..sp8, 8 epochs.
+# r14 = exact net14 recipe retrained (sp3+sp4+sp5, no extras) as a reproduction check.
+# c3 = no extras 64x32 (control), q4 = extras 64x32, q5 = extras 64x32 + weight decay, q6 = extras 96x32 + weight decay.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$HOME/Documents/Codex/hotfrass/.venv-training/bin/python3
+D=data/qn; G=results/datagen
+for s in sp2_train sp3_train; do [ -s $D/$s.csv ] || ./target/release/thoraxrex dumpfeat $G/$s.jsonl $D/$s.csv extra & done
+wait
+B=$D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv
+V=val:$D/sp5_val.csv
+EXTRA=0   $PY -u tools/train_qn.py 58 $D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$V tools/net_r14.txt 64 32 0.5 8 > results/tr14.log 2>&1 &
+EXTRA=0   $PY -u tools/train_qn.py 58 $B,$V tools/net_c3.txt 64 32 0.5 8 > results/tc3.log 2>&1 &
+EXTRA=288 $PY -u tools/train_qn.py 58 $B,$V tools/net_q4.txt 64 32 0.5 8 > results/tq4.log 2>&1 &
+wait
+EXTRA=288 WD=0.02 $PY -u tools/train_qn.py 58 $B,$V tools/net_q5.txt 64 32 0.5 8 > results/tq5.log 2>&1 &
+EXTRA=288 WD=0.02 $PY -u tools/train_qn.py 58 $B,$V tools/net_q6.txt 96 32 0.5 8 > results/tq6.log 2>&1 &
+wait
+for q in c3 q4 q5 q6; do [ -s tools/net_$q.txt ] || { echo "net_$q missing"; exit 1; }; done
+export TR_POLICY=none TR_BOOK=none
+export VARIANTS="n14 r14 c3 q4 q5 q6" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=40 SECS=1 SO=103000 MATCH_RANDPLIES=2
+./tools/par.command
+exit 0

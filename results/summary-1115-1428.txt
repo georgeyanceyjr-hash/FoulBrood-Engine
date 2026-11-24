@@ -1,0 +1,6 @@
+p45-Foulbrood-4.1: 10.5/20 (+10 =1 -9)  wins as White 3, as Black 7
+p45-Foulbrood-5.3: 14.5/20 (+14 =1 -5)  wins as White 7, as Black 7
+p45-Nokamute: 10.5/20 (+10 =1 -9)  wins as White 6, as Black 4
+p60-Foulbrood-4.1: 10.0/20 (+9 =2 -9)  wins as White 3, as Black 6
+p60-Foulbrood-5.3: 18.5/20 (+18 =1 -1)  wins as White 10, as Black 8
+p60-Nokamute: 14.5/20 (+14 =1 -5)  wins as White 7, as Black 7

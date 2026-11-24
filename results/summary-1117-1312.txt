@@ -1,0 +1,4 @@
+climb-..: 60.0/120 (+56 =8 -56)  wins as White 34, as Black 22
+gbpb120-..: 57.0/120 (+53 =8 -59)  wins as White 28, as Black 25
+gbpb200-..: 69.0/120 (+62 =14 -44)  wins as White 34, as Black 28
+pb120-..: 62.0/120 (+59 =6 -55)  wins as White 31, as Black 28

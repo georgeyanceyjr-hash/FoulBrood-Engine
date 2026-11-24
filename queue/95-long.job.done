@@ -1,0 +1,7 @@
+VARIANTS="n8t4"
+OPPS="Foulbrood-4.1/wrapper.py Foulbrood-5.3/wrapper.py Nokamute/nokamute"
+SHARDS=1
+GAMES=12
+export SO=10000
+export SECS=5
+export MATCH_RANDPLIES=2

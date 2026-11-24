@@ -1,0 +1,2 @@
+ca150-Foulbrood-5.3: 22.0/24 (+22 =0 -2)  wins as White 12, as Black 10
+ca50-Foulbrood-5.3: 22.5/24 (+22 =1 -1)  wins as White 12, as Black 10

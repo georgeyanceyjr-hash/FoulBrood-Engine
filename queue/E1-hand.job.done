@@ -1,0 +1,16 @@
+# Hand-set eval terms on top of net14 (mobility, frozen side, enemy climber next to a queen guard, pinned beetle/mosquito guard).
+# A = hand terms (+ qtac search) ; B = previous build (qtac, no hand terms). Then A vs Foulbrood 4.1 / 5.3 / Nokamute.
+export PATH="$HOME/.cargo/bin:$PATH"
+mkdir -p h2h/qt
+rm -f h2h/qt/thoraxrex; cp target/release/thoraxrex h2h/qt/thoraxrex
+cp tools/net14.txt h2h/qt/thoraxrex-net.txt
+python3 -c "open('src/eval.rs','w').write(open('eval_hand.rs').read())"
+grep -q TR_HX src/eval.rs || { echo "eval.rs not updated"; exit 1; }
+cargo build --release > results/build-hand.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="hx" OPPS="../../ThoraxRex/h2h/qt/thoraxrex" SHARDS=10 GAMES=12 SO=23000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="hx" OPPS="Foulbrood-4.1/wrapper.py Foulbrood-5.3/wrapper.py Nokamute/nokamute" SHARDS=3 GAMES=12 SO=24000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

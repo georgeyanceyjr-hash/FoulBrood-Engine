@@ -1,0 +1,6 @@
+c3-..: 70.5/120 (+68 =5 -47)  wins as White 33, as Black 35
+n14-..: 52.5/120 (+48 =9 -63)  wins as White 23, as Black 25
+q4-..: 93.5/120 (+91 =5 -24)  wins as White 51, as Black 40
+q5-..: 73.5/120 (+70 =7 -43)  wins as White 39, as Black 31
+q6-..: 75.0/120 (+72 =6 -42)  wins as White 39, as Black 33
+r14-..: 56.5/120 (+54 =5 -61)  wins as White 30, as Black 24

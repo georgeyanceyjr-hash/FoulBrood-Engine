@@ -1,0 +1,9 @@
+n3-Foulbrood-4.1: 23.5/30 (+23 =1 -6)  wins as White 13, as Black 10
+n3-Foulbrood-5.3: 21.5/30 (+21 =1 -8)  wins as White 15, as Black 6
+n3-Nokamute: 26.0/30 (+25 =2 -3)  wins as White 14, as Black 11
+n4-Foulbrood-4.1: 24.0/30 (+23 =2 -5)  wins as White 15, as Black 8
+n4-Foulbrood-5.3: 22.0/30 (+22 =0 -8)  wins as White 14, as Black 8
+n4-Nokamute: 27.0/30 (+26 =2 -2)  wins as White 13, as Black 13
+s1-Foulbrood-4.1: 23.0/30 (+23 =0 -7)  wins as White 14, as Black 9
+s1-Foulbrood-5.3: 23.0/30 (+23 =0 -7)  wins as White 11, as Black 12
+s1-Nokamute: 18.0/30 (+18 =0 -12)  wins as White 10, as Black 8

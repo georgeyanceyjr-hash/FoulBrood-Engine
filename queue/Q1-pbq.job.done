@@ -1,0 +1,13 @@
+# Queen/pillbug separation (TR_PBQ: penalty when our pillbug is not beside our queen or is buried) and
+# slow fillers near the queen (TR_QSG: free spiders/grasshoppers/ladybug 2-3 steps away count as attack). vs v2.7 and Foulbrood 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+python3 -c "open('src/eval.rs','w').write(open('eval_pbq.rs').read())"
+grep -q TR_PBQ src/eval.rs || { echo "eval.rs not updated"; exit 1; }
+cargo build --release > results/build-pbq.log 2>&1 || { echo BUILD FAILED; exit 1; }
+cp tools/net14.txt target/release/thoraxrex-net.txt
+export VARIANTS="pbq60 pbq120 qsg2" OPPS="../../ThoraxRex/h2h/v27/thoraxrex" SHARDS=4 GAMES=30 SO=46000 MATCH_RANDPLIES=2
+./tools/par.command
+export VARIANTS="pbq60 pbq120 qsg2" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SO=47000 MATCH_RANDPLIES=2
+./tools/par.command
+rm -f target/release/thoraxrex-net.txt
+exit 0

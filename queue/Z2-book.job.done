@@ -1,0 +1,17 @@
+# Book test (eval-net direction came out flat): v2.8 build + new book v3 (14k strong games) vs current hg book vs no book.
+# Games start from the empty board (MATCH_NOOPEN=1) so the book is actually used. Opponents: v2.8 (no book), Foulbrood 4.1.
+export PATH="$HOME/.cargo/bin:$PATH"
+grep -q MATCH_NOOPEN tools/match.py || python3 - <<'PY'
+p='tools/match.py'; s=open(p).read()
+s=s.replace("        for swap in (0, 1):\n", "        if os.environ.get('MATCH_NOOPEN'):\n            opening = []\n        for swap in (0, 1):\n", 1)
+open(p,'w').write(s)
+PY
+python3 -c "
+for n,f in [('policy','src_policy.rs'),('main','src_main.rs'),('datagen','src_datagen.rs'),('search','src_search_v28p.rs'),('eval','src_eval_v28.rs'),('uhp','src_uhp.rs')]: open(f'src/{n}.rs','w').write(open(f).read())"
+cargo build --release > results/build-z2.log 2>&1 || { echo BUILD FAILED; exit 1; }
+export MATCH_NOOPEN=1
+export VARIANTS="bk3 bkhg nob" OPPS="../../ThoraxRex/h2h/v28/thoraxrex" SHARDS=3 GAMES=30 SECS=1 SO=93000 MATCH_RANDPLIES=0
+./tools/par.command
+export VARIANTS="bk3 bkhg nob" OPPS="Foulbrood-4.1/wrapper.py" SHARDS=3 GAMES=12 SECS=1 SO=94000 MATCH_RANDPLIES=0
+./tools/par.command
+exit 0
