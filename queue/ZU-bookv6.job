@@ -1,0 +1,24 @@
+# Book v6 (Formi lines that passed the engine check, laid over v5) against book v5. Same engine (v213) and net on
+# both sides; each uses the book beside it. Half the games start from the empty board (pure book play), half from
+# a random first move and reply (how the book copes off its main line). 200 games at 1 s.
+[ -x h2h/v213/thoraxrex ] && [ -f tools/thoraxrex-book-v6.txt ] && [ -f tools/thoraxrex-book-v5.txt ] || exit 1
+for b in 5 6; do
+  mkdir -p h2h/bk$b
+  cp h2h/v213/thoraxrex h2h/bk$b/thoraxrex; cp h2h/v213/thoraxrex-net.txt h2h/bk$b/thoraxrex-net.txt
+  cp tools/thoraxrex-book-v$b.txt h2h/bk$b/thoraxrex-book.txt
+done
+mkdir -p results/err
+TAG=$(date +%m%d-%H%M)
+unset TR_BOOK TR_NET TR_POLICY TR_CLIMB
+PIDS=()
+for s in 1 2; do
+  ( MATCH_NOOPEN=1 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_GAMES=results/games-bk6start-bk5-$TAG-$s.txt \
+    python3 -u tools/match.py h2h/bk6/thoraxrex "$PWD/h2h/bk5/thoraxrex" 50 1 Base+MLP $((s*101+161000)) > results/par-bk6start-bk5-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+  ( MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_GAMES=results/games-bk6random-bk5-$TAG-$s.txt \
+    python3 -u tools/match.py h2h/bk6/thoraxrex "$PWD/h2h/bk5/thoraxrex" 50 1 Base+MLP $((s*101+162000)) > results/par-bk6random-bk5-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait $PIDS
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+exit 0

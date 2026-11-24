@@ -7,10 +7,14 @@ import subprocess, sys, collections
 E='/home/claude/propolis/target/release/thoraxrex'; MARGIN=100
 chk, v5, out = sys.argv[1:4]
 pos=collections.OrderedDict()
+# the check output drops the move prefix: take it from the check input (same key and move)
+prefixes={}
+for l in open('/home/claude/fbook/check.in'):
+    q=l.rstrip('\n').split('|'); prefixes[(q[0],q[2])]=q[5]
 for l in open(chk):
     p=l.rstrip('\n').split('|')
     if len(p)<8: continue
-    key,w,mv,n,val,prefix=p[0],int(p[1]),p[2],int(p[3]),float(p[4]),p[5]
+    key,w,mv,n,val=p[0],int(p[1]),p[2],int(p[3]),float(p[4]); prefix=prefixes[(key,mv)]
     own,book=int(p[-3]),int(p[-1])
     pos.setdefault(key,dict(prefix=prefix,moves=[]))['moves'].append((w,mv,book-own,val,n))
 keep={}; dropped_pos=0; dropped_alt=0
