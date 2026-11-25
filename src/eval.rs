@@ -680,9 +680,9 @@ impl Net {
         }
         let mut inv_std: Vec<f32> = std.iter().map(|s| if *s > 1e-6 { 1.0 / s } else { 0.0 }).collect();
         let (mut mean, mut w1, mut b1) = (mean, w1, b1);
-        // Fold the normalisation of the (sparse) extra inputs into w1/b1 so eval can skip zeros.
-        let base = 2 * (NF - 1);
-        for i in base..n_in {
+        // Fold the normalisation of every input into w1/b1, so eval works on the raw values and can
+        // skip the zeros (most of the summary features and nearly all of the extra inputs are zero).
+        for i in 0..n_in {
             for j in 0..h1 {
                 let w = w1[j * n_in + i] * inv_std[i];
                 b1[j] -= w * mean[i];
@@ -714,11 +714,11 @@ impl Net {
         let mut a1 = [0f32; 256];
         a1[..h1].copy_from_slice(&self.b1);
         for i in 0..base {
-            let raw = if i < NF - 1 { me[i] } else { opp[i - (NF - 1)] } as f32;
-            let xi = (raw - self.mean[i]) * self.inv_std[i];
-            if xi == 0.0 {
+            let raw = if i < NF - 1 { me[i] } else { opp[i - (NF - 1)] };
+            if raw == 0 {
                 continue;
             }
+            let xi = raw as f32;
             let col = &self.w1t[i * h1..(i + 1) * h1];
             for (a, w) in a1[..h1].iter_mut().zip(col) {
                 *a += xi * *w;

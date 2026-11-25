@@ -1,0 +1,2 @@
+qmax2-v213: 52.5/100 (+49 =7 -44)  wins as White 33, as Black 16
+qmax4-v213: 48.0/100 (+44 =8 -48)  wins as White 28, as Black 16
