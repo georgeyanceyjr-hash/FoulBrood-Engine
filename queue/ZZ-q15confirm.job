@@ -1,0 +1,20 @@
+# Confirmation match for q15 (trained with the depth-6 self-play games). Its first match against the installed net q12
+# was 117.5/200. The rule set before the night began: install only if the combined score over at least 300 games is
+# 55 % or better. This plays 200 more games with new openings: same build (v214) both sides, 1 s, no books.
+B=h2h/v214; [ -x $B/thoraxrex ] || B=h2h/v213
+[ -x $B/thoraxrex ] && [ -s tools/net_q15.txt ] || exit 1
+mkdir -p results/err
+TAG=$(date +%m%d-%H%M)
+unset TR_POLICY TR_CLIMB TR_NET
+export TR_BOOK=none
+PIDS=()
+for s in 1 2 3 4; do
+  ( TR_NET=$PWD/tools/net_q15.txt MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_NET=$PWD/tools/net_q12.txt" MATCH_GAMES=results/games-q15c-q12-$TAG-$s.txt \
+    python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 50 1 Base+MLP $((s*307+230000)) > results/par-q15c-q12-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait $PIDS
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+# Ready-to-install copy, used only if the combined result passes.
+mkdir -p h2h/v215 && cp $B/thoraxrex h2h/v215/thoraxrex && cp tools/net_q15.txt h2h/v215/thoraxrex-net.txt
+exit 0

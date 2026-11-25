@@ -1,0 +1,52 @@
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:42: RuntimeWarning: divide by zero encountered in matmul
+  z1 = x @ P['w1'].T + P['b1']; a1 = np.clip(z1, 0, 8)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:42: RuntimeWarning: overflow encountered in matmul
+  z1 = x @ P['w1'].T + P['b1']; a1 = np.clip(z1, 0, 8)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:42: RuntimeWarning: invalid value encountered in matmul
+  z1 = x @ P['w1'].T + P['b1']; a1 = np.clip(z1, 0, 8)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:43: RuntimeWarning: divide by zero encountered in matmul
+  z2 = a1 @ P['w2'].T + P['b2']; a2 = np.clip(z2, 0, 8)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:43: RuntimeWarning: overflow encountered in matmul
+  z2 = a1 @ P['w2'].T + P['b2']; a2 = np.clip(z2, 0, 8)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:43: RuntimeWarning: invalid value encountered in matmul
+  z2 = a1 @ P['w2'].T + P['b2']; a2 = np.clip(z2, 0, 8)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:44: RuntimeWarning: divide by zero encountered in matmul
+  o = a2 @ P['w3'] + P['b3'][0]
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:44: RuntimeWarning: overflow encountered in matmul
+  o = a2 @ P['w3'] + P['b3'][0]
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:44: RuntimeWarning: invalid value encountered in matmul
+  o = a2 @ P['w3'] + P['b3'][0]
+rows 3106643 inputs 408 val loss init 0.11093424260616302
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:56: RuntimeWarning: divide by zero encountered in matmul
+  G = {'w3': a2.T @ g, 'b3': np.array([g.sum()], np.float32)}
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:56: RuntimeWarning: overflow encountered in matmul
+  G = {'w3': a2.T @ g, 'b3': np.array([g.sum()], np.float32)}
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:56: RuntimeWarning: invalid value encountered in matmul
+  G = {'w3': a2.T @ g, 'b3': np.array([g.sum()], np.float32)}
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:58: RuntimeWarning: divide by zero encountered in matmul
+  G['w2'] = d2.T @ a1; G['b2'] = d2.sum(0)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:58: RuntimeWarning: overflow encountered in matmul
+  G['w2'] = d2.T @ a1; G['b2'] = d2.sum(0)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:58: RuntimeWarning: invalid value encountered in matmul
+  G['w2'] = d2.T @ a1; G['b2'] = d2.sum(0)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:59: RuntimeWarning: divide by zero encountered in matmul
+  d1 = (d2 @ P['w2']) * ((z1 > 0) & (z1 < 8))
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:59: RuntimeWarning: overflow encountered in matmul
+  d1 = (d2 @ P['w2']) * ((z1 > 0) & (z1 < 8))
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:59: RuntimeWarning: invalid value encountered in matmul
+  d1 = (d2 @ P['w2']) * ((z1 > 0) & (z1 < 8))
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:60: RuntimeWarning: divide by zero encountered in matmul
+  G['w1'] = d1.T @ x; G['b1'] = d1.sum(0)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:60: RuntimeWarning: overflow encountered in matmul
+  G['w1'] = d1.T @ x; G['b1'] = d1.sum(0)
+/Users/georgeyancey/Documents/Codex/ThoraxRex/tools/train_qn.py:60: RuntimeWarning: invalid value encountered in matmul
+  G['w1'] = d1.T @ x; G['b1'] = d1.sum(0)
+epoch 0 train 0.04982 val 0.05053
+epoch 1 train 0.04918 val 0.04978
+epoch 2 train 0.04843 val 0.04985
+epoch 3 train 0.0483 val 0.05025
+epoch 4 train 0.04834 val 0.05018
+epoch 5 train 0.04822 val 0.04998
+epoch 6 train 0.04753 val 0.04954
+epoch 7 train 0.04721 val 0.04985
+wrote tools/net_q15.txt
