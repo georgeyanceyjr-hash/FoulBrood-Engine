@@ -1,0 +1,4 @@
+34 played: wA3 bA2\ -> (['FoulBroodScore v2;kind=final;status=complete;depth=9;score=-455;move=wA3 bA2-;evalmove=wA3 bA2-'], 40.0)
+32 played: wA3 -wG1 -> (['FoulBroodScore v2;kind=final;status=complete;depth=11;score=284;move=wA3 -wG1;evalmove=wA3 -wG1'], 40.0)
+30 played: wM bB2 -> (['FoulBroodScore v2;kind=final;status=complete;depth=10;score=238;move=wM bB2;evalmove=wM bB2'], 37.0)
+28 played: bB2 bM\ -> (['FoulBroodScore v2;kind=final;status=complete;depth=11;score=389;move=bB2 \\wB2;evalmove=bB2 \\wB2'], 25.4)
