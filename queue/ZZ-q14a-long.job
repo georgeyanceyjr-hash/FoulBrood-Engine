@@ -1,0 +1,19 @@
+# q14a at a longer time per move. At 1 s q14a (trained with strong players' games added) scored 50/100 against the
+# installed net q12, but on the three games lost to Formi and Antsy it rates the losing positions lower and chooses
+# different, more defensive moves. This asks whether that shows up when the engine has longer to think:
+# q14a against q12, same build (v214), 100 games at 3 s, no books, random first move and reply.
+B=h2h/v214; [ -x $B/thoraxrex ] || B=h2h/v213
+[ -x $B/thoraxrex ] && [ -s tools/net_q14a.txt ] || exit 1
+mkdir -p results/err
+TAG=$(date +%m%d-%H%M)
+unset TR_POLICY TR_CLIMB TR_NET
+export TR_BOOK=none
+PIDS=()
+for s in 1 2 3 4; do
+  ( TR_NET=$PWD/tools/net_q14a.txt MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_NET=$PWD/tools/net_q12.txt" MATCH_GAMES=results/games-q14a3s-q12-$TAG-$s.txt \
+    python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 26 3 Base+MLP $((s*101+210000)) > results/par-q14a3s-q12-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait $PIDS
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+exit 0
