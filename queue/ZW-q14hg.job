@@ -1,0 +1,32 @@
+# q14: put strong players' games back into the training data. The installed net (q12) and q13 were trained only on the
+# engine's own depth-5 games, and against Formi and Antsy the engine rates itself far ahead until just before it is
+# mated. tools/hg_all.jsonl holds 4,496 hivegame.com games between players rated 1900+ (labelled by result).
+#   q14a = sp2..sp11 + those games once          q14b = sp4..sp11 + those games three times
+# Same recipe as q13 otherwise (64x32, 294 extra inputs, weight decay .02, 8 epochs).
+# Then each plays v213 (q12, the installed engine): 100 games at 1 s, no books, random first move and reply.
+PY=$PWD/.venv-training/bin/python3
+[ -x h2h/v213/thoraxrex ] && [ -x $PY ] && [ -s tools/hg_all.jsonl ] || exit 1
+D=data/pp
+[ -s $D/hg_all.csv ] || ./h2h/v213/thoraxrex dumpfeat tools/hg_all.jsonl $D/hg_all.csv extra > /dev/null 2>&1
+[ -s $D/hg_all.csv ] || { echo "dumpfeat failed"; exit 1; }
+wc -l $D/hg_all.csv > results/q14-rows.txt
+S=$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv,$D/sp11_train.csv
+H=$D/hg_all.csv
+EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn.py 58 $D/sp2_train.csv,$D/sp3_train.csv,$S,$H,val:$D/sp5_val.csv tools/net_q14a.txt 64 32 0.5 8 > results/tq14a.log 2>&1
+EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn.py 58 $S,$H,$H,$H,val:$D/sp5_val.csv tools/net_q14b.txt 64 32 0.5 8 > results/tq14b.log 2>&1
+for q in q14a q14b; do [ -s tools/net_$q.txt ] || { echo "net_$q missing"; exit 1; }; done
+mkdir -p results/err
+TAG=$(date +%m%d-%H%M)
+unset TR_POLICY TR_CLIMB TR_NET
+export TR_BOOK=none
+PIDS=()
+for q in q14a q14b; do
+  for s in 1 2; do
+    ( TR_NET=$PWD/tools/net_$q.txt MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none" MATCH_GAMES=results/games-$q-v213-$TAG-$s.txt \
+      python3 -u tools/match.py h2h/v213/thoraxrex "$PWD/h2h/v213/thoraxrex" 50 1 Base+MLP $((s*101+180000)) > results/par-$q-v213-$TAG-$s.log 2>&1 ) &
+    PIDS+=($!)
+  done
+done
+wait $PIDS
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+exit 0
