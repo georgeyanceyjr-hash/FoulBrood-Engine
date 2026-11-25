@@ -1,0 +1,40 @@
+# Loop 13: a second round of depth-6 self-play, played by the installed net q15 (build v215).
+# 4,000 games at depth 6, so the next net learns from q15's own deeper games.
+# q17 = sp2..sp12 + sp13, same recipe as q15 (64x32, 294 extra inputs, weight decay .02, 8 epochs).
+# Then q17 against q15, same engine build on both sides: 200 games at 1 s, no books, random first move and reply.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$PWD/.venv-training/bin/python3
+B=h2h/v215
+[ -x $B/thoraxrex ] && [ -x $PY ] || exit 1
+D=data/pp; G=results/datagen
+T=$(date +%m%d-%H%M)
+DP=()
+for i in 1 2 3 4 5; do
+  TR_BOOK=none TR_POLICY=none TR_NET=$PWD/tools/net_q15.txt TR_STARTS=tools/hg_starts.jsonl ./$B/thoraxrex datagen 400 6 $((i*170003+${T//-/})) $G/sp13-$T-$i.jsonl &
+  DP+=($!)
+done
+for i in 6 7 8 9 10; do
+  TR_BOOK=none TR_POLICY=none TR_NET=$PWD/tools/net_q15.txt ./$B/thoraxrex datagen 400 6 $((i*170003+${T//-/})) $G/sp13-$T-$i.jsonl &
+  DP+=($!)
+done
+wait "${DP[@]}"
+cat $G/sp13-$T-{1,2,3,4,5,6,7,8,9,10}.jsonl > $G/sp13_train.jsonl
+./$B/thoraxrex dumpfeat $G/sp13_train.jsonl $D/sp13_train.csv extra > /dev/null 2>&1
+[ -s $D/sp13_train.csv ] || { echo "sp13 dumpfeat failed"; exit 1; }
+wc -l $D/sp13_train.csv > results/q17-rows.txt
+A=$D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv,$D/sp11_train.csv,$D/sp12_train.csv,$D/sp13_train.csv
+EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn.py 58 $A,val:$D/sp5_val.csv tools/net_q17.txt 64 32 0.5 8 > results/tq17.log 2>&1
+[ -s tools/net_q17.txt ] || { echo "net_q17 missing"; exit 1; }
+mkdir -p results/err
+TAG=$(date +%m%d-%H%M)
+unset TR_POLICY TR_CLIMB TR_NET
+export TR_BOOK=none
+PIDS=()
+for s in 1 2 3 4; do
+  ( TR_NET=$PWD/tools/net_q17.txt MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_NET=$PWD/tools/net_q15.txt" MATCH_GAMES=results/games-q17-q15-$TAG-$s.txt \
+    python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 50 1 Base+MLP $((s*211+260000)) > results/par-q17-q15-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait $PIDS
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+exit 0
