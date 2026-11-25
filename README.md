@@ -12,7 +12,7 @@ the program file is still named `thoraxrex`.
     cargo build --release
 
 The engine is `target/release/thoraxrex`. Put a net next to it as `thoraxrex-net.txt` and, for the opening book,
-`thoraxrex-book.txt` (`h2h/v215/` is the build currently installed in the viewer — the v214 program with net q15, installed 25 Nov 2026 after 225.5/400 against net q12 over two matches; `h2h/v214/` is version 1.0 with a faster net evaluation, same net and same scores as v213; `h2h/v213/` is version 1.0 as first built for Apple Silicon, with its net; `tools/thoraxrex-book-v5.txt` is the book). Then add the program to
+`thoraxrex-book.txt` (`h2h/v216/` is the build currently installed in the viewer — the same program with net q17, installed 25 Nov 2026 after 228.5/400 against net q15 over two matches; `h2h/v215/` is the v214 program with net q15, which scored 225.5/400 against net q12; `h2h/v214/` is version 1.0 with a faster net evaluation, same net and same scores as v213; `h2h/v213/` is version 1.0 as first built for Apple Silicon, with its net; `tools/thoraxrex-book-v5.txt` is the book). Then add the program to
 the viewer on its Engine tab. It is listed as "FoulBrood Book" when it finds a book and "FoulBrood" without one.
 
 ## What it is
@@ -31,7 +31,7 @@ the viewer on its Engine tab. It is listed as "FoulBrood Book" when it finds a b
 | Folder | Contents |
 |---|---|
 | `src/`, `Cargo.toml` | the engine |
-| `h2h/` | every tested version as built for Apple Silicon, each with its net (`v213` = version 1.0; `v214` = the same with a faster net evaluation, installed 24 Nov 2026 after 54.5/96 against v213; `v215` = v214 with net q15, trained with 4,000 added depth-6 self-play games, installed 25 Nov 2026 after 117.5/200 and 108/200 against q12) |
+| `h2h/` | every tested version as built for Apple Silicon, each with its net (`v213` = version 1.0; `v214` = the same with a faster net evaluation, installed 24 Nov 2026 after 54.5/96 against v213; `v215` = v214 with net q15, trained with 4,000 added depth-6 self-play games, installed 25 Nov 2026 after 117.5/200 and 108/200 against q12; `v216` = the same with net q17, a second round of 4,000 depth-6 games played by q15, installed 25 Nov 2026 after 115.5/200 and 113/200 against q15) |
 | `tools/` | match runner, training script (`train_qn.py`), nets (`net_*.txt`), weight sets, test and book tools |
 | `queue/` | the job files that produced each result, in order: they are the record of how every net was made |
 | `results/datagen/` | the self-play games each net was trained on (`sp2` to `sp11`) |
