@@ -1,0 +1,19 @@
+# Confirmation match for q17 (second round of depth-6 self-play). First match against the installed net q15: 115.5/200.
+# Install only if the combined score over the 400 games is 55 % or better. Build v215 both sides, 1 s, no books, new openings.
+B=h2h/v215
+[ -x $B/thoraxrex ] && [ -s tools/net_q17.txt ] || exit 1
+mkdir -p results/err
+TAG=$(date +%m%d-%H%M)
+unset TR_POLICY TR_CLIMB TR_NET
+export TR_BOOK=none
+PIDS=()
+for s in 1 2 3 4; do
+  ( TR_NET=$PWD/tools/net_q17.txt MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_NET=$PWD/tools/net_q15.txt" MATCH_GAMES=results/games-q17c-q15-$TAG-$s.txt \
+    python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 50 1 Base+MLP $((s*401+290000)) > results/par-q17c-q15-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait $PIDS
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+# Ready-to-install copy, used only if the combined result passes.
+mkdir -p h2h/v216 && cp $B/thoraxrex h2h/v216/thoraxrex && cp tools/net_q17.txt h2h/v216/thoraxrex-net.txt
+exit 0
