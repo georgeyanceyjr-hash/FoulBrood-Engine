@@ -12,7 +12,7 @@ the program file is still named `thoraxrex`.
     cargo build --release
 
 The engine is `target/release/thoraxrex`. Put a net next to it as `thoraxrex-net.txt` and, for the opening book,
-`thoraxrex-book.txt` (`h2h/v216/` is the build currently installed in the viewer — the same program with net q17, installed 25 Nov 2026 after 228.5/400 against net q15 over two matches; `h2h/v215/` is the v214 program with net q15, which scored 225.5/400 against net q12; `h2h/v214/` is version 1.0 with a faster net evaluation, same net and same scores as v213; `h2h/v213/` is version 1.0 as first built for Apple Silicon, with its net; `tools/thoraxrex-book-v7.txt` is the installed book: v5 without the White line wP; bG1 -wP; wA1 wP/, lost 7 times out of 7 on 25 Nov). Then add the program to
+`thoraxrex-book.txt` (`h2h/v218/` is the build currently installed in the viewer — the same program with net q19 (self-play data plus 4,496 strong-player games), installed 26 Nov 2026 as a trial against Antsy and Formi: level with q17 in self-play, 102.5/200, and much better on the turning-point test in `cloud-tools/loss-analysis/review-1125.md`; `h2h/v216/` is the same program with net q17, which scored 228.5/400 against net q15 over two matches; `h2h/v215/` is the v214 program with net q15, which scored 225.5/400 against net q12; `h2h/v214/` is version 1.0 with a faster net evaluation, same net and same scores as v213; `h2h/v213/` is version 1.0 as first built for Apple Silicon, with its net; `tools/thoraxrex-book-v7.txt` is the installed book: v5 without the White line wP; bG1 -wP; wA1 wP/, lost 7 times out of 7 on 25 Nov). Then add the program to
 the viewer on its Engine tab. It is listed as "FoulBrood Book" when it finds a book and "FoulBrood" without one.
 
 ## What it is
