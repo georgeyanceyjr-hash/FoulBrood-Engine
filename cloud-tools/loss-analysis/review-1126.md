@@ -42,3 +42,29 @@ for q14a/q19. tools/arch_new.jsonl (3,003 games) is the unused part.
 - q20b = same, with the unused games twice and HotFrass's own 58 bot games three times
 - each plays q19 for 200 games at 1 s; nothing is installed automatically
 - afterwards: run calrun.py on both nets
+
+## q20 (trained 26 Nov, 15:40 MST)
+| Test | q17 | q19 | q20 |
+|---|---|---|---|
+| Calibration, positions from losses (lower is better) | +35 | +26 | +22 |
+| Calibration, positions from wins | +79 | +77 | +78 |
+| Picks the move Antsy/Formi played, 160 positions, depth 6 | - | 24% | 27% |
+
+## Is the rating wrong, or is HotFrass outplayed afterwards?
+300 positions from decisive Antsy-v-Formi games (moves 13-26), q19 at depth 4 (peerrun.py):
+| q19 rating for the side to move | Positions | Side to move won |
+|---|---|---|
+| -100..-41 | 113 | 22% |
+| -40..-16 | 23 | 48% |
+| -15..+14 | 18 | 72% |
+| +15..+39 | 18 | 44% |
+| +40..+69 | 23 | 70% |
+| +70..+100 | 105 | 78% |
+
+The rating points the right way but is overconfident: positions it calls +70 or better are still lost 22% of the
+time between equal top bots. So a +30 rating in HotFrass's own games is not proof of a blind spot; much of the
+gap is that Antsy and Formi play the following moves better.
+
+## Move-agreement benchmark (new): agreeset.json
+160 positions from Antsy-v-Formi games with the move the bot played. agreerun.py reports how often the engine picks
+that move at a fixed depth. A fast way to compare engine changes against top-bot play without playing rated games.
