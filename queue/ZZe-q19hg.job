@@ -1,0 +1,34 @@
+# q19: the depth-6 self-play data (as q17/q18) PLUS the 4,496 strong-player games from hivegame.com.
+# Why: on 16 positions from HotFrass's losses to Antsy and Formi on 25 Nov where the score was about to collapse,
+# q12, q15 and q17 all rate HotFrass about +42 (the truth two moves later averaged -44), while q14a - the one net
+# trained with the strong-player games - rates them +18. Self-play alone does not fix that blind spot.
+#   q19  = sp2..sp14 + strong-player games once        q19b = sp2..sp14 + strong-player games twice
+# Same recipe otherwise (64x32, 294 extra inputs, weight decay .02, 8 epochs). Each then plays q17: 200 games at 1 s.
+# Nothing here is installed automatically.
+export PATH="$HOME/.cargo/bin:$PATH"
+PY=$PWD/.venv-training/bin/python3
+B=h2h/v216
+D=data/pp
+[ -x $B/thoraxrex ] && [ -x $PY ] && [ -s $D/hg_all.csv ] || exit 1
+A=$D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv,$D/sp11_train.csv,$D/sp12_train.csv,$D/sp13_train.csv
+[ -s $D/sp14_train.csv ] && A=$A,$D/sp14_train.csv
+H=$D/hg_all.csv
+EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn.py 58 $A,$H,val:$D/sp5_val.csv tools/net_q19.txt 64 32 0.5 8 > results/tq19.log 2>&1
+EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn.py 58 $A,$H,$H,val:$D/sp5_val.csv tools/net_q19b.txt 64 32 0.5 8 > results/tq19b.log 2>&1
+mkdir -p results/err
+unset TR_POLICY TR_CLIMB TR_NET
+export TR_BOOK=none
+for N in q19 q19b; do
+  [ -s tools/net_$N.txt ] || continue
+  TAG=$(date +%m%d-%H%M)
+  PIDS=()
+  for s in 1 2 3 4; do
+    ( TR_NET=$PWD/tools/net_$N.txt MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_NET=$PWD/tools/net_q17.txt" MATCH_GAMES=results/games-$N-q17-$TAG-$s.txt \
+      python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 50 1 Base+MLP $((s*431+380000)) > results/par-$N-q17-$TAG-$s.log 2>&1 ) &
+    PIDS+=($!)
+  done
+  wait $PIDS
+  python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+  sleep 61
+done
+exit 0

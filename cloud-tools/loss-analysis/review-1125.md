@@ -34,3 +34,19 @@ plus those games.
 
 Done on 25 Nov: book v7 (tools/thoraxrex-book-v7.txt) drops wA1 wP/ after wP; bG1 -wP in every orientation, leaving
 wQ wP- (82%) and wM wP/ (18%); installed in the viewer's FoulBrood Book engine.
+
+## 26 Nov: overnight nets on the same test
+
+The timed (2 s) version of the test turned out noisy: q14a scored +18 in one run and +36 in another. At a fixed
+depth of 6 (`turnrun.py -6 ...`) repeat runs agree within a couple of points, so these are the numbers to use:
+
+| net | trained on | turning points (depth 6) | controls | vs q17, 200 games |
+|---|---|---|---|---|
+| q17 (installed) | self-play | +30, +32 (two runs) | +99 | - |
+| q18 | self-play + one more round | +30 | +99 | 103.0 |
+| q14a | older self-play + strong-player games | +19 | +100 | - |
+| q19 | self-play + strong-player games once | +11 | +99 | 102.5 |
+| q19b | self-play + strong-player games twice | +13 | +99 | 98.5 |
+
+q18 did not reach the 110/200 bar and was not installed; another self-play round has stopped paying.
+q19 is level with q17 in self-play and clearly less blind on the turning points. Not installed: waiting for the user.

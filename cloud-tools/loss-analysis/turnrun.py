@@ -14,7 +14,7 @@ def probe(moves,secs,env):
     for m in moves:
         p.stdin.write('play '+m+'\n');p.stdin.flush();r=rd()
         if any(x.startswith(('err','invalid')) for x in r): p.kill();return None
-    p.stdin.write('bestmove time 00:00:%02d\n'%secs);p.stdin.flush();o=rd();p.stdin.close();err=p.stderr.read();p.wait()
+    p.stdin.write(('bestmove depth %d\n'%(-secs)) if secs<0 else ('bestmove time 00:00:%02d\n'%secs));p.stdin.flush();o=rd();p.stdin.close();err=p.stderr.read();p.wait()
     fin=[l for l in err.splitlines() if 'kind=final' in l]
     if not fin:return None
     d=dict(x.split('=',1) for x in fin[-1].split(';')[1:])
