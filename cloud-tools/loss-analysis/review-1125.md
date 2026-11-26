@@ -7,7 +7,7 @@ What the losses have in common (losses-1125-q17.jsonl has the moves and the engi
 
 - As White the engine rates itself well ahead (+80 to +97 on the viewer scale) until about move 25-40, then the score
   collapses within a few moves. It does not see the trouble until the search reaches it.
-- In 15 of 20 losses an enemy beetle or mosquito had climbed before the score turned; in about 16 the opponent's beetle
+- In 15 of 20 losses an enemy beetle or mosquito had climbed before the score turned; in 17 the opponent's beetle or mosquito
   ends up on top of OUR pillbug, which switches off the queen's defender.
 - The book repeats itself: as White, the line wP; bG1 -wP; wA1 wP/; bA1 \bG1; wQ wA1\; bB1 /bA1 was lost 4 times out of 4,
   and wP; bG1 -wP; wA1 wP/; bB1 -bG1; wQ wA1\; bQ -bB1 3 times out of 3.
