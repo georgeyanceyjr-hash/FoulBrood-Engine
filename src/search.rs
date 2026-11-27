@@ -9,7 +9,13 @@ use std::time::{Duration, Instant};
 
 pub const MATE: i32 = 30000;
 pub const INF: i32 = 32000;
-const CONTEMPT: i32 = 25;
+/// Contempt: how much the side to move at the root dislikes a draw (engine units; 25 by default).
+/// TR_CONTEMPT overrides it: the bot sets it per game from the rating gap (negative = happy to draw
+/// a stronger player), clamped to -100..100.
+fn contempt() -> i32 {
+    static D: std::sync::OnceLock<i32> = std::sync::OnceLock::new();
+    *D.get_or_init(|| std::env::var("TR_CONTEMPT").ok().and_then(|v| v.parse::<i32>().ok()).map(|v| v.clamp(-100, 100)).unwrap_or(25))
+}
 const LMR_A: f64 = 1.2;
 const LMR_B: f64 = 1.8;
 pub static QN: AtomicU64 = AtomicU64::new(0);
@@ -792,7 +798,8 @@ impl<'a> Worker<'a> {
     /// Draw score with contempt: the engine dislikes draws a little.
     #[inline(always)]
     fn draw_score(&self, ply: usize) -> i32 {
-        if ply % 2 == 0 { -CONTEMPT } else { CONTEMPT }
+        let c = contempt();
+        if ply % 2 == 0 { -c } else { c }
     }
 
     /// Quiescence over queen-pressure moves (moves that add a neighbour to the
