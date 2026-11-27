@@ -109,3 +109,10 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
 - Next: ZZo-resources (v220: hash sized from RAM, 512 MB on the Mac; then 12 threads v 8), ZZp-qtorch
   (eval nets trained on the GPU: q21 64x32, q21w 128x32, q21x 256x64). ZZn stopped at a typo in the new
   trainer before training; fixed and re-queued as ZZp.
+
+## 27 Nov afternoon: machine resources (ZZo)
+- v220 (hash sized from RAM: 512 MB on the 24 GB Mac, was 64 MB; UHP option AnalysisMode for whole-time analysis)
+  v v219, both 1 thread, 2 s: 102.5/200 (+96 =13 -91). Even at this speed, no harm.
+- Installed 27 Nov 14:30 with the user's OK: h2h/v220 binary into FoulBroodData/Engines/ThoraxRex and
+  ThoraxRex-NoBook (net q19, policy v4, book v8 unchanged). Previous engine in Engines/backup-v219.
+- 12 threads v 8 threads (v220, one game at a time, 1 s): 38-40 after 78 games, running.
