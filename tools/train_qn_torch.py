@@ -42,7 +42,7 @@ X -= mean; X /= std  # in place: only one copy on the CPU side
 Xt = torch.from_numpy(X).to(dev); Yt = torch.from_numpy(Y).to(dev)
 if dev != 'cpu': del X
 tit = torch.from_numpy(ti).to(dev); vit = torch.from_numpy(vi).to(dev)
-print(f'loaded {len(X)} rows, {ncols} inputs in {time.time()-t0:.0f}s, device {dev}', flush=True)
+print(f'loaded {total} rows, {ncols} inputs in {time.time()-t0:.0f}s, device {dev}', flush=True)
 
 torch.manual_seed(1)
 class Net(nn.Module):

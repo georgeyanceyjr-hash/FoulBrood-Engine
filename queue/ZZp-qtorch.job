@@ -1,3 +1,4 @@
+# Re-run of ZZn (that run stopped at a typo in the trainer before training; fixed 27 Nov 11:40).
 # Eval net on the GPU (27 Nov). tools/train_qn_torch.py: same inputs and net file as train_qn.py, trained with
 # PyTorch on the M4 Pro's GPU (MPS), bigger batches, one-cycle learning rate, keeps the best-validation epoch.
 # Same data as q19 (self-play sp2..sp14 + strong-player games), 16 epochs:

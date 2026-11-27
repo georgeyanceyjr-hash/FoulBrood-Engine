@@ -99,3 +99,13 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
 - Installed in FoulBroodData/Engines/ThoraxRex (bot, "FoulBrood Book") and ThoraxRex-NoBook: h2h/v219 binary,
   net q19 (unchanged), tools/policy_v4.txt as thoraxrex-policy.txt (found beside the binary). TR_POLROOT stays off.
 - Previous engine kept in FoulBroodData/Engines/backup-v218 (binary, net, book).
+
+## 27 Nov: tuning the installed engine (ZZm-poltune), all v installed v219 + policy v4, 200 games at 1 s
+- climb (TR_CLIMB=1, what the bot used): 86.5/200 (+77 =19 -104). Harmful. Removed from the bot launcher
+  (the viewer no longer writes it) with the user's OK.
+- polk5 (TR_POLK=5): 92.0/200 (+86 =12 -102). pold3 (TR_POLD=3): 89.5/200 (+80 =19 -101). Defaults stay (K 3, D 4).
+- Policy v5 (d128 L4, 18 epochs): validation top-1 36.8%, top-3 64.4% - same as v4 (36.7%). Its match and pold6
+  were cancelled (results/skip.txt) to free the Mac. Nothing to confirm or install from this job.
+- Next: ZZo-resources (v220: hash sized from RAM, 512 MB on the Mac; then 12 threads v 8), ZZp-qtorch
+  (eval nets trained on the GPU: q21 64x32, q21w 128x32, q21x 256x64). ZZn stopped at a typo in the new
+  trainer before training; fixed and re-queued as ZZp.
