@@ -1,0 +1,21 @@
+# Release numbers (27 Nov): FoulBrood (installed engine, NO opening book) v Nokamute, 400 games at 2 s a move,
+# both single-threaded, alternating colours, 2 random opening plies, 8 shards of 50. Games kept for the repo.
+# Must finish before 06:00 (skipped if started after 02:30).
+export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+H=$(date +%H%M); [ "$H" -ge 0230 ] && [ "$H" -lt 1200 ] && exit 0
+E=$HOME/Documents/Codex/FoulBroodData/Engines
+FB=$E/ThoraxRex/thoraxrex; NK=$E/Nokamute/nokamute
+[ -x $FB ] && [ -x $NK ] || exit 1
+mkdir -p results/err
+unset TR_POLICY TR_CLIMB TR_NET TR_POLROOT TR_POLROOTCAP TR_POLD TR_POLK TR_POLMODE TR_HASHMB TR_MAXTHREADS TR_CONTEMPT
+export TR_BOOK=none
+TAG=$(date +%m%d-%H%M)
+PIDS=()
+for s in 1 2 3 4 5 6 7 8; do
+  ( MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_GAMES=results/games-fb-nokamute-$TAG-$s.txt \
+    python3 -u tools/match.py $FB "$NK" 50 2 Base+MLP $((s*449+500000)) > results/par-fb-nokamute-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait "${PIDS[@]}"
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+exit 0
