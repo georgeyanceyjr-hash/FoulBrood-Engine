@@ -93,3 +93,9 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
   Meets the first bar. Confirmation (200 more games, new seeds) queued as ZZk-pol4conf; install only if combined >= 55%.
 - Confirmation (v4polconf, new seeds): 112.0/200 (+104 =16 -80). Combined 222/400 = 55.5% - meets the install rule.
   Not installed yet: waiting for the user's go-ahead (install = v219 binary + policy_v4 as thoraxrex-policy.txt).
+
+## Installed 27 Nov: v219 + policy v4 (move ordering only)
+- Matches v v218 at 1 s: 110.0/200 then 112.0/200 (new seeds) = 222/400, 55.5%. Meets the install rule.
+- Installed in FoulBroodData/Engines/ThoraxRex (bot, "FoulBrood Book") and ThoraxRex-NoBook: h2h/v219 binary,
+  net q19 (unchanged), tools/policy_v4.txt as thoraxrex-policy.txt (found beside the binary). TR_POLROOT stays off.
+- Previous engine kept in FoulBroodData/Engines/backup-v218 (binary, net, book).
