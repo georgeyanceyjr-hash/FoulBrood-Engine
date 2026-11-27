@@ -3,7 +3,7 @@
 # PyTorch on the M4 Pro's GPU (MPS), bigger batches, one-cycle learning rate, keeps the best-validation epoch.
 # Same data as q19 (self-play sp2..sp14 + strong-player games), 16 epochs:
 #   q21 = 64x32 (q19's size: does the GPU trainer alone help?)   q21w = 128x32   q21x = 256x64
-# Each (with policy v4) plays the installed engine (v219 + policy v4 + q19): 200 games at 1 s, 4 shards.
+# Each (with policy v4) plays the installed engine (v219 + policy v4 + q19): 200 games at 1 s, 8 shards (only one engine of a pair thinks at a time, so 8 games keep ~8 of the 12 cores busy).
 # Bigger nets evaluate more slowly, so they must win despite searching less. Install rule as usual
 # (>=110/200, then a 200-game confirmation, combined >=55%). Nothing is installed automatically.
 export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
@@ -26,12 +26,12 @@ for N in q21 q21w q21x; do
   [ -s tools/net_$N.txt ] || continue
   TAG=$(date +%m%d-%H%M)
   PIDS=()
-  for s in 1 2 3 4; do
+  for s in 1 2 3 4 5 6 7 8; do
     ( TR_NET=$PWD/tools/net_$N.txt TR_POLICY=$P4 MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_POLICY=$P4" MATCH_GAMES=results/games-$N-i219-$TAG-$s.txt \
-      python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 50 1 Base+MLP $((s*437+440000)) > results/par-$N-i219-$TAG-$s.log 2>&1 ) &
+      python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 25 1 Base+MLP $((s*437+440000)) > results/par-$N-i219-$TAG-$s.log 2>&1 ) &
     PIDS+=($!)
   done
-  wait $PIDS
+  wait "${PIDS[@]}"
   python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
   sleep 61
 done
