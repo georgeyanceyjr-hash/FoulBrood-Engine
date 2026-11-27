@@ -36,6 +36,8 @@ echo "install: $OK" | tee -a results/contempt-scores.txt
 if [ "$OK" = yes ]; then
   E=$HOME/Documents/Codex/FoulBroodData/Engines
   mkdir -p $E/backup-v220 && cp -p $E/ThoraxRex/thoraxrex $E/backup-v220/thoraxrex
-  cp $NEW/thoraxrex $E/ThoraxRex/thoraxrex && cp $NEW/thoraxrex $E/ThoraxRex-NoBook/thoraxrex && echo "installed v221" | tee -a results/contempt-scores.txt
+  # a new file moved into place (copying over a running/checked executable in place makes macOS kill it at launch)
+  for D in ThoraxRex ThoraxRex-NoBook; do cp $NEW/thoraxrex $E/$D/thoraxrex.new && chmod 755 $E/$D/thoraxrex.new && mv -f $E/$D/thoraxrex.new $E/$D/thoraxrex; done
+  echo "installed v221" | tee -a results/contempt-scores.txt
 fi
 exit 0
