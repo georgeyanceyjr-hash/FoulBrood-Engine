@@ -1,0 +1,37 @@
+# Eval net on the GPU (27 Nov). tools/train_qn_torch.py: same inputs and net file as train_qn.py, trained with
+# PyTorch on the M4 Pro's GPU (MPS), bigger batches, one-cycle learning rate, keeps the best-validation epoch.
+# Same data as q19 (self-play sp2..sp14 + strong-player games), 16 epochs:
+#   q21 = 64x32 (q19's size: does the GPU trainer alone help?)   q21w = 128x32   q21x = 256x64
+# Each (with policy v4) plays the installed engine (v219 + policy v4 + q19): 200 games at 1 s, 4 shards.
+# Bigger nets evaluate more slowly, so they must win despite searching less. Install rule as usual
+# (>=110/200, then a 200-game confirmation, combined >=55%). Nothing is installed automatically.
+export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+PY=$PWD/.venv-training/bin/python3
+B=h2h/v219
+D=data/pp
+[ -x $B/thoraxrex ] && [ -x $PY ] && [ -s tools/policy_v4.txt ] && [ -s $D/hg_all.csv ] || exit 1
+A=$D/sp2_train.csv,$D/sp3_train.csv,$D/sp4_train.csv,$D/sp5_train.csv,$D/sp6_train.csv,$D/sp7_train.csv,$D/sp8_train.csv,$D/sp9_train.csv,$D/sp10_train.csv,$D/sp11_train.csv,$D/sp12_train.csv,$D/sp13_train.csv
+[ -s $D/sp14_train.csv ] && A=$A,$D/sp14_train.csv
+H=$D/hg_all.csv
+tq() { [ -s tools/net_$1.txt ] || EXTRA=294 CSVX=294 WD=0.02 $PY -u tools/train_qn_torch.py 58 $A,$H,val:$D/sp5_val.csv tools/net_$1.txt $2 $3 0.5 16 > results/t$1.log 2>&1; }
+tq q21 64 32
+tq q21w 128 32
+tq q21x 256 64
+mkdir -p results/err
+unset TR_POLICY TR_CLIMB TR_NET TR_POLROOT TR_POLROOTCAP TR_POLD TR_POLK TR_POLMODE
+export TR_BOOK=none
+P4=$PWD/tools/policy_v4.txt
+for N in q21 q21w q21x; do
+  [ -s tools/net_$N.txt ] || continue
+  TAG=$(date +%m%d-%H%M)
+  PIDS=()
+  for s in 1 2 3 4; do
+    ( TR_NET=$PWD/tools/net_$N.txt TR_POLICY=$P4 MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_POLICY=$P4" MATCH_GAMES=results/games-$N-i219-$TAG-$s.txt \
+      python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 50 1 Base+MLP $((s*437+440000)) > results/par-$N-i219-$TAG-$s.log 2>&1 ) &
+    PIDS+=($!)
+  done
+  wait $PIDS
+  python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+  sleep 61
+done
+exit 0
