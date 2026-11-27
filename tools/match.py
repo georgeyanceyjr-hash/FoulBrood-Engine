@@ -44,6 +44,13 @@ def play_game(white, black, gt, opening, secs, maxply=400):
             return 'Draw', moves
 
 def main():
+    # A queued match can be cancelled: put part of its games-file name on a line of results/skip.txt.
+    try:
+        tags = [t.strip() for t in open('results/skip.txt') if t.strip()]
+        if any(t in os.environ.get('MATCH_GAMES', '') for t in tags):
+            print('skipped (results/skip.txt)'); return
+    except OSError:
+        pass
     a, b, n, secs = sys.argv[1], sys.argv[2], int(sys.argv[3]), float(sys.argv[4])
     gt = sys.argv[5] if len(sys.argv) > 5 else 'Base+MLP'
     rng = random.Random(int(sys.argv[6]) if len(sys.argv) > 6 else 1)
