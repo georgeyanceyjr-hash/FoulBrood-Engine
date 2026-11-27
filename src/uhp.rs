@@ -21,17 +21,21 @@ pub struct Engine {
 
 impl Engine {
     pub fn new() -> Engine {
-        let threads = std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1).min(8);
+        // Uses what the machine has: one search thread per core (up to TR_MAXTHREADS, default 8)
+        // and a position memory sized from the computer's RAM (see auto_hash_mb). Viewers can override both.
+        let cap = std::env::var("TR_MAXTHREADS").ok().and_then(|v| v.parse::<usize>().ok()).filter(|n| (1..=64).contains(n)).unwrap_or(8);
+        let threads = std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1).min(cap);
+        let hash_mb = auto_hash_mb();
         Engine {
             root: None,
             board: Board::new(GameType::default()),
             moves: Vec::new(),
             undos: Vec::new(),
             started: false,
-            searcher: Searcher::new(64),
+            searcher: Searcher::new(hash_mb),
             report: true,
             threads,
-            hash_mb: 64,
+            hash_mb,
             use_book: true,
         }
     }
@@ -275,7 +279,7 @@ impl Engine {
                     if e.report { "True" } else { "False" }
                 )),
                 "Threads" => Some(format!("Threads;int;{};{};1;64", e.threads, e.threads)),
-                "HashMB" => Some(format!("HashMB;int;{};64;1;4096", e.hash_mb)),
+                "HashMB" => Some(format!("HashMB;int;{};{};1;4096", e.hash_mb, auto_hash_mb())),
                 "UseBook" => Some(format!("UseBook;bool;{};True", if e.use_book { "True" } else { "False" })),
                 _ => None,
             }
@@ -386,4 +390,40 @@ fn parse_time(s: &str) -> Option<Duration> {
         return None;
     }
     Some(Duration::from_secs(h * 3600 + m * 60) + Duration::from_secs_f64(sec))
+}
+
+/// Installed memory in bytes, if the system will say (macOS, Linux, Windows).
+fn total_ram() -> Option<u64> {
+    #[cfg(target_os = "macos")]
+    {
+        let out = std::process::Command::new("/usr/sbin/sysctl").args(["-n", "hw.memsize"]).output().ok()?;
+        return String::from_utf8_lossy(&out.stdout).trim().parse().ok();
+    }
+    #[cfg(target_os = "linux")]
+    {
+        let text = std::fs::read_to_string("/proc/meminfo").ok()?;
+        let kb: u64 = text.lines().find(|l| l.starts_with("MemTotal:"))?.split_whitespace().nth(1)?.parse().ok()?;
+        return Some(kb * 1024);
+    }
+    #[cfg(windows)]
+    {
+        #[repr(C)]
+        struct MemoryStatusEx { len: u32, load: u32, total_phys: u64, avail_phys: u64, total_page: u64, avail_page: u64, total_virt: u64, avail_virt: u64, avail_ext: u64 }
+        #[link(name = "kernel32")]
+        extern "system" { fn GlobalMemoryStatusEx(buf: *mut MemoryStatusEx) -> i32; }
+        let mut m = MemoryStatusEx { len: std::mem::size_of::<MemoryStatusEx>() as u32, load: 0, total_phys: 0, avail_phys: 0, total_page: 0, avail_page: 0, total_virt: 0, avail_virt: 0, avail_ext: 0 };
+        return if unsafe { GlobalMemoryStatusEx(&mut m) } != 0 { Some(m.total_phys) } else { None };
+    }
+    #[allow(unreachable_code)]
+    None
+}
+
+/// Position memory (hash) in MB: TR_HASHMB if set, else about 1/32 of RAM as a power of two,
+/// between 64 MB and 1024 MB (64 MB when the RAM can't be read). A 24 GB Mac gets 512 MB.
+pub fn auto_hash_mb() -> usize {
+    if let Some(n) = std::env::var("TR_HASHMB").ok().and_then(|v| v.parse::<usize>().ok()).filter(|n| (1..=4096).contains(n)) {
+        return n;
+    }
+    let mb = total_ram().map(|b| (b / 32 / (1024 * 1024)) as usize).unwrap_or(64).clamp(64, 1024);
+    1 << (usize::BITS - 1 - mb.leading_zeros()) // round down to a power of two
 }

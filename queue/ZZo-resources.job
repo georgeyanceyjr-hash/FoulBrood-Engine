@@ -1,0 +1,29 @@
+# Use the whole machine (27 Nov). v220 = v219 + position memory (hash) sized from the computer's RAM
+# (about 1/32, power of two, 64..1024 MB: 512 MB on this 24 GB Mac; was a fixed 64 MB) and a TR_MAXTHREADS cap.
+#  A) hash: v220 vs v219, both 1 thread, 200 games at 2 s (4 shards). Should be >=100/200 (no harm), ideally better.
+#  B) threads: v220 with 12 threads vs v220 with 8, one game at a time, 200 games at 1 s.
+#     If 12 wins clearly, the release lifts the 8-thread cap. Both use policy v4 and the installed net (q19).
+# Nothing is installed automatically.
+export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+OLD=h2h/v219; NEW=h2h/v220
+[ -x $OLD/thoraxrex ] && [ -s tools/policy_v4.txt ] || exit 1
+cargo build --release > results/build-v220.log 2>&1 || { echo BUILD FAILED; exit 1; }
+mkdir -p $NEW results/err && cp target/release/thoraxrex $NEW/ && cp $OLD/thoraxrex-net.txt $NEW/
+unset TR_POLICY TR_CLIMB TR_NET TR_POLROOT TR_POLROOTCAP TR_POLD TR_POLK TR_POLMODE TR_HASHMB TR_MAXTHREADS
+export TR_BOOK=none
+P4=$PWD/tools/policy_v4.txt
+TAG=$(date +%m%d-%H%M)
+PIDS=()
+for s in 1 2 3 4; do
+  ( TR_POLICY=$P4 MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=none,TR_POLICY=$P4" MATCH_GAMES=results/games-hash-i219-$TAG-$s.txt \
+    python3 -u tools/match.py $NEW/thoraxrex "$PWD/$OLD/thoraxrex" 50 2 Base+MLP $((s*439+460000)) > results/par-hash-i219-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait $PIDS
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+sleep 61
+TAG=$(date +%m%d-%H%M)
+TR_POLICY=$P4 MATCH_RANDPLIES=2 MATCH_ERRDIR=results/err MATCH_THREADS_A=12 MATCH_THREADS_B=8 MATCH_OPPENV="TR_BOOK=none,TR_POLICY=$P4" MATCH_GAMES=results/games-t12-t8-$TAG-1.txt \
+  python3 -u tools/match.py $NEW/thoraxrex "$PWD/$NEW/thoraxrex" 200 1 Base+MLP 470000 > results/par-t12-t8-$TAG-1.log 2>&1
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+exit 0
