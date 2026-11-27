@@ -81,3 +81,6 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
 - New: TR_POLROOT / TR_POLROOTCAP in search.rs (root handicap from the policy). Off by default.
 - Queued on the Mac: ZZf2-policy4 (policy v4: 14,096 games, winner's + top-bot moves, dropout, best epoch kept),
   ZZg-polroot (root 50, root 100, policy-only, each 200 games v v218 at 1 s).
+- q20b v q19 final: 100.0/200 (+92 =16 -92). Not installed. Neither extra-data net beats q19 at 1 s.
+- v3b matches cancelled at the user's request. Policy v4 first run failed (no torch in ThoraxRex/.venv-training); the
+  job now installs torch there. Dump: 14,096 games, 431,788 positions. Training restarted 00:50 UTC 27 Nov.
