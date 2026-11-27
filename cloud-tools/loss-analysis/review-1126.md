@@ -68,3 +68,16 @@ gap is that Antsy and Formi play the following moves better.
 ## Move-agreement benchmark (new): agreeset.json
 160 positions from Antsy-v-Formi games with the move the bot played. agreerun.py reports how often the engine picks
 that move at a fixed depth. A fast way to compare engine changes against top-bot play without playing rated games.
+
+## Evening: q20 / q20b and the move-policy net
+
+- q20 (adds 3,003 unused Antsy/Formi games) v q19: 100.5/200. Not installed.
+- q20b (those games x2, HotFrass's own bot games x3): match v q19 in progress, 80.5/148 at the time of writing.
+  Calibration at depth 6: positions from losses +7 (q19 +26), from wins +79. In-sample (q20b trained on these games).
+- Move agreement with Antsy/Formi at depth 6, 160 archive positions: no policy 22-24%, policy_v3b for ordering 31%,
+  new root prior (TR_POLROOT) 47-53%. But those positions are in the policy's training games.
+- Unseen positions (holdset.json: 200 Antsy/Formi moves from HotFrass's games of 25-26 Nov): search 32%, raw policy 32%,
+  search + root prior 32-33%. policy_v3b memorised its games (50% on seen, 32% on unseen).
+- New: TR_POLROOT / TR_POLROOTCAP in search.rs (root handicap from the policy). Off by default.
+- Queued on the Mac: ZZf2-policy4 (policy v4: 14,096 games, winner's + top-bot moves, dropout, best epoch kept),
+  ZZg-polroot (root 50, root 100, policy-only, each 200 games v v218 at 1 s).

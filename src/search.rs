@@ -142,6 +142,7 @@ struct Worker<'a> {
     moves: Vec<Vec<Move>>,
     scores: Vec<Vec<i32>>,
     pol: Vec<Vec<f32>>,
+    rootb: Vec<(Move, i32)>,
     root_ply: u32,
     pv_root: Move,
     root_best: Move,
@@ -334,6 +335,7 @@ impl<'a> Worker<'a> {
             moves: (0..MAX_PLY).map(|_| Vec::with_capacity(256)).collect(),
             scores: (0..MAX_PLY).map(|_| Vec::with_capacity(256)).collect(),
             pol: (0..MAX_PLY).map(|_| Vec::with_capacity(256)).collect(),
+            rootb: Vec::new(),
             root_ply,
             pv_root: Move::NULL,
             root_best: Move::NULL,
@@ -597,6 +599,16 @@ impl<'a> Worker<'a> {
                 let mut idx: Vec<usize> = (0..lg.len()).collect();
                 idx.sort_by(|a, b| lg[*b].partial_cmp(&lg[*a]).unwrap());
                 let k = pol_k();
+                if ply == 0 {
+                    self.rootb.clear();
+                    let c = pol_root();
+                    if c > 0.0 {
+                        for i in 0..lg.len() {
+                            let bn = (c * (lg[i] - mx)).max(-pol_root_cap()) as i32;
+                            self.rootb.push((self.moves[ply][i], bn));
+                        }
+                    }
+                }
                 for (rank, &i) in idx.iter().enumerate() {
                     if self.moves[ply][i] == tt_move || self.moves[ply][i].is_pass() {
                         continue;
@@ -678,7 +690,21 @@ impl<'a> Worker<'a> {
             }
             let new_depth = depth - 1 + ext;
             let mut score;
-            if i == 0 {
+            // root prior: a move the policy net dislikes must beat the others by its handicap
+            let rb = if ply == 0 && !self.rootb.is_empty() { self.rootb.iter().find(|x| x.0 == m).map(|x| x.1).unwrap_or(0) } else { 0 };
+            if rb != 0 {
+                let (a2, b2) = (alpha - rb, beta - rb);
+                let mut raw;
+                if i == 0 {
+                    raw = -self.negamax(new_depth, -b2, -a2, ply + 1, pv);
+                } else {
+                    raw = -self.negamax(new_depth, -a2 - 1, -a2, ply + 1, false);
+                    if raw > a2 && raw < b2 {
+                        raw = -self.negamax(new_depth, -b2, -a2, ply + 1, true);
+                    }
+                }
+                score = if raw.abs() > MATE - 1000 { raw } else { raw + rb };
+            } else if i == 0 {
                 score = -self.negamax(new_depth, -beta, -alpha, ply + 1, pv);
             } else {
                 // LMR
@@ -918,6 +944,14 @@ fn pol_k() -> usize {
 fn pol_mode() -> i32 {
     static D: std::sync::OnceLock<i32> = std::sync::OnceLock::new();
     *D.get_or_init(|| std::env::var("TR_POLMODE").ok().and_then(|v| v.parse().ok()).unwrap_or(0))
+}
+fn pol_root() -> f32 {
+    static D: std::sync::OnceLock<f32> = std::sync::OnceLock::new();
+    *D.get_or_init(|| std::env::var("TR_POLROOT").ok().and_then(|v| v.parse().ok()).unwrap_or(0.0))
+}
+fn pol_root_cap() -> f32 {
+    static D: std::sync::OnceLock<f32> = std::sync::OnceLock::new();
+    *D.get_or_init(|| std::env::var("TR_POLROOTCAP").ok().and_then(|v| v.parse().ok()).unwrap_or(200.0))
 }
 fn pol_keep_p() -> f32 {
     static D: std::sync::OnceLock<f32> = std::sync::OnceLock::new();

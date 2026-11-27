@@ -1,0 +1,4 @@
+HOLD-nopol depth 6: picks the move Antsy/Formi played in 64 of 200 positions (32%); when the mover went on to win: 32%
+HOLD-pol3b depth 6: picks the move Antsy/Formi played in 64 of 200 positions (32%); when the mover went on to win: 32%
+HOLD-root50 depth 6: picks the move Antsy/Formi played in 66 of 200 positions (33%); when the mover went on to win: 33%
+HOLD-root100c1000 depth 6: picks the move Antsy/Formi played in 63 of 200 positions (32%); when the mover went on to win: 32%

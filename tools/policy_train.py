@@ -5,7 +5,7 @@ DUMP.txt comes from `thoraxrex policydump`. Positions are kept in file order; th
 are held out for validation. Prints top-1 / top-3 accuracy per epoch and writes weights in the text format that
 policy::load() reads.
 """
-import sys, math, random, time
+import sys, math, random, time, os
 import numpy as np
 import torch, torch.nn as nn, torch.nn.functional as F
 
@@ -17,6 +17,10 @@ L = int(sys.argv[5]) if len(sys.argv) > 5 else 3
 H = int(sys.argv[6]) if len(sys.argv) > 6 else 4
 FF = int(sys.argv[7]) if len(sys.argv) > 7 else 128
 BS = 128
+import os, copy
+DROP = float(os.environ.get('POL_DROP', '0'))
+LS = float(os.environ.get('POL_LS', '0'))
+WD = float(os.environ.get('POL_WD', '1e-4'))
 DEV = [None]
 dev = 'mps' if torch.backends.mps.is_available() else ('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(1); random.seed(1); np.random.seed(1)
@@ -56,6 +60,8 @@ with open(path) as f:
         except Exception:
             continue
         data.append((tok, distmat(cells), mv, y))
+        if len(data) >= int(os.environ.get('POL_MAX', '10000000')):
+            break
 print(f'loaded {len(data)} positions in {time.time()-t0:.0f}s, device {dev}', flush=True)
 nval = max(1, int(len(data) * 0.08))
 train, val = data[:-nval], data[-nval:]
@@ -91,8 +97,8 @@ class Layer(nn.Module):
         sc = sc + s.dist_bias[:, dist].permute(1, 0, 2, 3)  # (B,H,n,n)
         sc = sc.masked_fill(~tmask[:, None, None, :], -1e9)
         a = torch.softmax(sc, -1) @ v
-        x = x + s.o(a.transpose(1, 2).reshape(B, n, D))
-        return x + s.f2(F.gelu(s.f1(s.ln2(x)), approximate='tanh'))
+        x = x + F.dropout(s.o(a.transpose(1, 2).reshape(B, n, D)), DROP, s.training)
+        return x + F.dropout(s.f2(F.gelu(s.f1(s.ln2(x)), approximate='tanh')), DROP, s.training)
 
 
 class Policy(nn.Module):
@@ -122,7 +128,7 @@ class Policy(nn.Module):
 
 DEV[0] = dev
 model = Policy().to(dev)
-opt = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
+opt = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=WD)
 steps = EPOCHS * math.ceil(len(train) / BS)
 sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=1e-3, total_steps=steps, pct_start=0.05)
 print(f'params {sum(p.numel() for p in model.parameters())}, train {len(train)}, val {len(val)}', flush=True)
@@ -141,6 +147,7 @@ def evaluate():
     return c1 / tot, c3 / tot, loss / tot
 
 
+best_vl = 1e9; best_sd = None; best_ep = 0
 for ep in range(EPOCHS):
     # bucket by size for efficient padding
     order = list(range(len(train))); random.shuffle(order)
@@ -154,12 +161,15 @@ for ep in range(EPOCHS):
     for bi in batches:
         b = collate([train[j] for j in bi])
         z = model(*b[:7])
-        loss = F.cross_entropy(z, b[7])
+        loss = F.cross_entropy(z, b[7], label_smoothing=LS)
         opt.zero_grad(); loss.backward(); nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sched.step()
         tl += loss.item()
     a1, a3, vl = evaluate()
+    if ep == 0 or vl < best_vl:
+        best_vl = vl; best_sd = copy.deepcopy(model.state_dict()); best_ep = ep + 1
     print(f'epoch {ep+1}: train loss {tl/len(batches):.3f}  val loss {vl:.3f}  top1 {a1:.3f}  top3 {a3:.3f}  ({time.time()-t0:.0f}s)', flush=True)
 
+model.load_state_dict(best_sd); print('keeping epoch', best_ep, 'val loss %.3f' % best_vl, flush=True)
 # export (input-major matrices = Linear.weight.T)
 model = model.cpu(); DEV[0] = 'cpu'
 def W(lin): return lin.weight.detach().t().contiguous().view(-1).tolist()
