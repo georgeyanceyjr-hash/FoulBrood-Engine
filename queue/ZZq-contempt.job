@@ -3,10 +3,12 @@
 # No-harm checks against the installed engine (v220, default 25), 200 games at 1 s, 8 shards:
 #   c-25 (as against a player 200 points stronger)   c60 (as against a player 140+ points weaker)
 # Equal engines cannot show the rating effect; these only check that the settings do not weaken play.
-# Nothing is installed automatically. Must finish before 06:00 (skipped if started after 04:30).
+# The user asked (27 Nov): if neither setting plays weaker (each >= 95/200), install v221 (backup of v220 kept).
+# Must finish before 06:00 (skipped if started after 04:30).
 export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
 [ "$(date +%H%M)" -ge 0430 ] && [ "$(date +%H%M)" -lt 1200 ] && exit 0
 OLD=h2h/v220; NEW=h2h/v221
+rm -f results/contempt-scores.txt 2>/dev/null; : > results/contempt-scores.txt
 [ -x $OLD/thoraxrex ] && [ -s tools/policy_v4.txt ] || exit 1
 cargo build --release > results/build-v221.log 2>&1 || { echo BUILD FAILED; exit 1; }
 mkdir -p $NEW results/err && cp target/release/thoraxrex $NEW/ && cp $OLD/thoraxrex-net.txt $NEW/
@@ -24,6 +26,16 @@ for C in -25 60; do
   done
   wait "${PIDS[@]}"
   python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+  SC=$(grep -o "c$C-i220: [0-9.]*" results/summary-$TAG.txt | awk '{print $2}')
+  echo "c$C ${SC:-none}" >> results/contempt-scores.txt
   sleep 61
 done
+# Install only when both checks ran and neither scored below 95/200.
+OK=$(awk 'BEGIN{n=0;bad=0} {n++; if($2=="none"||$2+0<95)bad=1} END{print (n==2&&!bad)?"yes":"no"}' results/contempt-scores.txt 2>/dev/null)
+echo "install: $OK" | tee -a results/contempt-scores.txt
+if [ "$OK" = yes ]; then
+  E=$HOME/Documents/Codex/FoulBroodData/Engines
+  mkdir -p $E/backup-v220 && cp -p $E/ThoraxRex/thoraxrex $E/backup-v220/thoraxrex
+  cp $NEW/thoraxrex $E/ThoraxRex/thoraxrex && cp $NEW/thoraxrex $E/ThoraxRex-NoBook/thoraxrex && echo "installed v221" | tee -a results/contempt-scores.txt
+fi
 exit 0
