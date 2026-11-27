@@ -84,3 +84,8 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
 - q20b v q19 final: 100.0/200 (+92 =16 -92). Not installed. Neither extra-data net beats q19 at 1 s.
 - v3b matches cancelled at the user's request. Policy v4 first run failed (no torch in ThoraxRex/.venv-training); the
   job now installs torch there. Dump: 14,096 games, 431,788 positions. Training restarted 00:50 UTC 27 Nov.
+- Policy v4 (d96 L4, 431,788 positions, dropout .1, best epoch 13): validation top-1 36.7%, top-3 64.4%; v4s 35.5%.
+  Unseen HotFrass-game positions: raw policy 34% (v3b 32%), on its own training games 39% (v3b 50%) - no longer memorising.
+  Search + v4 for ordering 32%, + root prior 50: 34%. Search alone 32%.
+- Match, v219 + policy v4 + TR_POLROOT=50 v v218 at 1 s: 54.0/200 (+23 =62 -115). The root prior is harmful; many draws.
+  Leave TR_POLROOT off. Policy-for-ordering match (v4polonly) in progress.

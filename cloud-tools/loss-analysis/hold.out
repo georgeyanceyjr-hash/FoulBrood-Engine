@@ -2,3 +2,7 @@ HOLD-nopol depth 6: picks the move Antsy/Formi played in 64 of 200 positions (32
 HOLD-pol3b depth 6: picks the move Antsy/Formi played in 64 of 200 positions (32%); when the mover went on to win: 32%
 HOLD-root50 depth 6: picks the move Antsy/Formi played in 66 of 200 positions (33%); when the mover went on to win: 33%
 HOLD-root100c1000 depth 6: picks the move Antsy/Formi played in 63 of 200 positions (32%); when the mover went on to win: 32%
+holdset.json raw policy top-1: 67 of 200 (34%), mean top prob 0.38
+agreeset.json raw policy top-1: 63 of 160 (39%), mean top prob 0.40
+HOLD-pol4-order depth 6: picks the move Antsy/Formi played in 63 of 200 positions (32%); when the mover went on to win: 32%
+HOLD-pol4-root50 depth 6: picks the move Antsy/Formi played in 69 of 200 positions (34%); when the mover went on to win: 34%
