@@ -280,13 +280,14 @@ impl Engine {
                 )),
                 "Threads" => Some(format!("Threads;int;{};{};1;64", e.threads, e.threads)),
                 "HashMB" => Some(format!("HashMB;int;{};{};1;4096", e.hash_mb, auto_hash_mb())),
+                "AnalysisMode" => Some(format!("AnalysisMode;bool;{};False", if crate::search::FULL_TIME.load(std::sync::atomic::Ordering::Relaxed) { "True" } else { "False" })),
                 "UseBook" => Some(format!("UseBook;bool;{};True", if e.use_book { "True" } else { "False" })),
                 _ => None,
             }
         };
         let parts: Vec<&str> = args.split_whitespace().collect();
         match parts.as_slice() {
-            [] => ["ReportFoulBroodScores", "Threads", "HashMB", "UseBook"]
+            [] => ["ReportFoulBroodScores", "Threads", "HashMB", "UseBook", "AnalysisMode"]
                 .iter()
                 .filter_map(|n| opt_line(self, n))
                 .collect(),
@@ -300,6 +301,11 @@ impl Engine {
                         "True" => self.report = true,
                         "False" => self.report = false,
                         _ => return vec!["err ReportFoulBroodScores must be True or False.".into()],
+                    },
+                    "AnalysisMode" => match *value {
+                        "True" => crate::search::FULL_TIME.store(true, std::sync::atomic::Ordering::Relaxed),
+                        "False" => crate::search::FULL_TIME.store(false, std::sync::atomic::Ordering::Relaxed),
+                        _ => return vec!["err AnalysisMode must be True or False.".into()],
                     },
                     "UseBook" => match *value {
                         "True" => self.use_book = true,

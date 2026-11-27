@@ -203,7 +203,9 @@ impl Searcher {
         let (soft, hard) = match limits.time {
             Some(t) => {
                 let t = t.saturating_sub(Duration::from_millis(30)).max(Duration::from_millis(20));
-                (Some(t.mul_f64(soft_frac())), Some(t))
+                // Analysis (UHP option AnalysisMode): use the whole time; in games stop early to save the clock.
+                let soft = if FULL_TIME.load(Ordering::Relaxed) { None } else { Some(t.mul_f64(soft_frac())) };
+                (soft, Some(t))
             }
             None => (None, None),
         };
@@ -283,7 +285,7 @@ impl Searcher {
                     break;
                 }
                 let now = start.elapsed();
-                if smart_tm() {
+                if smart_tm() && !FULL_TIME.load(Ordering::Relaxed) {
                     if let Some(h) = hard {
                         let it = now.saturating_sub(last_done);
                         let ratio = if prev_it.as_micros() > 0 {
@@ -901,6 +903,9 @@ pub fn report_score(s: i32) -> i32 {
         s
     }
 }
+
+/// Set by the viewer for analysis: search for the whole time given (or until a forced result or depth 60).
+pub static FULL_TIME: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
 
 fn soft_frac() -> f64 {
     std::env::var("TR_SOFT").ok().and_then(|v| v.parse::<f64>().ok()).map(|v| v / 100.0).unwrap_or(0.45)
