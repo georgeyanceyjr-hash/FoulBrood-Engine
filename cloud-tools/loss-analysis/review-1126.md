@@ -91,3 +91,5 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
   Leave TR_POLROOT off. Policy-for-ordering match (v4polonly) in progress.
 - Match, v219 + policy v4 for move ordering only (TR_POLROOT off) v v218 at 1 s: 110.0/200 (+105 =10 -95).
   Meets the first bar. Confirmation (200 more games, new seeds) queued as ZZk-pol4conf; install only if combined >= 55%.
+- Confirmation (v4polconf, new seeds): 112.0/200 (+104 =16 -80). Combined 222/400 = 55.5% - meets the install rule.
+  Not installed yet: waiting for the user's go-ahead (install = v219 binary + policy_v4 as thoraxrex-policy.txt).
