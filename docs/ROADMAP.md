@@ -12,3 +12,9 @@ Agreed 27 Nov 2026.
 - When the bot is not pondering (playing by hand, or an engine that cannot ponder), the setting works as
   today: a separate search in the viewer.
 - Any engine must still work: engines without pondering simply play as now.
+
+## Names and versions (27 Nov 2026)
+
+- The first published engine is **FoulBrood Engine v1.0** (Cargo version 1.0.0). With an opening book it shows as
+  "FoulBrood Engine v1.0 Book". Builds before it are pre-releases, 0.<build> (0.221 = build v221), and show no number.
+- The viewer released with it is **FoulBrood II v1.0**.

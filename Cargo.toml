@@ -1,6 +1,6 @@
 [package]
 name = "thoraxrex"
-version = "1.0.0"
+version = "0.221.0"  # pre-release builds are 0.<build>; the first published engine is 1.0.0
 edition = "2021"
 description = "ThoraxRex: alpha-beta Hive engine (UHP)"
 license = "MIT"

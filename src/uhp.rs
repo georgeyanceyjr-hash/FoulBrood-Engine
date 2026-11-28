@@ -2,7 +2,7 @@ use crate::board::*;
 use crate::search::{report_score, Limits, Searcher};
 use std::time::Duration;
 
-pub const NAME: &str = "FoulBrood";
+pub const NAME: &str = "FoulBrood Engine";
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 pub struct Engine {
@@ -42,8 +42,13 @@ impl Engine {
 
     pub fn info() -> Vec<String> {
         // Shown in the viewer's engine list: "FoulBrood Book" with an opening book, "FoulBrood" without.
+        // Published versions (1.0 and up) carry their number ("FoulBrood Engine v1.0", "FoulBrood Engine v1.0 Book");
+        // pre-release builds are 0.<build> and show no number.
         let tag = if crate::book::has_book() { " Book" } else { "" };
-        vec![format!("id {}{}", NAME, tag), "Mosquito;Ladybug;Pillbug;FoulBroodSetup".into()]
+        let mut v = VERSION.split('.');
+        let (major, minor) = (v.next().unwrap_or("0"), v.next().unwrap_or("0"));
+        let shown = if major != "0" { format!(" v{}.{}", major, minor) } else { String::new() };
+        vec![format!("id {}{}{}", NAME, shown, tag), "Mosquito;Ladybug;Pillbug;FoulBroodSetup".into()]
     }
 
     fn state_string(&self) -> &'static str {
