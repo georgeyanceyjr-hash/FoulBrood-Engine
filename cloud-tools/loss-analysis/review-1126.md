@@ -126,3 +126,10 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
 - Book: v8 covers 78/56/47/27% of common strong-game positions at plies 5-6/7-8/9-10/11-12 (book v4 84/69/57/32,
   Formi's book 11/4/0/0). Book v9 (ZZs) gives the engine's own 30 s move for all 707 such positions, over v8.
 - FoulBrood Engine Formi Book added as a third built-in engine (Formi's published book, 1,782 positions).
+
+## Night of 27-28 Nov results
+- FoulBrood (installed v220, no book) v Nokamute, 400 games at 2 s: **393/400** (+393 =0 −7); 198 wins as White, 195 as Black.
+- Contempt (v221 builds v v220): −25 scored 94/192, 60 scored 97.5/192. Neither is better; the −25 check fell under the 95 bar, so v221 was not installed (v220 stays). Default contempt 25 unchanged.
+- GPU nets: q21 104.5/200 and q21w 88.5/200 v q19; below the 110 bar, not installed.
+- Book v9 did not run: tools/thoraxrex-book-v8.txt was missing on the Mac. Copied it there and held the job as queue/ZZu-book9.job.hold for the next night.
+- Self-play round 15 (q19, depth 6, 12 at a time) running until 05:45; 3,600 games by 23:32.
