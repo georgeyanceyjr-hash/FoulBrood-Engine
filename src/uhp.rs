@@ -44,7 +44,7 @@ impl Engine {
         // Shown in the viewer's engine list: "FoulBrood Book" with an opening book, "FoulBrood" without.
         // Published versions (1.0 and up) carry their number ("FoulBrood Engine v1.0", "FoulBrood Engine v1.0 Book");
         // pre-release builds are 0.<build> and show no number.
-        let tag = if crate::book::has_book() { " Book" } else { "" };
+        let tag = if crate::book::has_book() { format!(" {}", crate::book::book_name()) } else { String::new() };
         let mut v = VERSION.split('.');
         let (major, minor) = (v.next().unwrap_or("0"), v.next().unwrap_or("0"));
         let shown = if major != "0" { format!(" v{}.{}", major, minor) } else { String::new() };

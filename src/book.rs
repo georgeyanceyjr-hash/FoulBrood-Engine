@@ -8,6 +8,14 @@ use std::sync::OnceLock;
 
 type Book = HashMap<u64, Vec<(u32, String)>>;
 
+/// The book's name from a `#name ...` line at the top of the file ("Formi Book"); plain "Book" otherwise.
+static NAME: OnceLock<String> = OnceLock::new();
+
+pub fn book_name() -> &'static str {
+    let _ = book();
+    NAME.get().map(|s| s.as_str()).unwrap_or("Book")
+}
+
 fn book() -> &'static Book {
     static B: OnceLock<Book> = OnceLock::new();
     B.get_or_init(|| {
@@ -18,6 +26,10 @@ fn book() -> &'static Book {
         if let Some(p) = path {
             if let Ok(text) = std::fs::read_to_string(p) {
                 for line in text.lines() {
+                    if let Some(name) = line.strip_prefix("#name ") {
+                        let _ = NAME.set(name.trim().chars().take(40).collect());
+                        continue;
+                    }
                     let mut it = line.splitn(3, ' ');
                     let (Some(k), Some(w), Some(mv)) = (it.next(), it.next(), it.next()) else { continue };
                     let (Ok(k), Ok(w)) = (u64::from_str_radix(k, 16), w.parse::<u32>()) else { continue };
