@@ -1,0 +1,30 @@
+# Book v9 (27 Nov): the engine's own 30 s move (2 threads, 4 at a time) for all 707 positions seen at least 10 times
+# in the first 12 plies of 7,244 strong hivegame games (book v8 covered 47-78% of them from ply 5 on), laid over v8
+# for deeper lines. Then v9 v v8: same engine both sides, each with its own book, no random opening plies,
+# 200 games at 1 s, 8 shards. The user does not like v8's holes: v9 is installed if it scores >= 100/200 (no worse);
+# Engines/ThoraxRex/thoraxrex-book.txt (v8 kept as thoraxrex-book-v8.txt there). Skipped if started after 23:00.
+export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+H=$(date +%H%M); { [ "$H" -ge 2300 ] || [ "$H" -lt 0600 ]; } && exit 0
+B=h2h/v220; P4=$PWD/tools/policy_v4.txt
+[ -x $B/thoraxrex ] && [ -s tools/book9-positions.txt ] && [ -s tools/thoraxrex-book-v8.txt ] || exit 1
+mkdir -p results/err
+unset TR_POLICY TR_CLIMB TR_NET TR_POLROOT TR_POLROOTCAP TR_POLD TR_POLK TR_POLMODE TR_HASHMB TR_MAXTHREADS TR_CONTEMPT
+TR_BOOK=none TR_POLICY=$P4 python3 -u tools/makebook9.py $B/thoraxrex tools/book9-positions.txt tools/thoraxrex-book-v8.txt tools/thoraxrex-book-v9.txt 30 4 > results/book9.log 2>&1
+[ -s tools/thoraxrex-book-v9.txt ] || exit 1
+TAG=$(date +%m%d-%H%M)
+PIDS=()
+for s in 1 2 3 4 5 6 7 8; do
+  ( TR_BOOK=$PWD/tools/thoraxrex-book-v9.txt TR_POLICY=$P4 MATCH_RANDPLIES=0 MATCH_ERRDIR=results/err MATCH_THREADS=1 MATCH_OPPENV="TR_BOOK=$PWD/tools/thoraxrex-book-v8.txt,TR_POLICY=$P4" MATCH_GAMES=results/games-book9-v8-$TAG-$s.txt \
+    python3 -u tools/match.py $B/thoraxrex "$PWD/$B/thoraxrex" 25 1 Base+MLP $((s*457+520000)) > results/par-book9-v8-$TAG-$s.log 2>&1 ) &
+  PIDS+=($!)
+done
+wait "${PIDS[@]}"
+python3 tools/sumpar.py results "$TAG" | tee results/summary-$TAG.txt
+SC=$(grep -o "book9-v8: [0-9.]*" results/summary-$TAG.txt | awk '{print $2}')
+echo "book9 v v8: ${SC:-none}" | tee results/book9-decision.txt
+if [ -n "$SC" ] && awk "BEGIN{exit !($SC>=100)}"; then
+  E=$HOME/Documents/Codex/FoulBroodData/Engines/ThoraxRex
+  [ -s $E/thoraxrex-book-v8.txt ] || cp $E/thoraxrex-book.txt $E/thoraxrex-book-v8.txt
+  cp tools/thoraxrex-book-v9.txt $E/thoraxrex-book.txt && echo "installed book v9" | tee -a results/book9-decision.txt
+fi
+exit 0

@@ -1,0 +1,709 @@
+# Positions reached at least 10 times in the first 12 plies of 7,244 strong hivegame games (both players 1900+):
+# canonical key|times seen|ply|moves to reach it. Book v9 gives the engine's own deep-search move for each.
+0000000000000000|7244|0|
+65776f29ebe15e9b|4966|1|wL
+748782008f7ffee4|1668|1|wP
+5623e73753a14239|406|1|wG1
+34314adb2ee9df56|93|1|wM
+666318ae60f84c7b|46|1|wB1
+f4935ccbf92891f7|40|1|wA1
+b08b2c93c188893b|25|1|wS1
+052746f2aa1a347e|4022|2|wL;bL wL\
+14d7abdbce849401|966|2|wP;bL wP-
+4919ff35c4eb04ef|484|2|wL;bG1 wL-
+04435bed01efe0ad|366|2|wL;bP \wL
+84c8e36da5baf82a|341|2|wP;bM -wP
+15affc6848229e83|305|2|wG1;bL -wG1
+43dd8b69d495371d|246|2|wP;bG1 -wP
+15b3b6c4657140d2|69|2|wP;bP wP-
+6179ee5e084b8bc0|56|2|wG1;bG1 wG1\
+3df98bd0056ff74a|46|2|wM;bL /wM
+09e5776b66ef84c4|34|2|wG1;bP -wG1
+872f5ebb52cf1d74|33|2|wL;bM wL\
+036b43b2750316af|32|2|wM;bG1 wM-
+0f9fcb9d1d8d7ab9|28|2|wP;bB1 wP\
+01fc740db2d84de2|28|2|wL;bS1 wL\
+171bace7c3699332|28|2|wA1;bL wA1-
+063331752103269e|22|2|wB1;bL wB1\
+4a0d88b24ff2160f|20|2|wB1;bG1 wB1-
+1e6f26b47913dac6|17|2|wL;bB1 -wL
+187059b071262954|17|2|wS1;bL wS1-
+50ba51ff77d0cc2f|14|2|wM;bS1 wM\
+100c9924d646ed9d|11|2|wP;bS1 wP-
+1eabb6b411e1812f|1889|3|wL;bL wL\;wM \wL
+09beb5ec4f7388bc|823|3|wL;bL wL\;wA1 \wL
+1c76d7a95b70e643|807|3|wL;bL /wL;wQ wL-
+06b2fde14238185c|696|3|wP;bL wP-;wQ -wP
+174210c826a6b823|249|3|wL;bL wL\;wQ \wL
+47257e31366ea5bc|220|3|wP;bM wP\;wQ \wP
+008d77ce9968ac0d|192|3|wL;bL /wL;wA1 \wL
+16a51345dc36285f|188|3|wP;bG1 -wP;wQ wP-
+17a6b320153a3d51|182|3|wL;bG1 -wL;wM wL-
+08e51cbaeaa6447f|172|3|wG1;bL wG1-;wM -wG1
+0342b94f4a626c84|150|3|wL;bP \wL;wM wL\
+03189c677ea6aefc|130|3|wL;bG1 wL-;wQ \wL
+044b85a6f7537170|112|3|wL;bP \wL;wQ wL-
+0d863a803fee463c|94|3|wP;bL wP\;wQ -wP
+184e58c52bed28c3|93|3|wP;bL wP\;wA1 \wP
+00b3b0784ba834c2|87|3|wL;bG1 wL-;wA1 -wL
+15a72223be9e0f5e|64|3|wG1;bL wG1-;wQ \wG1
+0f5b5b9d757f2150|55|3|wP;bL wP-;wM -wP
+7d117c1718ad99c6|48|3|wP;bP wP-;wQ -wP
+365b597c222255f1|44|3|wP;bM -wP;wM wP-
+0980725a9db31073|43|3|wL;bG1 -wL;wA1 wL/
+16c8c37f241d9955|42|3|wL;bP \wL;wA1 wL\
+1fb2d0624bde6b29|35|3|wP;bM wP\;wA1 \wP
+0755fe6cb8a88820|32|3|wL;bG1 wL/;wQ /wL
+1045af6eaaef93de|31|3|wP;bM wP-;wQ \wP
+086d037ef549da65|28|3|wL;bP wL\;wB1 \wL
+24f23b3ead7a21f3|26|3|wG1;bG1 wG1/;wM /wG1
+12e8714e1a380e83|23|3|wP;bG1 wP-;wQ \wP
+0119fb2c67b1aaf1|20|3|wM;bL /wM;wQ \wM
+30163151f2227026|20|3|wG1;bP -wG1;wM wG1-
+24852b4fdc399d0b|20|3|wP;bB1 wP\;wQ \wP
+13fa210ea50810b9|20|3|wL;bL wL-;wM /wL
+27abb45546bcf58e|18|3|wL;bM wL\;wM \wL
+241698d69ee6a481|18|3|wG1;bL wG1\;wQ \wG1
+1b223e3f827fdfa6|17|3|wG1;bL wG1\;wA1 \wG1
+0b94779c17d93bce|15|3|wL;bL wL\;wP wL/
+117d9ae7fdf60c72|15|3|wP;bL wP\;wA1 wP/
+0ad96b3a6671f037|14|3|wP;bG1 wP\;wA1 \wP
+221af99f960301aa|14|3|wA1;bL -wA1;wM wA1-
+33d9ffd02128b0af|13|3|wG1;bL wG1\;wA1 wG1/
+1ffb015df206bde4|12|3|wL;bP /wL;wA1 \wL
+2268146c02bdbae1|12|3|wM;bL wM-;wA1 -wM
+000cebe0f5bfbc1c|12|3|wB1;bG1 \wB1;wQ wB1-
+046afbcf08617816|12|3|wM;bG1 wM\;wQ wM/
+06565e0971a49d2e|11|3|wP;bG1 wP\;wM \wP
+6ce1913e7c3339b9|11|3|wL;bP wL-;wQ -wL
+235e04ab2a2404fb|11|3|wL;bL wL\;wP \wL
+86df9cce6ac3c8c5|10|3|wL;bS1 wL\;wA1 \wL
+304c1479c6e6b25e|10|3|wG1;bG1 wG1/;wQ -wG1
+1dbfc1339af893cf|10|3|wB1;bL wB1\;wM \wB1
+35d4450e3a0d2839|10|3|wM;bG1 wM-;wA1 -wM
+054999dfe9a3f9c9|1064|4|wL;bL wL\;wM \wL;bM bL\
+06054aff95a0b145|707|4|wL;bL wL\;wM \wL;bQ /bL
+12ea9a762bc2ab86|438|4|wP;bL wP-;wQ -wP;bQ bL\
+0ca4636d1de8dcd5|428|4|wL;bL wL-;wA1 -wL;bM bL-
+32abcdaa6f24a026|387|4|wL;bL wL\;wQ -wL;bQ bL-
+08e97012c89756dc|360|4|wL;bL wL\;wA1 \wL;bQ bL-
+266ee74b35b0ac11|257|4|wL;bL /wL;wQ wL-;bM /bL
+11afa58010bcdcc8|234|4|wP;bL wP/;wQ /wP;bM bL/
+0253e6f1168139ba|188|4|wP;bM wP\;wQ \wP;bQ bM-
+1c2eeb6c814671c0|126|4|wL;bL wL-;wQ /wL;bQ bL\
+031a775f4f5c0bf9|123|4|wL;bL -wL;wQ wL-;bQ \bL
+005f48a974227cb7|114|4|wL;bL wL\;wQ \wL;bM bL\
+361d11c151e3e56b|92|4|wG1;bL wG1\;wM \wG1;bM bL\
+20efc8c8ed2f8ba1|75|4|wL;bG1 wL\;wM \wL;bM bG1\
+1a48a26e363e59e1|73|4|wL;bL /wL;wA1 \wL;bM /bL
+10d3f054c6a0497d|72|4|wP;bG1 wP/;wQ /wP;bM bG1/
+1ee5182570ed2e7b|72|4|wL;bP wL\;wM \wL;bM bP\
+0d60f8995b090855|71|4|wG1;bL wG1-;wM -wG1;bQ bL/
+005293133b01a9a8|69|4|wL;bL wL\;wA1 wL/;bQ bL-
+057980e7c0883309|54|4|wL;bG1 wL\;wM \wL;bQ bG1-
+57bf0c2248b34f44|51|4|wL;bL wL\;wM \wL;bA1 bL\
+05824e797f740414|49|4|wL;bP -wL;wM wL-;bQ /bP
+014584819b28a882|47|4|wP;bL wP\;wA1 \wP;bQ /bL
+1d548e4479767caa|45|4|wP;bL wP\;wA1 \wP;bM bL\
+1c387dcc48172118|44|4|wL;bP wL\;wQ wL/;bM bP\
+201e1f7530c47717|43|4|wP;bL wP\;wQ -wP;bM bL\
+1448a34b50d6a500|42|4|wL;bG1 wL-;wQ \wL;bM bG1-
+14c71e31a2599bcb|42|4|wL;bP wL\;wQ wL/;bQ /bP
+0d9f6b4373bddb01|39|4|wL;bL wL\;wA1 wL/;bQ /bL
+3b65e75cbe6bc52e|38|4|wP;bG1 -wP;wQ wP-;bB1 -bG1
+07a4e50ef8723c6a|37|4|wL;bG1 wL\;wQ wL/;bQ /bG1
+136037b7cc1cf881|36|4|wL;bG1 wL\;wM \wL;bL bG1\
+325ee1844507f165|33|4|wP;bG1 wP-;wQ -wP;bQ bG1\
+235b20830bba0059|33|4|wP;bL wP\;wQ wP/;bQ /bL
+096542b70a2ffed4|32|4|wP;bM -wP;wM wP-;bQ /bM
+01d19c178e18c9ba|32|4|wP;bM wP\;wA1 \wP;bQ bM-
+17b87abae07de129|32|4|wL;bG1 \wL;wA1 wL\;bM \bG1
+29c02c6f0fa1102c|32|4|wP;bG1 wP\;wQ \wP;bL bG1\
+0956172a1feb738c|28|4|wP;bL wP-;wM -wP;bQ bL\
+01ff45b4d764bc84|27|4|wG1;bL wG1-;wQ \wG1;bQ bL\
+244cb939d178683b|25|4|wL;bG1 wL/;wA1 /wL;bL bG1/
+073859177dbafdb0|25|4|wL;bL wL-;wM -wL;bQ bL-
+3a7966f3f003fc23|24|4|wL;bG1 wL-;wQ \wL;bL bG1-
+14b974f68d3d59b6|23|4|wP;bL wP-;wM -wP;bM bL-
+32d06c3890a7dd1d|23|4|wL;bP wL-;wA1 -wL;bM bP-
+0b4f689676c5540f|22|4|wP;bP \wP;wQ wP\;bQ bP/
+0ddd73718981564e|20|4|wP;bM wP-;wQ \wP;bQ bM\
+0627d544c220cfde|19|4|wL;bL wL-;wM -wL;bA1 bL\
+02ba7a42ec1acbca|19|4|wG1;bL wG1-;wQ /wG1;bM bL-
+01231d7da23ee902|18|4|wL;bG1 wL/;wQ /wL;bM bG1/
+07c0e65196eacd2c|18|4|wL;bG1 wL-;wA1 -wL;bQ bG1/
+0baa00b2045ee6c9|18|4|wP;bP -wP;wQ wP-;bM -bP
+13bb40d6556f9703|17|4|wG1;bG1 wG1/;wM /wG1;bM bG1/
+06a3e725be3c7040|16|4|wL;bP wL\;wM \wL;bA1 bP\
+0dde0645e5d8d1bf|14|4|wP;bL wP\;wQ wP/;bQ bL-
+52d4a369066db2f5|14|4|wL;bG1 wL\;wQ wL/;bQ bG1-
+129681ec24761379|14|4|wG1;bL /wG1;wQ wG1-;bQ bL\
+2ffa3dddeb73fd34|13|4|wL;bL wL-;wQ \wL;bP bL/
+3eeaf4373c64881e|12|4|wL;bP wL\;wB1 \wL;bM bP\
+04bbdc256fb5d6ba|11|4|wP;bM /wP;wQ wP/;bB1 bM\
+28f2c54d07e14fbd|11|4|wL;bP /wL;wB1 wL/;bQ bP\
+3db6c0554ad7cad5|11|4|wP;bL wP\;wQ \wP;bQ bL\
+2b7c1d24e35b70cd|11|4|wL;bP \wL;wA1 wL\;bQ bP/
+1691e77e7675c82c|10|4|wG1;bP wG1-;wM -wG1;bM bP-
+018319e433354e03|10|4|wL;bL wL\;wA1 \wL;bA1 bL\
+1f209319979b15cd|10|4|wG1;bL wG1\;wA1 \wG1;bM bL\
+1b56f75e61d0ceb8|10|4|wP;bM wP\;wQ wP/;bQ bM-
+0cb25fc2ade2d0db|10|4|wL;bL wL\;wM \wL;bM bL-
+044453d8eedb60b7|10|4|wL;bM wL\;wM \wL;bP bM\
+32d50691ad66de64|10|4|wL;bL wL-;wM /wL;bM bL-
+040e0852fcf1e0f8|715|5|wL;bL /wL;wM wL/;bM /bL;wA1 wM\
+03eef560a575341c|424|5|wL;bL wL\;wM \wL;bQ /bL;wQ wL/
+0c8f9631772deb92|372|5|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\
+0fd78909b8c9c72f|359|5|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1
+005a4d58cdbd3875|322|5|wL;bL wL\;wQ -wL;bQ bL-;wA1 wL/
+09ec5afdb2c3fac4|246|5|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1
+0144540b06f86543|245|5|wL;bL /wL;wQ wL-;bM /bL;wM \wQ
+06e44b2b6ed2e39e|219|5|wL;bL wL\;wQ wL/;bM bL\;wA1 -wL
+08e84e2e5987587b|200|5|wP;bL wP/;wQ /wP;bM bL/;wA1 -wQ
+1c36eab64a6e79ae|157|5|wP;bM wP\;wQ \wP;bQ bM-;wA1 wQ/
+1f143677cb56a8aa|120|5|wL;bL /wL;wM wL/;bQ -bL;wA1 \wL
+0c137846a34fb319|118|5|wL;bL wL\;wM \wL;bQ bL-;wQ wM/
+10bdb7e3090a9920|102|5|wL;bL wL/;wA1 /wL;bQ bL-;wQ wL\
+1d4a9ffbe027d028|88|5|wL;bL wL\;wQ \wL;bM bL\;wS1 wL/
+033b0c874596402a|87|5|wL;bL wL\;wM \wL;bM bL\;wA1 \wM
+054ef3a30b2318f6|69|5|wL;bL -wL;wQ wL-;bQ \bL;wM \wQ
+0945f9ae00f9b7d9|65|5|wP;bG1 wP\;wQ \wP;bM bG1\;wA1 wQ/
+1565714f4d24acea|60|5|wL;bL \wL;wM wL\;bQ bL/;wQ wM/
+1308387cb14853fd|53|5|wL;bL wL\;wQ -wL;bQ /bL;wA1 wL/
+125fcb5deef2848c|50|5|wG1;bL wG1\;wA1 wG1/;bM bL\;wM \wG1
+0c3d92909d819312|48|5|wP;bL wP\;wA1 \wP;bM bL\;wQ wP/
+2de3567dc0d99a26|48|5|wL;bL wL-;wM -wL;bQ bL\;wA1 \wL
+03a9f1a6219a0d5d|43|5|wP;bL wP\;wQ -wP;bQ bL-;wA1 \wP
+17dbd57ab757e1c2|42|5|wL;bG1 wL/;wM /wL;bM bG1/;wA1 \wM
+1200cd33454bca2b|38|5|wL;bP \wL;wM wL\;bM \bP;wA1 /wL
+07d8c5b7d7b9abe2|35|5|wL;bG1 wL-;wA1 \wL;bM bG1-;wQ /wL
+01d9425c78a45867|33|5|wP;bM wP\;wA1 \wP;bQ bM-;wQ /wA1
+02b047c9d234cb80|32|5|wL;bL wL-;wA1 -wL;bM bL-;wA2 -wA1
+2929c72673a199fa|32|5|wP;bG1 wP-;wQ -wP;bQ bG1\;wA1 /wQ
+2ed8663256b6b17b|32|5|wL;bL wL/;wM /wL;bM bL/;wQ -wM
+00c909b023c1f5f5|32|5|wL;bG1 wL\;wM \wL;bQ bG1-;wQ /wM
+1bfde59a5aa7b900|31|5|wL;bL wL\;wM \wL;bA1 bL\;wA1 /wM
+468d809d2ed0d8b7|30|5|wL;bG1 \wL;wA1 wL\;bM \bG1;wQ wA1/
+12e2c951d72765cc|30|5|wL;bL wL\;wA1 \wL;bM bL\;wM /wA1
+002604f71ea27a7a|29|5|wP;bG1 wP\;wQ \wP;bL bG1\;wA1 wQ/
+0d5ec36fb5422c6f|26|5|wL;bL wL\;wQ wL/;bQ /bL;wA1 \wQ
+0ad340502528d56e|25|5|wL;bL wL\;wQ wL/;bM bL\;wA1 \wQ
+00d4842bfb364fc5|24|5|wP;bG1 wP\;wQ \wP;bB1 bG1\;wA1 wQ/
+16cc4104263651f4|24|5|wP;bM -wP;wM wP-;bQ \bM;wQ wP\
+04147ae3a26b18d2|24|5|wL;bG1 wL/;wA1 /wL;bL bG1/;wQ wL\
+0f0bbde72b9e4f01|24|5|wP;bL wP\;wM \wP;bQ bL-;wQ /wM
+128d508a56fc17ed|24|5|wP;bL wP-;wQ -wP;bQ bL/;wA1 /wQ
+01bdeaa3eea884cc|24|5|wP;bL wP-;wQ \wP;bM bL-;wA1 /wP
+10b1955b5556d9f0|23|5|wL;bG1 wL-;wQ \wL;bM bG1-;wM /wQ
+06c3ec159cfbac65|23|5|wL;bL -wL;wA1 wL-;bQ \bL;wM \wA1
+004cdbf804ec68ad|23|5|wL;bP wL\;wQ -wL;bM bP\;wA1 wL/
+04e14a89bc59a827|23|5|wG1;bL wG1-;wM -wG1;bQ bL\;wQ \wG1
+23dd05969923bcd6|22|5|wL;bG1 wL-;wA1 /wL;bQ bG1\;wQ \wL
+0c846b8a1366b6e8|22|5|wG1;bL wG1-;wQ \wG1;bQ bL\;wA1 /wG1
+09d468fab0ec6774|22|5|wL;bP /wL;wB1 wL/;bQ bP\;wQ \wL
+1a997e870dc2d31a|22|5|wL;bG1 wL\;wM \wL;bL bG1\;wA1 /wM
+3170108727669a10|22|5|wL;bL wL\;wQ wL/;bQ bL-;wM wQ-
+1d7f7b1813b34bed|21|5|wL;bL /wL;wQ wL/;bQ -bL;wA1 \wQ
+32d8b273661b4cc0|20|5|wL;bP wL-;wA1 -wL;bM bP-;wQ wA1\
+01f2f074bb05962b|19|5|wL;bP wL\;wM \wL;bM bP\;wQ wM/
+3ee22a7ccad819c3|19|5|wL;bP wL\;wB1 \wL;bM bP\;wQ wL/
+076c3ae97cdb6fe4|19|5|wP;bL wP\;wQ wP/;bQ /bL;wA1 -wP
+23c964ee1e5902b7|18|5|wL;bG1 wL-;wQ \wL;bL bG1-;wA1 /wL
+2d293294d899f125|18|5|wG1;bL wG1-;wM -wG1;bQ bL/;wQ \wM
+0908d834a9d260cd|18|5|wP;bL wP-;wM -wP;bM bL-;wQ wM\
+1a21c77d1ac6296d|17|5|wP;bP \wP;wQ wP\;bQ bP/;wA1 wQ-
+1b6b07582ca47a84|17|5|wL;bL /wL;wQ \wL;bM /bL;wS1 wL-
+24cc45caf0794ce6|16|5|wL;bL wL-;wQ /wL;bQ bL\;wA1 wQ\
+29db84e8fc65c111|16|5|wL;bP /wL;wM wL/;bQ bP\;wQ \wL
+0730875c8b066c6d|16|5|wL;bL wL-;wQ /wL;bQ bL-;wM \wQ
+25f902db75480a38|15|5|wP;bP -wP;wQ wP-;bM -bP;wA1 wQ\
+1c96880d4465c9f5|15|5|wL;bP wL\;wQ wL/;bQ /bP;wA1 -wL
+05715eac3634a2d4|15|5|wL;bG1 -wL;wM wL-;bQ \bG1;wQ \wM
+04c68261192a948c|14|5|wP;bL /wP;wQ wP/;bM /bL;wM wQ\
+07a4757f8727df69|14|5|wG1;bL wG1\;wM \wG1;bM bL\;wQ wG1/
+0761911d27209a21|14|5|wL;bL wL\;wQ \wL;bQ bL-;wA1 \wQ
+07db3c711802951b|14|5|wL;bG1 wL\;wQ \wL;bM bG1\;wS1 wL/
+0a7da6b690b4c2dc|13|5|wP;bL wP-;wQ -wP;bQ bL\;wM wQ\
+20034a25cef4ffc8|13|5|wL;bL wL-;wM -wL;bQ bL/;wQ /wM
+068af605861e76da|13|5|wL;bL wL\;wM \wL;bA1 bL\;wQ wL/
+230ec87142238d59|13|5|wL;bP wL\;wM \wL;bA1 bP\;wA1 wL/
+0cba72d284b97057|13|5|wP;bL wP\;wQ \wP;bM bL\;wS1 wP/
+24cce172f5668cc9|13|5|wL;bL wL\;wQ wL/;bM bL\;wS1 wQ-
+08ea807eaebf7cd6|12|5|wP;bM wP-;wQ \wP;bQ bM\;wA1 /wP
+17d2142985759b1f|12|5|wP;bM wP\;wQ \wP;bQ bM-;wA1 -wQ
+0994ccaa991fd957|12|5|wP;bL wP\;wQ -wP;bM bL\;wA1 \wQ
+059ff4a296ed1068|12|5|wG1;bL wG1-;wM -wG1;bM bL-;wL wM\
+19647b8a5886bc69|12|5|wL;bL wL\;wQ wL/;bQ /bL;wP \wQ
+148c15386a5c54d4|11|5|wL;bL wL\;wP wL/;bM bL\;wM \wL
+1a73a2e069c3f146|11|5|wP;bL wP-;wQ -wP;bQ bL/;wA1 wQ\
+15d3d530f0d95f82|11|5|wL;bP /wL;wM wL/;bQ bP\;wQ wM-
+2b3985330444126e|11|5|wL;bP wL\;wB1 wL/;bM bP\;wQ -wL
+18a54ece58ba7f41|11|5|wG1;bL wG1-;wQ /wG1;bM bL-;wA1 \wG1
+0164dad7dc2824e9|11|5|wL;bL wL-;wQ \wL;bQ bL/;wP wQ/
+0e45857e2e3d0347|11|5|wA1;bL -wA1;wM wA1-;bM -bL;wQ \wM
+334be360d5339ba9|10|5|wL;bL \wL;wM wL\;bQ bL/;wP wM/
+14c4871de2c616d5|10|5|wL;bL wL\;wA1 \wL;bA1 bL\;wQ /wA1
+097cf635f85b0417|10|5|wL;bG1 wL-;wQ \wL;bL bG1-;wM /wQ
+02dfa6be3ace6212|10|5|wP;bL wP\;wQ \wP;bQ bL\;wA1 -wQ
+083c5a4c90c81e72|10|5|wG1;bL -wG1;wM wG1-;bQ \bL;wA1 \wM
+1d8cc43849270d07|10|5|wL;bL -wL;wQ wL-;bQ /bL;wS1 wL\
+26bb2784008da83c|10|5|wL;bL wL\;wM \wL;bQ bL\;wA1 /wM
+067fdd1a878ca247|264|6|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/
+3e0c014d155b778e|194|6|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\;bP bQ-
+01948570a41a0df6|151|6|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/
+254ceb460a0a292a|150|6|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ /bL
+010eaa4bb7d32d44|134|6|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\
+0edb30493b362500|133|6|wL;bL wL-;wQ \wL;bQ bL\;wA1 /wL;bP bQ\
+087effc40ebed58d|132|6|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\;bP bQ/
+0cc9c398ef522cd7|113|6|wL;bL wL\;wQ -wL;bQ bL-;wA1 wL/;bP bQ\
+07e8f26bed2d01b1|112|6|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ-
+02a82e1759d5df01|111|6|wL;bL wL/;wM /wL;bA1 bL-;wQ wL\;bQ \bL
+13db0b455db51396|110|6|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 /bL
+2b2f33a8039ce77c|90|6|wP;bM wP-;wQ -wP;bQ bM/;wA1 \wQ;bP bQ/
+05fa01ba39490866|89|6|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\
+1a8aed69d7858e48|79|6|wL;bL wL-;wA1 -wL;bM bL-;wQ wA1\;bQ \bM
+01c58f989c37b259|79|6|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 /bL
+4a52e18961a581ca|75|6|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bQ /bM
+0782347324acf2cb|71|6|wL;bL wL-;wM -wL;bQ bL/;wQ wM\;bP bQ/
+241df9aaa4bdd0b2|69|6|wL;bL /wL;wA1 \wL;bM /bL;wQ wL-;bA1 bL\
+07fe12d80a7945ef|64|6|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bP \bM
+1f68725e53437055|52|6|wL;bL wL\;wM \wL;bM bL\;wA1 \wM;bA1 /bL
+022ec453760cddf8|47|6|wL;bL wL\;wM \wL;bQ bL-;wQ wM/;bA1 /bL
+1d172ad2102d553c|47|6|wL;bL wL/;wM /wL;bA1 bL-;wQ wL\;bM \bA1
+0bf454e3614f287c|47|6|wL;bL wL\;wQ wL/;bQ /bL;wA1 -wL;bM bL\
+064caef2d0cde246|46|6|wL;bL /wL;wM wL/;bM /bL;wA1 wM\;bQ -bM
+277c47b15bd434cf|46|6|wL;bL /wL;wQ \wL;bM /bL;wA1 wL-;bQ -bM
+14b215cd757cd044|46|6|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bQ /bM
+1583b8826c7de801|43|6|wL;bL wL/;wA1 /wL;bQ bL-;wQ wL\;bP bQ-
+061a93ffa28acbec|38|6|wP;bL wP/;wQ /wP;bM bL/;wA1 -wQ;bA1 \bL
+1e3d65330f97967a|38|6|wL;bL wL-;wA1 -wL;bM bL-;wQ wA1\;bP bL\
+24e5241e442428dd|37|6|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bQ bM\
+4826f2530ab90b34|36|6|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bQ /bL
+1bae57b340587ae2|36|6|wL;bL wL\;wA1 -wL;bQ /bL;wQ wL/;bA1 bL-
+0b958684f309e589|35|6|wL;bL /wL;wQ wL-;bM /bL;wM \wQ;bQ bM\
+19c20e3664a78241|35|6|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bQ /bM
+09bd1d70d9d32efe|32|6|wL;bL /wL;wM wL/;bQ -bL;wA1 \wL;bP /bQ
+09f5cea52558b79d|32|6|wL;bL wL-;wM -wL;bQ bL\;wA1 wM\;bP bQ\
+13105319b2acf3f5|31|6|wL;bL wL-;wM -wL;bM bL-;wQ wM\;bQ bL\
+019e0160efca0312|30|6|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 bM/
+053ae2ecbcf2d509|29|6|wL;bL \wL;wM wL\;bQ bL/;wA1 wM/;bA1 -bL
+0c5ce965019d0d1e|29|6|wP;bL -wP;wQ wP-;bM -bL;wA1 wQ\;bA1 \bL
+0e78f10f10daa286|25|6|wP;bM wP\;wA1 \wP;bQ bM-;wQ /wA1;bP bQ-
+0149fbe223333d39|25|6|wL;bP \wL;wM wL\;bM \bP;wA1 /wL;bQ /bM
+260b8bce3d794492|25|6|wL;bL wL\;wM \wL;bQ bL-;wQ wM/;bP bQ\
+2c50ce316eb96145|24|6|wL;bL wL\;wQ -wL;bM bL\;wA1 wL/;bA1 bM/
+051ab67c76dc35d8|23|6|wL;bL wL\;wM \wL;bM bL\;wQ /wM;bP /bL
+03f9482b9a2fd965|23|6|wP;bL wP\;wQ \wP;bM bL\;wA1 -wQ;bQ /bM
+0b106c28fef3406c|22|6|wP;bG1 wP\;wQ \wP;bB1 bG1\;wA1 wQ/;bQ bB1\
+173930c27fe159e4|22|6|wL;bL -wL;wQ wL-;bQ \bL;wM \wQ;bA1 /bL
+13f5768a9e639b3c|22|6|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bB1 bM/
+1878e3c88bd1dce0|22|6|wL;bL wL\;wQ -wL;bM bL\;wA1 wL/;bP /bL
+155302b2ba4e3c64|22|6|wL;bL wL/;wM /wL;bQ bL-;wQ \wM;bS1 bQ\
+0d7eeb679bab78b6|21|6|wL;bL wL\;wM \wL;bA1 bL\;wA1 /wM;bQ bA1/
+63b83e92542e51d1|21|6|wL;bL \wL;wA1 wL\;bA1 -bL;wQ /wL;bQ bL/
+1721ce1d7a926854|21|6|wL;bL wL\;wQ -wL;bQ /bL;wA1 wL/;bP /bQ
+16181f4289b3a1ce|21|6|wP;bL wP-;wA1 -wP;bQ bL/;wQ wA1\;bP bQ/
+0b63bb60ed93aabf|19|6|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bP bM/
+17e32f4b7d894c3a|19|6|wL;bP /wL;wQ \wL;bQ bP\;wA1 wL-;bM /bP
+05680c3c14a4627a|19|6|wL;bL wL\;wQ \wL;bM bL\;wS1 wL/;bG1 bM\
+0a94be36ed8dbf9b|18|6|wL;bL wL\;wA1 \wL;bQ bL-;wQ wL/;bP bQ\
+2f556ff4befb0904|18|6|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bQ /bL
+1a8582fab800dab8|18|6|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bQ bM-
+15336baa971866d9|18|6|wP;bL -wP;wQ wP-;bQ \bL;wA1 wQ/;bA1 /bL
+0c3c03e7775aa081|18|6|wP;bL wP\;wQ -wP;bQ bL-;wA1 \wP;bP bQ\
+106aa83c41d98533|17|6|wP;bG1 wP\;wQ \wP;bL bG1\;wA1 wQ/;bQ /bL
+31b028a4d60caa59|16|6|wL;bL wL-;wM -wL;bA1 bL\;wA1 wM\;bQ bL/
+020b1cad5c467d07|16|6|wL;bL wL-;wQ /wL;bM bL-;wA1 \wL;bQ bL\
+26bb62dbb6ad08b0|16|6|wP;bG1 wP-;wQ -wP;bQ bG1\;wA1 /wQ;bP bQ-
+0991a8283e864f38|15|6|wP;bL wP\;wQ \wP;bQ bL-;wA1 -wQ;bP bQ-
+1247744094b3d918|15|6|wL;bP \wL;wA1 wL\;bQ bP/;wQ /wL;bM \bP
+4e452cf56e6d8ad8|15|6|wL;bL \wL;wM wL\;bM \bL;wA1 wM\;bQ /bM
+184ddc80b20ee3a0|14|6|wP;bP \wP;wQ wP\;bM \bP;wA1 /wQ;bQ bP/
+0afdb848908c4ea2|14|6|wL;bL wL/;wM /wL;bQ \bL;wQ wL\;bA1 bL/
+352b55043fccbee5|14|6|wG1;bL wG1\;wM \wG1;bM bL\;wA1 /wM;bA1 bM/
+03c1bd5aee85d3b7|14|6|wL;bL wL/;wM /wL;bM bL/;wQ wL\;bQ \bM
+24c3668cce304c67|14|6|wL;bL wL\;wA1 \wL;bM bL\;wM wL/;bA1 /bL
+0d6474324d6fc55e|14|6|wL;bL wL\;wQ wL/;bM bL\;wA1 -wL;bQ /bM
+0a9fc1b158ebfffa|14|6|wP;bM wP\;wQ \wP;bQ /bM;wA1 -wQ;bP bQ\
+0696f4f11561bb4a|14|6|wL;bL /wL;wA1 wL/;bM /bL;wA2 wA1/;bA1 \bM
+084092edc6385dfd|13|6|wP;bG1 wP-;wQ -wP;bB1 bG1/;wA1 \wQ;bM bB1\
+079c089d15f49fe7|13|6|wL;bP -wL;wM wL-;bM -bP;wQ wM\;bQ \bP
+0e56486e9ecc1eea|13|6|wP;bM -wP;wQ wP-;bQ \bM;wA1 wQ/;bP bQ/
+0921e45b32b972ba|13|6|wP;bG1 wP-;wQ -wP;bM bG1-;wA1 \wQ;bQ bM\
+1f1eaec97aeaaf34|13|6|wP;bG1 wP\;wQ \wP;bM bG1\;wA1 wQ/;bB1 /bG1
+1f4cf746fbd358a0|13|6|wL;bL wL\;wA1 \wL;bQ bL-;wQ wL/;bP bQ/
+0b1854a4af0ffd6c|13|6|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bP /bL
+26ac004309cc2137|13|6|wL;bL wL-;wM -wL;bQ bL/;wQ \wM;bP bQ/
+022be66c392bb3e9|13|6|wP;bL wP/;wA1 /wP;bM bL/;wQ \wA1;bA1 \bL
+024036491a17ada6|13|6|wL;bG1 /wL;wQ wL-;bL /bG1;wA1 \wQ;bQ -bL
+02a58552990d1483|13|6|wL;bL wL-;wQ /wL;bQ bL/;wA1 -wQ;bP bQ/
+03c93940c0ef9c8a|13|6|wL;bL -wL;wA1 wL-;bQ \bL;wQ \wA1;bM bQ/
+05cd88f3651e964a|13|6|wL;bL wL\;wQ \wL;bM bL\;wS1 wL/;bP bM/
+00a0034111ec37ca|12|6|wL;bL wL-;wM -wL;bA1 bL\;wQ \wL;bM bA1/
+004dd5360d809177|12|6|wP;bL -wP;wQ wP-;bQ \bL;wA1 wQ/;bM \bQ
+03c5b54a7a5b7717|12|6|wG1;bL wG1-;wQ \wG1;bQ bL\;wA1 /wG1;bP bQ\
+15fcabf442686737|12|6|wL;bL wL-;wM -wL;bQ bL\;wA1 \wL;bP bQ\
+101926f7e09e5a62|12|6|wL;bG1 -wL;wA1 wL/;bL -bG1;wQ wL\;bQ \bL
+1d72d2340d94f52c|12|6|wL;bL wL\;wM \wL;bQ bL-;wA1 /wM;bP bQ\
+09d4f3ff7996b047|12|6|wL;bG1 wL\;wM \wL;bQ bG1-;wQ /wM;bL bQ-
+02326305c6e37796|12|6|wL;bL /wL;wQ wL-;bQ bL\;wA1 \wL;bP /bQ
+04d81a845dca0ce4|11|6|wP;bM wP\;wQ \wP;bQ bM-;wA1 wQ/;bA1 /bM
+07ed12a161a412bb|11|6|wL;bL wL-;wQ /wL;bQ bL\;wA1 wQ\;bP bQ\
+2f4b0bed239341e9|11|6|wL;bG1 wL-;wA1 \wL;bM bG1-;wQ /wL;bP bG1\
+26d6b7fbcbd0fcfc|11|6|wL;bL wL\;wQ \wL;bQ /bL;wM /wQ;bM bL\
+2377e530d953a03a|11|6|wL;bL wL\;wQ \wL;bM bL\;wS1 wL/;bS1 bM/
+2ce903a70be018c1|11|6|wG1;bL wG1-;wM -wG1;bQ bL\;wQ \wG1;bA1 bL/
+327b9f7a1d71786e|11|6|wL;bL wL\;wM \wL;bA1 bL\;wA1 wL/;bQ bA1/
+01f87b915ee3af92|11|6|wL;bL wL-;wM -wL;bM bL-;wQ \wM;bQ bL\
+23c39a8e2ac932f2|11|6|wL;bP /wL;wB1 wL/;bQ bP\;wQ \wL;bM /bP
+02da16a65f5846a7|11|6|wL;bG1 wL/;wA1 wL\;bM bG1/;wQ -wL;bQ \bM
+1f808fc421170be8|11|6|wL;bL wL\;wA1 -wL;bM bL\;wQ wL/;bP /bL
+01fc669fcc43b82c|11|6|wP;bL wP-;wQ /wP;bQ bL/;wA1 \wP;bP bQ/
+06a494f1feeda49e|11|6|wL;bL wL\;wM \wL;bQ /bL;wQ -wM;bM bL\
+1fccb5e22fc54d9a|11|6|wL;bL wL\;wQ \wL;bM bL\;wS1 wL/;bP bM-
+031fefcb0345a18a|10|6|wP;bL wP\;wM \wP;bQ bL-;wQ /wM;bP bQ\
+10f706c413e43400|10|6|wL;bP /wL;wB1 wL/;bQ bP\;wQ \wL;bA1 -bP
+13544ac86c0aa9f9|10|6|wL;bL -wL;wM wL-;bQ \bL;wA1 \wM;bS1 \bQ
+18400eb9daf6e194|10|6|wL;bL wL\;wQ \wL;bM bL\;wS1 /wQ;bQ bM-
+1e3c06f066541ab5|10|6|wP;bG1 /wP;wQ wP/;bM /bG1;wA1 wQ-;bA1 bG1\
+013988689782a79a|10|6|wL;bL wL\;wM \wL;bM bL\;wA1 \wM;bP /bL
+044d2bdbb093cdf6|10|6|wL;bL wL\;wQ wL/;bQ bL-;wM \wL;bP bQ-
+0184ef7b3c29d566|10|6|wL;bL wL\;wM \wL;bQ /bL;wQ /wM;bP bQ\
+019c5b3b52a69c2b|214|7|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ /bL;wA1 /wM
+2103f697cf80c411|208|7|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ wL/
+02b49039876e7b94|171|7|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/
+009ad31beda71b2d|143|7|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\;bP bQ-;wM wP\
+0cd8a3c6b96bd600|121|7|wL;bL wL/;wM /wL;bA1 bL-;wQ wL\;bQ \bL;wA1 \wM
+15396f1fec7d0180|110|7|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\;bP bQ/;wM wP\
+18398deffc688443|102|7|wL;bL wL-;wQ \wL;bQ bL\;wA1 /wL;bP bQ\;wM \wA1
+1b715ab72ab78247|99|7|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1
+010e13b9ce8f916d|74|7|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bQ /bL;wQ \wA1
+1714eceae5ff0583|72|7|wL;bL /wL;wQ wL-;bM /bL;wM \wQ;bQ bM\;wA1 \wL
+370a49d5092cef9f|60|7|wL;bL wL-;wQ /wL;bM bL-;wA1 \wL;bQ bL\;wM \wQ
+3c5ab17dbc53e4a6|59|7|wL;bL wL-;wA1 -wL;bM bL-;wQ wA1\;bQ \bM;wA1 bM\
+1e2e66d056f675e4|58|7|wP;bM wP-;wQ -wP;bQ bM/;wA1 \wQ;bP bQ/;wM \wP
+02a3ed71a345c104|56|7|wL;bL wL-;wM -wL;bA1 bL\;wQ \wL;bM bA1/;wA1 wM\
+0350065c9f33d3cd|54|7|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 /bL;wA1 bM-
+2998fa45b349393a|51|7|wL;bL wL-;wM -wL;bQ bL/;wQ wM\;bP bQ/;wM bQ\
+0402ebb642bd1474|47|7|wL;bL /wL;wQ \wL;bM /bL;wA1 wL-;bQ -bM;wA1 \bQ
+266886f459fec4c9|45|7|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wA1 bQ/
+109555ea2623e5f4|45|7|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bP /bL;wQ /wM
+071ef8f8e922f638|43|7|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bQ bM\;wQ \wL
+0455ecf92f5a6010|43|7|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bA1 bM/;wA1 bA1-
+0990de78f2ba7e1e|41|7|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bP \bM;wQ /wM
+2a3dfdcb4e543781|37|7|wL;bL wL-;wA1 -wL;bQ bL/;wQ wA1\;bP bQ/;wM \wL
+0a8dd40a957d612d|36|7|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wM wL/
+2959b9d6ae5a50b9|35|7|wL;bL \wL;wA1 wL\;bM \bL;wQ /wL;bQ bL/;wA1 bQ/
+0b29e1393e746dff|35|7|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ-;wA2 \wQ
+08e6f3406fbc2d72|34|7|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bQ /bM;wQ wA1\
+0b6f593f916ab331|30|7|wL;bL wL\;wM \wL;bQ bL-;wQ wM/;bA1 /bL;wA1 /wM
+0c5b50c6bc07eb77|29|7|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bA1 bM/;wQ \wA1
+1f195198afe9f64f|29|7|wL;bL wL\;wQ -wL;bQ /bL;wA1 wL/;bP /bQ;wM \wL
+06e460dff9733ec6|27|7|wL;bL wL\;wM \wL;bM bL\;wA1 \wM;bA1 /bL;wQ /wM
+04cca498fc4fe847|26|7|wL;bL wL\;wM \wL;bQ /bL;wA1 /wM;bA1 bL-;wQ \wA1
+1e6bee759895a1af|25|7|wP;bL wP-;wQ -wP;bQ bL/;wA1 wQ\;bP bQ-;wA1 \bQ
+007f5ab69c2b5de0|23|7|wP;bL wP/;wQ /wP;bM bL/;wA1 -wQ;bA1 \bL;wM \wQ
+03dc19b6e866c2cb|23|7|wL;bL wL\;wM \wL;bQ bL-;wA1 /wM;bP bQ\;wQ wL/
+14617b712036590b|22|7|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ-;wB1 wL/
+048ae7ce66fd6012|22|7|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 bM/;wA1 /bM
+23f3bc5d3e767bc7|22|7|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ wM/
+52e3a3a3c0f7c305|21|7|wL;bL \wL;wA1 wL\;bA1 -bL;wQ /wL;bQ bL/;wA1 \bA1
+18a406ba35ddf7d3|21|7|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bQ /bM;wQ /wM
+00a55bda0f1fe0c5|19|7|wP;bM wP\;wA1 \wP;bQ bM-;wQ /wA1;bP bQ-;wB1 wP/
+139270f350bdecae|19|7|wL;bL wL-;wA1 -wL;bM bL-;wQ wA1\;bP bL\;wA2 wQ\
+01171b19b66a91ca|19|7|wL;bL wL\;wM \wL;bA1 bL\;wA1 wL/;bQ bA1/;wQ /wM
+2867fee5a2f948c1|19|7|wL;bL wL\;wA1 wL/;bQ bL-;wQ -wL;bP bQ\;wB1 \wL
+0b9ddfc779c8b6ea|19|7|wL;bL /wL;wM wL/;bQ bL\;wQ wM-;bP /bQ;wA1 \wL
+0591965844a8f974|19|7|wP;bL wP-;wA1 -wP;bQ bL/;wQ wA1\;bP bQ/;wB1 \wP
+12fd207616b45899|18|7|wL;bP wL\;wQ -wL;bM bP\;wA1 wL/;bQ bM/;wM \wL
+29e73e5f1ec36205|18|7|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bQ /bL;wA1 bM-
+10aae9e021ac746b|18|7|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bQ /bM;wA1 -bQ
+0f265ac61781976c|17|7|wL;bG1 wL-;wQ \wL;bL bG1-;wM /wQ;bQ bL\;wA1 wM\
+0e6cb78bf5ac8522|17|7|wL;bP /wL;wQ \wL;bQ bP\;wA1 wL-;bM /bP;wA1 bQ\
+027858e2c13444e6|17|7|wL;bL wL\;wA1 wL/;bQ bL-;wQ -wL;bP bQ-;wB1 \wL
+07c4199b34655204|16|7|wL;bG1 wL-;wM -wL;bM bG1-;wQ \wL;bQ bM/;wA1 wM\
+077239ca29c11d99|16|7|wL;bL /wL;wM wL/;bQ -bL;wA1 \wL;bP /bQ;wQ \wM
+113768ecc46de6b1|16|7|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bA1 bM/;wA1 /bM
+15729ffb9b0df413|16|7|wL;bL wL-;wM -wL;bQ bL/;wQ \wM;bP bQ/;wA1 wM\
+29c5337b2492e1e5|16|7|wL;bL wL\;wA1 \wL;bQ bL-;wQ wL/;bP bQ\;wA1 bQ/
+2057fe1470bf2006|16|7|wL;bL \wL;wA1 wL\;bQ bL/;wQ /wL;bP bQ/;wP wQ\
+189cf6b358171d17|15|7|wP;bG1 wP-;wQ -wP;bB1 bG1-;wM \wP;bQ bB1-;wA1 \wQ
+00fa5ac3ed451203|15|7|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wM \wQ
+18bf67abd3b186ba|15|7|wL;bL wL-;wM -wL;bQ bL\;wA1 wM\;bP bQ\;wQ /wM
+1fbcd6d360e347ed|15|7|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ -wM
+06740e692e987a17|15|7|wL;bL wL-;wM -wL;bA1 bL\;wQ \wM;bM bA1/;wA1 wM\
+3244684ef2aff598|15|7|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bP /bL;wA1 /wM
+056a78a90f5b6239|15|7|wL;bL wL-;wM -wL;bQ bL/;wQ wM\;bP bQ-;wM bL\
+0d40840ce143d02d|15|7|wL;bL wL-;wM -wL;bM bL-;wA1 -wM;bA1 bL\;wQ \wL
+0c782b9e7e2d5b9a|14|7|wL;bP \wL;wM wL\;bM \bP;wA1 /wL;bQ /bM;wQ wA1\
+682639a8ac4e1f55|14|7|wP;bL /wP;wQ wP/;bM /bL;wM wQ\;bQ -bM;wA1 wM/
+523152ab14836234|14|7|wL;bL wL/;wA1 /wL;bQ bL-;wQ wL\;bP bQ-;wP wQ\
+16065305cfac9cd6|14|7|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bQ /bL;wA1 /bQ
+053e3906f84687a2|14|7|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bQ bM-;wQ \wA1
+05a1b9c6cae60f75|14|7|wP;bL wP\;wQ \wP;bM bL\;wA1 -wQ;bQ /bM;wA1 -bQ
+0afe3571fe305495|14|7|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bQ /bL;wA1 bM-
+0031b847605a37b0|14|7|wL;bL wL\;wA1 wL/;bM bL\;wQ -wL;bQ /bM;wA1 bM-
+12826f2ec1cdf742|14|7|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bQ bM-;wM wA1\
+09ef75267e2c891b|14|7|wL;bL /wL;wA1 wL/;bM /bL;wA2 wA1/;bA1 \bM;wQ wA1\
+0b176babc5c53c98|13|7|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bQ /bL;wA1 -bQ
+13447d10e3f0dbeb|13|7|wP;bL wP\;wM \wP;bQ bL-;wQ /wM;bP bQ\;wA1 wP/
+00cc61179e1a72f1|13|7|wL;bP /wL;wQ wL-;bQ -bP;wB1 \wL;bA1 bP\;wB1 wL
+2bb24c3176fed20e|13|7|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bB1 bM/;wM wA1\
+07d70e4cd276f3a9|13|7|wG1;bL wG1-;wM -wG1;bQ bL\;wQ \wG1;bA1 bL/;wA1 wM\
+016e2d5af6de6762|13|7|wL;bG1 wL\;wQ wL/;bQ /bG1;wA1 -wL;bL /bQ;wM \wL
+1cfccac6513d3687|13|7|wL;bL wL/;wA1 /wL;bA1 \bL;wQ \wA1;bQ bL-;wA1 bQ-
+227e4c8cbc48a75b|13|7|wP;bL wP\;wQ wP/;bQ /bL;wA1 -wP;bP bQ\;wA1 -bQ
+0d621bb7b6c3aeb6|13|7|wL;bL \wL;wM wL\;bM \bL;wA1 wM\;bQ /bM;wQ wM/
+3f8cc9f960502386|13|7|wP;bG1 wP-;wQ -wP;bQ bG1\;wA1 /wQ;bP bQ-;wM wQ\
+00094c1a00c8905b|12|7|wL;bL wL-;wM -wL;bA1 bL\;wA1 wM\;bQ bL/;wQ \wL
+15497feb23e4da9a|12|7|wL;bL wL\;wM \wL;bA1 bL\;wA1 /wM;bQ bA1/;wQ wL/
+1998507e22f8598a|12|7|wL;bG1 wL-;wA1 \wL;bM bG1-;wQ /wL;bP bG1\;wM \wQ
+05d78052d2647ecb|12|7|wP;bL wP/;wQ /wP;bQ \bL;wA1 -wQ;bP \bQ;wA2 wQ\
+0ebf339afc57cb53|12|7|wL;bP /wL;wB1 wL/;bQ bP\;wQ \wL;bM /bP;wB1 wL
+01d9038d26c0274d|11|7|wP;bM wP-;wQ \wP;bQ bM\;wA1 /wP;bP bQ\;wM \wA1
+2b6d05f1442898e1|11|7|wG1;bL wG1-;wQ \wG1;bQ bL\;wA1 /wG1;bP bQ\;wM \wA1
+08e0338d8641fea2|11|7|wP;bM wP-;wQ -wP;bQ bM\;wA1 /wQ;bP bQ\;wA2 \wQ
+0d1e428d8efde349|11|7|wL;bL \wL;wA1 wL\;bQ bL/;wQ /wL;bP bQ/;wA2 wA1/
+0698469aabe3b96a|11|7|wG1;bL wG1\;wM \wG1;bM bL\;wQ /wM;bQ bM/;wA1 wG1/
+09c960c698f6243c|11|7|wP;bL wP\;wM \wP;bQ bL-;wQ /wM;bP bQ-;wA1 wP/
+049231bae90884e7|11|7|wG1;bL wG1\;wM \wG1;bM bL\;wA1 /wM;bA1 bM/;wQ wG1/
+2230b06cef105d1a|11|7|wL;bL wL-;wQ /wL;bQ bL/;wA1 -wQ;bP bQ/;wM \wQ
+27d68c5af1ba3175|11|7|wL;bL -wL;wA1 wL-;bQ \bL;wQ \wA1;bM bQ/;wA1 \bM
+0e76bd61b16d34b5|11|7|wP;bG1 wP-;wQ -wP;bL bG1-;wA1 \wQ;bQ bL\;wA1 /bQ
+07092489a62df279|11|7|wP;bL -wP;wQ wP-;bQ \bL;wA1 wQ/;bA1 /bL;wA1 -bA1
+1fe646518a26e371|11|7|wL;bL -wL;wM wL-;bM -bL;wA1 wM-;bA1 \bL;wQ wM\
+09393e65f3be97fa|11|7|wL;bL \wL;wQ wL\;bM \bL;wS1 wQ/;bP bL/;wS2 /wL
+2fb086a096877d19|10|7|wP;bL wP-;wQ -wP;bQ bL\;wM wQ\;bM bQ\;wA1 /wQ
+041bd4a6f7539c85|10|7|wL;bG1 wL/;wQ wL\;bL bG1/;wA1 /wQ;bQ \bL;wA1 -bQ
+46ac8a501feb0b78|10|7|wP;bG1 wP-;wQ -wP;bM bG1-;wA1 \wQ;bQ bM\;wA1 /bQ
+16c5047836880735|10|7|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bA1 bM/;wM /wA1
+2e087d058e3308bd|10|7|wL;bL wL\;wQ \wL;bM bL\;wS1 /wQ;bQ bM-;wS1 /bM
+0eded487387a2ddd|10|7|wL;bL wL/;wM /wL;bQ bL-;wA1 wL\;bS1 bQ\;wQ \wM
+08915eaf567d2055|10|7|wL;bG1 wL\;wM \wL;bM bG1\;wA1 wL/;bQ bM/;wQ /wM
+1684145c29d287fa|10|7|wL;bL wL-;wM -wL;bQ bL\;wQ \wM;bA1 bL/;wA1 \wL
+020cca5ef0d9553b|10|7|wP;bL wP\;wQ \wP;bM bL\;wM wP/;bA1 /bL;wA1 \wM
+0b35f41092454203|10|7|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bA1 bM/;wA1 bA1/
+04393827aa6c0c8d|10|7|wL;bL wL\;wQ \wL;bM bL\;wS1 wL/;bG1 bM\;wS1 bG1/
+00e49bba567d08a4|10|7|wP;bM wP\;wQ \wP;bQ /bM;wA1 -wQ;bP bQ\;wM wA1\
+219bde8a9f2d84b9|10|7|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bQ /bM;wA1 bM-
+019c30a43d2851c9|387|8|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ /bL;wA1 /wM;bA1 bM/
+0565648512e04ccf|144|8|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP
+091d4795f66ff8c0|129|8|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1;bQ /bL
+21fdab5ef277d0df|88|8|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\;bP bQ/;wM wP\;bM \bP
+042fcc2b98604a4e|66|8|wL;bL wL-;wQ /wL;bQ bL/;wA1 \wL;bP bQ/;wM \wQ;bA1 bL\
+021cdcce8ddd3dea|65|8|wL;bL wL-;wM -wL;bA1 bL\;wQ \wL;bM bA1/;wA1 wM\;bQ bM/
+410dd366cdbdc351|65|8|wL;bL wL-;wM -wL;bA1 bL\;wA1 wM\;bQ bL/;wQ \wL;bM bQ\
+29aef0a81e2d261d|60|8|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 /bL;wA1 bM-;bQ bA1\
+112af4222911042f|53|8|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\;bP bQ-;wM wP\;bA1 bP\
+087aa8d518ed70f9|42|8|wL;bL \wL;wA1 wL\;bM \bL;wQ /wL;bQ bL/;wA1 bQ/;bA1 /bM
+00fc8d1e50efb282|40|8|wL;bL /wL;wQ \wL;bM /bL;wA1 wL-;bQ -bM;wA1 \bQ;bA1 bL\
+1dd05ec43f279d80|40|8|wL;bL /wL;wA1 wL/;bM /bL;wQ \wL;bA1 \bM;wA1 -bA1;bQ bL\
+0ca1121646d9dba1|39|8|wL;bL wL-;wM -wL;bA1 bL\;wQ \wM;bM bA1/;wA1 wM\;bQ \bM
+06ce238c0ece22b5|38|8|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bP \bM;wQ /wM;bQ bM/
+00f7f99f80aa8839|37|8|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bQ bM\;wQ \wL;bA1 \bM
+01a418e30d511fc6|35|8|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ bM-;wA1 /wM;bP \bQ
+31ef8e9d7b4102ef|33|8|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bQ /bM;wQ wA1\;bA1 bL/
+1e647b6299adf7d2|31|8|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ-;wM wA1\;bM \bP
+1904e08272925380|29|8|wL;bL wL-;wM -wL;bM bL-;wQ \wL;bQ bL\;wA1 wM\;bP bM\
+0323a80bb6158339|28|8|wL;bL wL\;wM \wL;bM bL\;wA1 \wM;bA1 /bL;wQ /wM;bQ bM/
+03ffc92a3f2ff19b|26|8|wG1;bL wG1\;wM \wG1;bM bL\;wQ /wM;bQ bM/;wA1 wG1/;bA1 /bL
+019c118588ce441f|26|8|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ -wM;bA1 /bL
+002018d1353dd1a4|26|8|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bA1 /bL;wQ /wM;bQ bA1\
+14a3ef0368641b8c|25|8|wP;bL wP-;wQ -wP;bQ bL\;wM wQ\;bP bQ\;wA1 /wQ;bA1 bP-
+0a790b3f7c319204|25|8|wL;bL -wL;wM wL-;bQ /bL;wQ \wM;bP /bQ;wM \bQ;bA1 bP\
+0e4e4151c3d99e71|24|8|wL;bL wL\;wQ -wL;bQ bL-;wA1 wL/;bP bQ-;wM \wL;bA1 bP/
+0e250e394c0a9f89|24|8|wL;bL wL\;wQ -wL;bQ bL-;wA1 wL/;bP bQ-;wM \wL;bA1 bP\
+04eee2721faa532f|23|8|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bP /bL;wA1 /wM;bQ bP\
+11b9360e64053d65|22|8|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 bM/;wA1 /bM;bQ bA1\
+11bbb216a9c1118e|22|8|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wA1 bQ/;bA1 bP\
+3de4e1802f36dc47|21|8|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wM wL/;bM /bP
+06d8632b38410693|21|8|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1;bQ bA1\
+24175fd25be7a450|21|8|wL;bP wL\;wQ -wL;bM bP\;wA1 wL/;bQ bM/;wM \wL;bA1 /bP
+02764357f9e6d9c1|21|8|wL;bL wL/;wM /wL;bM bL/;wA1 wL\;bA1 bM\;wQ \wM;bQ bA1/
+0d007f73331c438c|20|8|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bA1 bM/;wM /wA1;bQ /bL
+09b4e7c424bd5247|20|8|wL;bL wL\;wQ wL/;bQ bL-;wA1 -wL;bP bQ-;wM \wL;bM \bP
+1fbbd973d3a7d96d|19|8|wL;bL wL-;wA1 -wL;bM bL-;wQ wA1\;bQ \bM;wA1 bM\;bA1 bM/
+048efc1c4d6f43e4|19|8|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bA1 bM/;wA1 /bM;bQ bA1\
+0287b3843d0ca9d6|19|8|wL;bL \wL;wA1 wL-;bQ -bL;wM wL\;bP \bQ;wQ /wL;bM bP/
+1569f6f1854d2a7a|18|8|wL;bP /wL;wQ wL-;bQ -bP;wB1 \wL;bA1 bP\;wB1 wL;bM bQ\
+04f503568cb7b4dc|18|8|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bP bM/;wA1 /wM;bQ bP/
+229d8d2400719be4|17|8|wP;bL wP/;wQ /wP;bQ bL-;wA1 wQ\;bP bQ/;wM wP\;bA1 bP/
+1c13a770501320e4|17|8|wL;bL /wL;wM wL/;bQ bL\;wQ wM-;bP /bQ;wA1 \wL;bM -bP
+08fb568bb6b4d08b|17|8|wL;bL wL\;wQ wL/;bQ /bL;wA1 -wL;bP /bQ;wM \wL;bM bQ\
+0143327c3464e89e|17|8|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM-;wQ /wM;bP /bM
+0b11d95a89068194|16|8|wL;bG1 wL-;wM -wL;bM bG1-;wQ \wL;bQ bM/;wA1 wM\;bA1 bG1\
+08ce050219a9cfc8|16|8|wP;bM wP-;wQ -wP;bQ bM\;wA1 /wQ;bP bQ\;wM wQ\;bG1 bQ/
+123fc952e379b55d|16|8|wL;bP /wL;wQ \wL;bQ bP\;wA1 wL-;bM /bP;wA1 bQ\;bA1 \bM
+0ca9a3aa597d7860|16|8|wL;bL wL-;wA1 -wL;bM bL-;wQ wA1\;bP bL\;wA2 wQ\;bQ bM\
+06b2fcb24c7ae2b8|16|8|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1;bQ /bM
+10edfd00f34ac11c|16|8|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ \wA1;bP bQ\
+00f9db9df21522c5|16|8|wP;bL wP\;wQ \wP;bM bL\;wM wP/;bA1 /bL;wA1 \wM;bQ bM-
+0c2eb920597739af|15|8|wL;bL \wL;wA1 wL\;bM \bL;wQ wA1/;bQ /bM;wA1 bM/;bP \bQ
+107bb4eb8a89d94f|14|8|wP;bL wP-;wQ -wP;bQ bL/;wA1 wQ\;bP bQ-;wA1 \bQ;bA1 bP-
+044a7f35a2ee606b|14|8|wL;bG1 wL-;wQ \wL;bL bG1-;wM /wQ;bQ bL\;wA1 wM\;bA1 bL/
+1ea7e35dbb137cbd|14|8|wL;bL -wL;wQ wL\;bQ \bL;wM wQ/;bP \bQ;wM /bQ;bA1 -bP
+13310ff3c74a4ee0|14|8|wL;bP /wL;wM wL/;bQ bP\;wA1 wM\;bM /bP;wQ wA1/;bA1 \bM
+0e32931003ca4675|14|8|wL;bL wL\;wM \wL;bQ bL-;wA1 /wM;bP bQ\;wQ wL/;bM bL\
+07b81244c8684c62|14|8|wL;bL wL\;wM \wL;bQ bL-;wQ wM/;bA1 /bL;wP wQ\;bM bL\
+12e25728ba029958|13|8|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wM \wQ;bM /bP
+308bd34ca5444040|13|8|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bB1 bM/;wM wA1\;bQ /bL
+10ef6b0452b74ab1|13|8|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bQ bM-;wQ \wA1;bA1 /bL
+0b577e2fa4dc9c1c|13|8|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bQ bM/;wQ \wA1;bP bQ\
+282af6c37e4c708e|12|8|wP;bM wP-;wQ -wP;bQ bM/;wA1 \wQ;bP bQ/;wM \wP;bA1 \bP
+01cb39cebd7e54e2|12|8|wL;bL \wL;wM wL\;bQ bL/;wQ wM/;bA1 bQ-;wA1 /wL;bA1 wQ/
+2e1ce2f5f7aee6cf|12|8|wL;bL /wL;wM wL/;bQ -bL;wA1 \wL;bP /bQ;wQ \wM;bM bP\
+19fef2b66ed6ae50|12|8|wL;bL -wL;wM wL-;bQ \bL;wQ wM/;bA1 /bL;wA1 wL\;bA1 wA1\
+05615e878e9ae480|12|8|wP;bL wP\;wQ \wP;bM bL\;wA1 -wQ;bQ /bM;wA1 -bQ;bA1 bM/
+2b9012e55f6a0bd5|12|8|wL;bL wL-;wQ /wL;bM bL-;wA1 \wL;bQ bL\;wA1 bQ\;bA1 \bM
+02c114616ada490e|12|8|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bQ /bL;wA1 bM-;bA1 /bQ
+0ed111f7d718c73d|12|8|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bA1 bM/;wM wA1\;bQ bA1\
+045bfa49f6fba2b7|12|8|wP;bG1 wP-;wQ -wP;bQ bG1\;wA1 /wQ;bP bQ-;wM wQ\;bM bP/
+038778b03b5f45f7|11|8|wP;bG1 -wP;wQ wP-;bB1 -bG1;wM \wQ;bA1 \bG1;wA1 wQ/;bQ -bB1
+01f4e85857ad4d2c|11|8|wP;bG1 wP-;wQ -wP;bB1 bG1-;wM \wP;bQ bB1-;wA1 \wQ;bA1 bG1\
+0a39829314d70634|11|8|wP;bL wP\;wM \wP;bQ bL-;wQ /wM;bP bQ\;wA1 wP/;bM /bP
+0e3502d840554523|11|8|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bQ /bL;wA1 bM-;bA1 -bQ
+0b483e12ed2795bd|11|8|wL;bL /wL;wA1 wL-;bQ bL\;wQ \wL;bP /bQ;wB1 \wA1;bM -bP
+1d313be7bc84adf1|11|8|wL;bL wL\;wQ -wL;bQ bL-;wA1 wL/;bA1 /bL;wA1 bA1\;bA2 bQ\
+25bded44226783b4|11|8|wL;bL wL\;wM \wL;bM bL\;wA1 \wM;bA1 bM/;wQ /wM;bQ /bL
+4a26035208699532|11|8|wL;bL wL-;wM -wL;bM bL-;wA1 -wM;bQ \bM;wQ \wM;bA1 bL\
+29bbea77826230b8|10|8|wL;bG1 wL/;wQ wL\;bL bG1/;wA1 /wQ;bQ \bL;wA1 -bQ;bA1 bL-
+198a45fc7c73d086|10|8|wP;bL wP\;wA1 \wP;bM bL\;wQ wP/;bQ /bL;wA1 /bQ;bA1 bM/
+123c65b4afd01976|10|8|wP;bG1 wP-;wQ -wP;bM bG1-;wA1 \wQ;bQ bM\;wA1 /bQ;bA1 \bM
+301e1d3a5d8b6706|10|8|wP;bP \wP;wQ wP\;bM \bP;wA1 /wQ;bQ bP/;wM \wA1;bA1 /bM
+0bc16de200d7fbe2|10|8|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bA1 bM/;wQ \wA1;bQ bA1\
+1b549166548235bc|10|8|wL;bL wL-;wA1 -wL;bM bL-;wQ wA1\;bQ bL\;wA1 /bQ;bA1 \bM
+00e37509c6289d69|10|8|wL;bL wL/;wM /wL;bQ bL-;wA1 wL\;bS1 bQ\;wQ \wM;bS1 wA1\
+0153e86de7d6e8a0|10|8|wP;bL wP\;wQ \wP;bM bL\;wA1 wQ/;bA1 bM/;wM wA1\;bQ /bL
+1536ad671f3d5f0b|10|8|wL;bL wL-;wA1 -wL;bQ bL/;wQ wA1\;bP bQ/;wM \wL;bA1 \bP
+14812f1929469332|10|8|wL;bL -wL;wA1 wL-;bQ \bL;wQ \wA1;bM bQ/;wA1 \bM;bA1 /bL
+29c9f18bdc39ac1e|10|8|wP;bG1 wP-;wQ -wP;bL bG1-;wA1 \wQ;bQ bL\;wA1 /bQ;bA1 bL/
+1b7a26ffe972a44f|10|8|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ-;wA2 \wQ;bA1 bP/
+0896931c1b8d40b8|10|8|wP;bL wP-;wA1 -wP;bQ bL/;wQ wA1\;bP bQ/;wB1 \wP;bM \bQ
+0170f89337583919|10|8|wL;bL -wL;wA1 wL-;bM -bL;wA2 wA1-;bQ \bL;wQ \wA1;bA1 bM\
+03038e57c74deb2f|111|9|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ /wM;bA1 /bL;wP \wQ
+0657d902e7300637|100|9|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ /wM;bA1 /bL;wA1 /bA1
+23f656ce2e4ecf22|55|9|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bQ /bL;wQ \wA1;bA1 bM/;wA2 wL/
+159731f05b62ff0d|50|9|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wM -bM
+40cc22fb2a86c6a8|49|9|wL;bL \wL;wM wL\;bQ bL/;wQ /wL;bA1 -bL;wA1 wM/;bM \bL;wM bQ/
+0ad08dde034baeef|45|9|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1;bQ /bL;wS1 wL/
+064300609bdbe726|40|9|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bQ \bM;wQ \wL;bA1 bL\;wM \bQ
+0b312063bf386d4b|34|9|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 /bL;wA1 bM-;bQ bA1\;wA2 wL/
+0cdf9839529cd94b|30|9|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ bM-;wA1 /wM;bA1 /bL;wM bQ/
+124382aacc28b6b8|29|9|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ\;wM wA1\;bM /bP;wM bL\
+10bba6727a06dd0e|29|9|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bQ /bM;wQ wA1\;bA1 bL/;wA2 /wL
+093d8b8b1adc27c0|29|9|wL;bL \wL;wM wL\;bQ bL/;wQ /wL;bA1 -bL;wA1 wM/;bP bQ/;wA1 \bA1
+0440b64d1c661f76|27|9|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bP \bM;wQ /wM;bQ bM/;wA2 \wL
+033d746e2408bc6c|26|9|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bA1 bM/;wA1 /wM;bQ /bL;wM bA1-
+09c090615861247c|26|9|wL;bL wL-;wM -wL;bA1 bL\;wQ \wM;bM bA1/;wA1 wM\;bQ \bM;wA1 bA1\
+20a4463f587dfd40|25|9|wL;bL wL\;wM \wL;bM bL\;wA1 \wM;bA1 /bL;wQ /wM;bQ bM/;wP \wQ
+0d64a7e873d0645a|23|9|wL;bL wL\;wQ wL/;bM bL\;wM \wL;bQ /bL;wA1 /wM;bA1 bM/;wA1 /bQ
+02d51394b4bfd995|21|9|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ /bL;wA1 /wM;bA1 bM/;wA1 bA1\
+00c54f90568a0881|21|9|wL;bL \wL;wM wL\;bM \bL;wA1 /wL;bQ /bM;wQ wM/;bA1 bL/;wP wQ-
+0c448ebd11ed5cf1|21|9|wL;bL -wL;wM wL-;bQ /bL;wQ \wM;bP /bQ;wM \bQ;bA1 bP\;wB1 wL\
+0515fe55e62473ec|20|9|wL;bL /wL;wQ wL-;bQ -bL;wA1 \wL;bP /bQ;wM \wQ;bM bP\;wM bL\
+2083651989073238|20|9|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bA1 /bM;wQ wA1\;bQ bL/;wA1 \bM
+442689c4678e9f42|19|9|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wP \wQ
+0280ce33b3eb6c74|19|9|wP;bL wP-;wQ -wP;bQ bL\;wM wQ\;bP bQ-;wA1 /wQ;bM bP/;wM bQ\
+10e8604d345e1f8d|18|9|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1;bQ bA1\;wA2 wL/
+2781252830f5ca09|18|9|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ-;wM wA1\;bA1 bP/;wA1 \bA1
+0ebdb695eaa827ca|18|9|wL;bL wL-;wM -wL;bQ bL/;wQ wM\;bA1 bL\;wA1 \wL;bP bQ/;wM bA1-
+0133be273bb3c946|17|9|wL;bL wL-;wM -wL;bQ bL/;wQ \wM;bA1 bL\;wA1 wM\;bM bQ\;wP \wL
+15dfb9a9d1b76007|15|9|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bQ bM\;wQ \wL;bA1 \bM;wA1 bA1/
+06eb29074a8dcee8|15|9|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ -wM;bA1 /bL;wA2 wQ\
+08eb486373481c42|15|9|wL;bL wL\;wQ wL/;bM bL\;wA1 \wQ;bP bM/;wA2 wQ-;bQ bP\;wA1 /bM
+282e8825656838c3|14|9|wL;bL wL-;wM -wL;bA1 bL\;wQ \wL;bM bA1/;wA1 wM\;bQ bM/;wA1 bA1\
+1d5051b4ccc8ea4e|14|9|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wM bP/
+09d5c0cab1b45658|14|9|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ-;wM wA1\;bA1 bP/;wM \bA1
+1d308a382150a330|14|9|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bM bL\;wA1 wL/;bA1 /bL;wA1 -bA1
+1bfb4c82a2c5c34d|14|9|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ-;wA2 wA1\;bA1 bP/;wA2 \bA1
+0ecd2d2f49eb7334|13|9|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 bM/;wA1 /bM;bQ bA1\;wA2 wL/
+089c1f4df0eccb84|13|9|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bA1 bM/;wP wQ/;bQ /bL;wA1 /bQ
+04b4e7550094d544|13|9|wL;bL \wL;wA1 wL\;bM \bL;wQ wA1/;bQ /bM;wA1 bM/;bP \bQ;wB1 wA1-
+2ce641f13590b1c2|13|9|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wA1 bQ/;bA1 bP\;wB1 wA1-
+0099e9ca07a713d3|12|9|wL;bL /wL;wA1 wL/;bM /bL;wQ \wL;bA1 \bM;wA1 -bA1;bQ bL\;wP \wQ
+0ba06305f667440c|12|9|wL;bL /wL;wA1 wL/;bQ -bL;wQ wA1\;bP /bQ;wM wQ/;bM bP\;wM bM-
+0b2b49f2d99b62f5|12|9|wL;bP /wL;wQ wL-;bQ -bP;wA1 \wL;bM bQ\;wM \wQ;bA1 bP\;wP wQ/
+0c08af2e8e0021ff|12|9|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bA1 /bL;wA1 /bA1;bM bL\;wP \wQ
+391fe91489631c8b|12|9|wL;bL wL-;wM -wL;bQ bL/;wQ \wM;bP bQ-;wA1 wM\;bM bP\;wB1 \wL
+197093223ccbc41f|11|9|wL;bL -wL;wQ wL\;bQ \bL;wM wQ/;bP \bQ;wM /bQ;bA1 -bP;wB1 wL/
+15ebd31b4d48427c|11|9|wL;bL wL-;wA1 -wL;bM bL-;wQ \wL;bQ bM/;wA1 \bQ;bA1 bL\;wB1 wA1/
+03a3965d513fe96e|11|9|wL;bL wL\;wQ -wL;bM bL\;wA1 wL/;bA1 /bL;wM \wL;bQ bM-;wA1 bQ/
+4ae46dd9c7bb99c2|11|9|wL;bL wL\;wQ wL/;bM bL\;wA1 -wL;bA1 bM/;wA1 /bM;bQ bA1\;wP wQ-
+04f529bab2352dc6|10|9|wP;bG1 wP-;wQ -wP;bB1 bG1-;wM \wP;bQ bB1-;wA1 \wQ;bA1 bG1\;wM \bQ
+123a51fa50a2a3e4|10|9|wP;bL wP-;wQ -wP;bQ bL/;wA1 wQ\;bP bQ-;wA1 \bQ;bA1 bP-;wB1 wA1/
+52387a9d84ca20c8|10|9|wL;bP /wL;wB1 wL/;bQ bP\;wQ \wL;bA1 -bP;wB1 wL;bM bA1\;wA1 wB1-
+3866e7e06419a8e6|10|9|wL;bL wL-;wQ /wL;bQ bL/;wA1 \wL;bP bQ/;wM \wQ;bA1 bL\;wP /wM
+1235bbb0bab2d22c|10|9|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bP /bL;wQ /wM;bQ bP\;wM bM-
+0249a3602645bf32|10|9|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wA1 bQ/
+37acc8c92b0a0e62|10|9|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bQ bM/;wQ \wA1;bP bQ\;wA2 wL/
+2ab8a558943c6f2b|10|9|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ-;wM wA1\;bA1 bP\;wA1 /bA1
+15d672a9a6d8be28|10|9|wL;bL wL\;wM \wL;bM bL\;wQ /wM;bA1 /bL;wA1 wL/;bQ bA1\;wA1 -bA1
+05bacf0521e9399f|10|9|wP;bL wP-;wQ -wP;bM bL-;wA1 /wQ;bA1 bL\;wA1 bM/;bQ bM\;wA2 /wQ
+1cda4280f9b264dc|10|9|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ\;wM wA1\;bM /bP;wM -bM
+14315d71ce114603|10|9|wL;bL -wL;wA1 wL-;bM -bL;wA2 wA1-;bQ \bL;wQ \wA1;bA1 bM\;wA2 bQ/
+08e2632406f0fd76|64|10|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ /wM;bA1 /bL;wP \wQ;bP bQ\
+1378051ddfe193e1|49|10|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wM -bM;bA1 bP\
+02994f8c349c28f7|42|10|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bQ /bL;wQ \wA1;bA1 bM/;wA2 wL/;bP bQ\
+0d167e97814f5001|39|10|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ /wM;bA1 /bL;wA1 /bA1;bP bQ\
+09c1b8e90c753eb3|32|10|wL;bL wL-;wM -wL;bM bL-;wQ \wL;bA1 \bM;wA1 wM\;bQ bL\;wP \wM;bP bQ\
+1f83d612428b2098|29|10|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ bM-;wA1 /wM;bA1 /bL;wM bQ/;bP bA1\
+10ea2b67895e6172|29|10|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bQ \bM;wQ \wL;bA1 bL\;wM \bQ;bP bM/
+064ffacc5c41263d|27|10|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bQ /bM;wQ wA1\;bA1 bL/;wA2 /wL;bP \bQ
+30f6ca3015b2eea1|23|10|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wA1 bQ/;bA1 /bL;wB1 wA1-;bA1 wB1/
+173832c8d4b0d3cf|22|10|wL;bL /wL;wA1 \wL;bM /bL;wQ wL-;bA1 bL\;wA1 -bM;bQ bM\;wA2 \wL;bA1 wA2/
+10557ffd5bc1b3dc|22|10|wL;bL /wL;wQ wL-;bQ -bL;wA1 \wL;bP /bQ;wM \wQ;bM bP\;wM bL\;bA1 /bP
+0c9094ada1f71494|21|10|wP;bL wP-;wQ -wP;bQ bL\;wM wQ\;bP bQ-;wA1 /wQ;bM bP/;wM bQ\;bA1 bM\
+1526ded1b33e897d|20|10|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bP \bM;wQ /wM;bQ bM/;wA2 \wL;bA1 bL\
+3b0afd8828aa1d11|19|10|wL;bL \wL;wM wL\;bQ bL/;wQ /wL;bA1 -bL;wA1 wM/;bM \bL;wM bQ/;bA2 \bA1
+2167ad58f8c2477e|19|10|wL;bL wL\;wM \wL;bM bL\;wA1 \wM;bA1 /bL;wQ /wM;bQ bM/;wP \wQ;bP bQ\
+066d549b1af774eb|18|10|wL;bL wL-;wM -wL;bM bL-;wA1 \wL;bA1 bL\;wQ wM\;bQ \bM;wA1 bA1\;bA2 bM/
+1872e2fe913dbe4d|15|10|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bA1 \bM;wQ \wL;bQ bL\;wM bQ\;bM wA1\
+0d99f9342efa4ab8|15|10|wL;bL wL-;wM -wL;bA1 bL\;wQ \wM;bM bA1/;wA1 wM\;bQ \bM;wA1 bA1\;bM wQ/
+341dbdd2a48f9468|15|10|wL;bL /wL;wM wL/;bM /bL;wQ wM\;bQ \bM;wA1 \wL;bA1 bL\;wM bA1\;bM wA1/
+15a91a96f559e313|15|10|wL;bL wL\;wM \wL;bM bL\;wA1 -wM;bQ bM/;wQ wA1\;bA1 /bL;wA1 /bA1;bM wM/
+016607758e2814ed|14|10|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wM bP/;bA1 bP\
+177b33ea77e40039|13|10|wL;bL wL\;wQ wL/;bM bL\;wM \wL;bQ /bL;wA1 /wM;bA1 bM/;wA1 /bQ;bA2 bA1\
+1a557b1f3aaf1ab1|12|10|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1;bQ bA1\;wA2 wL/;bA2 /bL
+05eda1a71b88e67c|12|10|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ -wM;bA1 /bL;wA2 wQ\;bP bQ\
+2ba25ad9a796b57c|12|10|wL;bL wL\;wA1 \wL;bM bL\;wQ wL/;bA1 bM/;wP wQ/;bQ /bL;wA1 /bQ;bA2 bA1\
+212c455a09d05c35|12|10|wL;bL -wL;wM wL-;bQ \bL;wQ wL\;bA1 /bL;wA1 \wM;bM \bA1;wP wQ\;bP \bM
+04c609c612b5401e|12|10|wL;bL \wL;wM wL\;bQ bL/;wQ /wL;bA1 -bL;wA1 wM/;bP bQ/;wA1 \bA1;bA2 \bP
+04680a4428c66edc|12|10|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bA1 /bL;wQ \wA1;bQ bM/;wS1 /wM;bP bQ\
+0b1c01ae96a91d52|11|10|wL;bL wL-;wQ \wL;bM bL-;wA1 -wQ;bQ bM/;wA1 \bQ;bA1 bM\;wB1 -wA1;bA1 \wB1
+287eb2abc816bdbc|11|10|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ\;wM wA1\;bM /bP;wM bL\;bA1 bP\
+050d143779333bad|11|10|wL;bL /wL;wA1 wL/;bQ -bL;wQ wA1\;bP /bQ;wM wQ/;bM bP\;wM bM-;bA1 /bP
+2b84b4eb14c59aae|11|10|wL;bL wL-;wM -wL;bQ bL/;wQ \wM;bA1 bL\;wA1 wM\;bM bQ\;wP \wL;bP bM/
+1172c79efd259951|11|10|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ\;wM wA1\;bM /bP;wM bL\;bA1 bP-
+033ba5ee73e0a774|10|10|wL;bL wL\;wA1 \wL;bM bL\;wQ /wA1;bA1 /bL;wA1 bM-;bQ bA1\;wA2 wL/;bP /bA1
+0cfd122d1c50fb18|10|10|wP;bL wP-;wQ -wP;bQ bL/;wA1 wQ\;bP bQ-;wA1 \bQ;bA1 bP-;wB1 wA1/;bA1 \wB1
+1027409d94829429|10|10|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wP \wQ;bB1 bL\
+00eb0b0d62df7198|10|10|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bA1 /bM;wQ wA1\;bQ bL/;wA1 \bM;bA1 wQ/
+275409efbafa108c|10|10|wL;bL wL-;wA1 -wL;bM bL-;wQ \wL;bQ bL\;wA1 bM/;bA1 bM\;wA2 /wL;bA1 -wA2
+0c10e11ca8d7a29a|10|10|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wA1 bQ/;bA1 bP\
+3986c68e2db8749e|10|10|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ wL/;bQ /bM;wA1 bA1-;bB1 \bQ
+174d2dae64a34bee|10|10|wL;bL wL\;wQ wL/;bQ /bL;wA1 -wL;bP /bQ;wM \wL;bM bQ\;wP \wQ;bA1 bP\
+152687609d052e9c|10|10|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ\;wM wA1\;bM /bP;wM -bM;bA1 bP\
+0c9d0f328c33a946|55|11|wL;bL wL\;wM \wL;bQ bL-;wQ /wM;bP bQ\;wA1 wL/;bM /bP;wM -bM;bA1 bP\;wA1 bA1-
+11d1d1208e36b5d2|34|11|wL;bL wL-;wM -wL;bM bL-;wQ \wL;bQ bL\;wA1 wM\;bP bM\;wP \wM;bA1 \bM;wA1 bA1/
+21dd968cf92ebbfd|30|11|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bQ bM/;wQ /wM;bA1 /bL;wA1 /bA1;bP bQ\;wA2 wL/
+262ae815d6da8d14|21|11|wL;bL wL\;wA1 \wL;bQ bL-;wQ /wA1;bP bQ\;wA1 bQ/;bA1 /bL;wB1 wA1-;bA1 wB1/;wB2 \wA1
+0326593c0b0a2744|16|11|wL;bL \wL;wM wL\;bM \bL;wA1 wM/;bQ /bM;wQ wA1\;bA1 bL/;wA2 /wL;bP \bQ;wA2 bA1/
+0a7e228936566c4c|16|11|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ \wA1;bQ /bL;wA2 wL/;bP bQ\;wA1 bA1-
+1861bfcb817c54e4|16|11|wL;bL wL\;wM \wL;bM bL\;wQ wL/;bQ bM-;wA1 /wM;bA1 /bL;wM bQ/;bP bA1\;wB1 wM-
+0fcd7ac4dec0d131|16|11|wL;bL wL-;wM -wL;bM bL-;wA1 \wL;bA1 bL\;wQ wM\;bQ \bM;wA1 bA1\;bA2 bM/;wA2 \wL
+02bac4e5ad6a26d4|15|11|wL;bL wL\;wQ wL/;bQ bL-;wM \wL;bM bL\;wA1 /wM;bP bQ\;wM bQ/;bA1 /bL;wA1 /bA1
+076f49d24d2aa840|14|11|wL;bL wL-;wM -wL;bA1 bL\;wQ \wM;bM bA1/;wA1 wM\;bQ \bM;wA1 bA1\;bM wQ/;wA2 wM\
+28fad12df832f87f|13|11|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bA1 /bL;wQ \wA1;bQ bM/;wA2 /wM;bP bQ\;wA2 /bA1
+188228bf6e2b0773|12|11|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bP \bM;wQ /wM;bQ bM/;wA2 \wL;bA1 bL\;wA2 bA1\
+1b8ec8dc56768f89|11|11|wL;bL wL-;wM -wL;bM bL-;wQ wM\;bQ \bM;wA1 \wL;bA1 bL\;wP /wM;bP bM/;wA2 \wP
+00f1461a022a878f|11|11|wL;bL wL\;wQ wL/;bQ /bL;wA1 -wL;bM bL\;wM \wL;bA1 bM/;wP \wQ;bP bQ\;wM /bQ
+16bfdbe9265a260b|11|11|wP;bL wP\;wQ \wP;bQ bL-;wA1 wQ/;bP bQ\;wM wA1\;bM /bP;wM bP/;bA1 bP\;wS1 wM-
+2d9be17cea2ae329|11|11|wL;bL wL\;wQ wL/;bQ /bL;wA1 -wL;bA1 bL-;wM \wL;bM bL\;wA1 /bQ;bA2 bA1\;wA2 /wM
+1d0ffa8a319e4f21|11|11|wL;bL wL\;wM \wL;bM bL\;wA1 /wM;bA1 bM/;wQ wL/;bQ /bM;wA1 bA1-;bB1 \bQ;wA2 /wM
+1c16efc165dec018|11|11|wL;bL \wL;wM wL\;bQ bL/;wQ /wL;bA1 -bL;wA1 wM/;bP bQ/;wA1 \bA1;bA2 \bP;wA2 wM/
+1433caee2b4f7cd5|11|11|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bA1 /bL;wQ \wA1;bQ bM/;wS1 /wM;bP bQ\;wS1 /bA1
+00ea940ff9799502|10|11|wL;bL wL-;wM -wL;bM bL-;wA1 wM\;bA1 \bM;wQ \wL;bQ bL\;wM bQ\;bM wA1\;wB1 wM-
+0167c2925ec4d373|10|11|wL;bL wL-;wQ \wL;bM bL-;wA1 -wQ;bQ bM/;wA1 \bQ;bA1 bM\;wB1 -wA1;bA1 \wB1;wB2 wA1/
+244bdbb52a0db83d|10|11|wL;bL wL\;wA1 wL/;bQ bL-;wQ -wL;bP bQ\;wB1 \wL;bB1 bL\;wB1 wL;bM bB1\;wM \wB1
+2e78397b99288388|10|11|wL;bL wL\;wM \wL;bM bL\;wA1 wL/;bA1 bM/;wQ /wM;bQ /bM;wM -bQ;bP bA1\;wA1 bQ\
+06a524ff1d9fbfc3|10|11|wL;bL wL\;wM \wL;bQ /bL;wQ wL/;bP bQ\;wA1 /wM;bM bP-;wM bL-;bA1 bP\;wA1 bA1\
