@@ -2,9 +2,9 @@
 # in the first 12 plies of 7,244 strong hivegame games (book v8 covered 47-78% of them from ply 5 on), laid over v8
 # for deeper lines. Then v9 v v8: same engine both sides, each with its own book, no random opening plies,
 # 200 games at 1 s, 8 shards. The user does not like v8's holes: v9 is installed if it scores >= 100/200 (no worse);
-# Engines/ThoraxRex/thoraxrex-book.txt (v8 kept as thoraxrex-book-v8.txt there). Skipped if started after 23:00.
+# Engines/ThoraxRex/thoraxrex-book.txt (v8 kept as thoraxrex-book-v8.txt there). Skipped if started between 03:00 and noon (must finish before 06:00).
 export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
-H=$(date +%H%M); { [ "$H" -ge 2300 ] || [ "$H" -lt 0600 ]; } && exit 0
+H=$(date +%H%M); { [ "$H" -ge 0300 ] && [ "$H" -lt 1200 ]; } && exit 0
 B=h2h/v220; P4=$PWD/tools/policy_v4.txt
 [ -x $B/thoraxrex ] && [ -s tools/book9-positions.txt ] && [ -s tools/thoraxrex-book-v8.txt ] || exit 1
 mkdir -p results/err
