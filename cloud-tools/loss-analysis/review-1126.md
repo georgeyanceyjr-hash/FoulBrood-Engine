@@ -116,3 +116,13 @@ that move at a fixed depth. A fast way to compare engine changes against top-bot
 - Installed 27 Nov 14:30 with the user's OK: h2h/v220 binary into FoulBroodData/Engines/ThoraxRex and
   ThoraxRex-NoBook (net q19, policy v4, book v8 unchanged). Previous engine in Engines/backup-v219.
 - 12 threads v 8 threads (v220, one game at a time, 1 s): 38-40 after 78 games, running.
+
+## 27 Nov evening
+- 12 threads v 8 threads (v220, 1 s, one game at a time): 98.5/200. No gain: the 8-thread cap stays.
+- GPU-trained eval nets (tools/train_qn_torch.py, same data as q19): q21 64x32 104.5/200 (best val 0.05044 v q19's
+  0.05003 with the numpy trainer); q21w 128x32 about 67.5/150 when checked (val 0.05062); q21x 256x64 val 0.0511, its
+  match skipped (results/skip.txt) to save an hour. The GPU trainer works but does not beat q19 on this data; more data
+  is the next lever (after the release).
+- Book: v8 covers 78/56/47/27% of common strong-game positions at plies 5-6/7-8/9-10/11-12 (book v4 84/69/57/32,
+  Formi's book 11/4/0/0). Book v9 (ZZs) gives the engine's own 30 s move for all 707 such positions, over v8.
+- FoulBrood Engine Formi Book added as a third built-in engine (Formi's published book, 1,782 positions).
