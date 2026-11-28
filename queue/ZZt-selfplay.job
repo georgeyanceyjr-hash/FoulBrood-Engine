@@ -1,0 +1,24 @@
+# Self-play round 15 (27-28 Nov, user: more training data before the release; this comes before the bot).
+# The installed net q19 (build v220) plays itself at depth 6: 12 games at a time (half from strong-player
+# starting positions, half from scratch), in batches of 20 games per process, until 05:45.
+# Output results/datagen/sp15-*.jsonl; turned into features and trained on (with the GPU trainer) on the next nights.
+export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+B=h2h/v220; G=results/datagen
+[ -x $B/thoraxrex ] && [ -s $B/thoraxrex-net.txt ] || exit 1
+mkdir -p $G
+late(){ H=$(date +%H%M); [ "$H" -ge 0545 ] && [ "$H" -lt 1200 ]; }
+n=0
+while ! late; do
+  n=$((n+1)); T=$(date +%m%d-%H%M); DP=()
+  for i in 1 2 3 4 5 6; do
+    TR_BOOK=none TR_POLICY=none TR_NET=$PWD/$B/thoraxrex-net.txt TR_STARTS=tools/hg_starts.jsonl ./$B/thoraxrex datagen 20 6 $((i*190001+n*7919+${T//-/})) $G/sp15-$T-s$i.jsonl > /dev/null 2>&1 &
+    DP+=($!)
+  done
+  for i in 7 8 9 10 11 12; do
+    TR_BOOK=none TR_POLICY=none TR_NET=$PWD/$B/thoraxrex-net.txt ./$B/thoraxrex datagen 20 6 $((i*190001+n*7919+${T//-/})) $G/sp15-$T-s$i.jsonl > /dev/null 2>&1 &
+    DP+=($!)
+  done
+  wait "${DP[@]}"
+  echo "$(date +%H:%M) batch $n: $(cat $G/sp15-*.jsonl 2>/dev/null | wc -l) lines" | tee -a results/sp15-progress.txt
+done
+exit 0
