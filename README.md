@@ -1,4 +1,6 @@
-# FoulBrood engine
+<p align="center"><img src="docs/foulbrood-bee.png" alt="FoulBrood bee" width="140"></p>
+
+# FoulBrood Engine
 
 A Hive engine (base game plus Mosquito, Ladybug and Pillbug) written from scratch in Rust. It speaks the
 Universal Hive Protocol, so it works in the [FoulBrood viewer](https://github.com/georgeyanceyjr-hash/Foulbrood)
